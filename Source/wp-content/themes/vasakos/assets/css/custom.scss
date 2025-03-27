@@ -1,0 +1,146 @@
+//$primary:   #FC6060;
+$primary:   #E1E1E1;
+$secondary: #d1862b;
+$light-gray: #ECEFF3;
+$third :   #0974BA;
+$dark : #111;
+$brand-primary:         #153141;
+$brand-danger:         #e41d06;
+$brand-success:         #1bbe00;
+$slots-bg-color:       #6d4d42;
+$state-success-text: #1bbe00;
+$state-danger-text: #e41d06;
+$container-large-desktop: 1280px;
+$warning: #f25a29;
+$brand-warning: $warning;
+$state-warning-text: $brand-warning;
+$state-warning-bg: $brand-warning;
+$padding-small-vertical: 4px;
+$info: #343434;
+$brand-info: $info;
+$state-info-text: $brand-info;
+$state-info-bg: $brand-info;
+$border-radius-base: 0;
+$headings-font-weight:    600;
+$navbar-default-link-hover-color: $brand-primary;
+$nav-link-hover-bg: #fff;
+$navbar-margin-bottom: -4px;
+$font-size-base:          1.0625rem;
+$font-size-large:         ceil(($font-size-base * 1.10));
+$font-size-small:         ($font-size-base * 0.86);
+$font-size-h1:            2.25rem;
+$font-size-h2:            19px;
+$font-size-h3:            18px;
+$font-size-norm: 15px;
+$body-color: #ffffff;
+$blackjack-step-heading: #5e6a86;
+$badge-font-weight:none;
+
+$bark: #111;
+$dark-active: 17,17,17;
+$dark-active: rgba(20,23,51,.6);
+$dark-alter: 20,23,51;
+$c-grey: #8e8f9a;
+$ca-grey: 142,143,154;
+$c-light: #fff;
+$ca-light: 255,255,255;
+$c-dark: #111;
+$ca-dark: 17,17,17;
+$ca-dark2: #111;
+$ca-dark2: 17,17,17;
+$c-white: #fff;
+$ca-white: 255,255,255;
+$c-black: #000;
+$ca-black: 0,0,0;
+
+
+
+//@font-face {
+//  font-family: 'Roboto Condensed';
+//  font-style: normal;
+//  font-weight: 400;
+//  src: local('Poppins Black'), local('Poppins-Black'),
+//  url('/wp-content/themes/machineindustry/assets/fonts/Poppins-Black.ttf') format('ttf') /* Chrome 26+, Opera 23+, Firefox 39+ */
+//}
+///* roboto-condensed-700 - latin */
+//@font-face {
+//  font-family: 'Roboto Condensed'!important;
+//  font-style: normal;
+//  font-weight: 700;
+//  src: local('Poppins Black bold'), local('Poppins-Black-bold'),
+//  url('/wp-content/themes/machineindustry/assets/fonts/Poppins-Bold.ttf') format('ttf') /* Chrome 26+, Opera 23+, Firefox 39+ */
+//}
+///*italic */
+//@font-face {
+//  font-family: 'Roboto Condensed'!important;
+//  font-style: italic;
+//  font-weight: 400;
+//  src: local('Poppins Italic'), local('Poppins-Italic'),
+//  url('/wp-content/themes/machineindustry/assets/fonts/Poppins-Italic.ttf') format('ttf') /* Chrome 26+, Opera 23+, Firefox 39+ */
+//}
+
+
+$badge-font-weight:none;
+$font-family-sans-serif:  "Muli" !default;
+$font-family-monospace:  ' '!default;
+$font-family-base: $font-family-sans-serif !default;
+$grid-gutter-width: 20px !default;
+$container-large-desktop: 1280px;
+//$container-max-widths: (
+//        sm: 100%,
+//        md: 750px,
+//        lg: 1170px,
+//        xl: 1380px
+//);
+
+$container-max-widths: (
+        sm: 540px,
+        md: 990px,
+        lg: 1480px,
+        xl: 1580px
+);
+
+$grid-breakpoints: (
+        xs: 0, // Extra small screen / phone
+        sm: 576px, // Small screen / phone
+        md: 700px, // Medium screen / tablet
+        lg: 992px, // Large screen / desktop
+        xl: 1480px // Extra large screen / wide desktop
+);
+$sizes: ();
+$sizes: map-merge(
+                (
+                        5:5%,
+                        10:10%,
+                        12:12%,
+                        15:15%,
+                        16:16%,
+                        19:19%,
+                        20:20%,
+                        24:24%,
+                        25:25%,
+                        29:29%,
+                        30:30%,
+                        32:32%,
+                        40:40%,
+                        45:45%,
+                        33:33.33%,
+                        49: 49%,
+                        50: 50%,
+                        55: 55%,
+                        60: 60%,
+                        66: 66.66%,
+                        69 :69%,
+                        70: 70%,
+                        75: 75%,
+                        80: 80%,
+                        85: 85%,
+                        90: 90%,
+                        95: 95%,
+                        98: 98%,
+                        100: 100%,
+                        auto: auto
+    ),
+          $sizes
+);
+

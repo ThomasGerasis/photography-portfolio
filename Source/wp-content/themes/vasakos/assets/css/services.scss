@@ -1,0 +1,16 @@
+.single-cat{
+  @media screen and (min-width: 1024px) {
+    padding: 50px;
+    box-shadow: 0 0 1px 2px #00000014;
+    margin-bottom: 5px;
+  }
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 4px;
+  .cat-cap{
+    padding-top: 5px;
+  }
+  .cat-cap span{
+    color:#111;
+  }
+}

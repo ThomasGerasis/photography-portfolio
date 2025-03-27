@@ -1,0 +1,19 @@
+.faq__item{
+  @media only screen and (min-width: 1024px) {
+    width: 45%;
+    padding: 30px 50px 30px 40px;
+  }
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid rgba(142,143,154,.4);
+  padding: 10px 10px 10px 10px;
+  margin: 5px 5px 16px;
+  position: relative;
+  .title{
+    @media only screen and (max-width: 1023px) {
+      font-size: 16px;
+    }
+    margin-bottom: 0;
+    cursor: pointer;
+  }
+}

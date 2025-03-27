@@ -1,0 +1,58 @@
+#notfound {
+  position: relative;
+  height: 100vh;
+}
+
+#notfound .notfound {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.notfound {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  line-height: 1.4;
+}
+
+
+.notfound .notfound-404 {
+  @media screen and (min-width: 992px) {
+    height: 604px;
+  }
+  height: 460px;
+  display: grid;
+  align-content: center;
+  align-items: center;
+}
+
+.notfound .notfound-404 h1 {
+  font-size: 8rem;
+  justify-content: center;
+  font-weight: 700;
+  color: #232323;
+  img{
+    margin-top:40px;
+  }
+}
+
+.notfound h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+  color: #232323;
+}
+
+.notfound p {
+  color: #787878;
+  font-weight: 300;
+}
+
+
+
