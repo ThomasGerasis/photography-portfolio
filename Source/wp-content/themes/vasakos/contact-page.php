@@ -17,7 +17,7 @@ $settings = get_option('basic_settings');
         <div class="row h-100 align-items-center">
             <div class="col-12">
                 <div class="breadcrumb-content text-center">
-                    <h2 class="page-title">Contact</h2>
+                    <h1 class="page-title">Contact</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a href="<?php echo home_url();?>"><i class="fas fa-home"></i> Home</a></li>

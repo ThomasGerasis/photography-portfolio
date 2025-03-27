@@ -6,7 +6,7 @@
                     <!-- Footer Logo -->
                     <div class="footer-logo d-flex justify-content-center mt-15">
                         <a href="#">
-                            <img class="img img-fluid rounded-5" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg" loading="lazy" width="70" height="70" alt="logo">
+                          <img class="img img-fluid rounded-5" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.jpg" loading="lazy" width="70" height="70" alt="logo">
                         </a>
                     </div>
 

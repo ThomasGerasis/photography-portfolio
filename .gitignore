@@ -36,3 +36,4 @@ Source/vendor/*
 Source/wp-content/mu-plugins/*
 !Source/wp-content/mu-plugins/load.php
 Deploy/*
+Source/uploads/*

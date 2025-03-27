@@ -17,7 +17,7 @@ function popular_categories_callback($atts, $content = null)
         'number'    => 4
     ]);
     ?>
-    <div class="top__categories d-flex flex-wrap justify-content-center <?= $GLOBALS['is_mobile'] ? 'mt-40p mb-20p' : 'mt-40p mb-40p'?> ">
+    <div class="top__categories d-flex flex-wrap justify-content-center <?= wp_is_mobile() ? 'mt-40p mb-20p' : 'mt-40p mb-40p'?> ">
     <?php
     foreach ($categories as $category){
           $catID =  $category->term_id;

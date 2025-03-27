@@ -36,7 +36,7 @@ $storyTextMore = get_post_meta($post->ID,$prefix.'story_more',true);
             <?php if ($GLOBALS['is_mobile']){ ?>
                 <div class="w-100 pt-20p d-block">
                     <p class="w-100 d-block text-center heading_title" style="color: #d1862b;">Vasileios  Vasakos</p>
-                    <h2 class="w-100 d-block text-white text-center mb-4"><?=$mainHeading ?? '';?></h2>
+                    <h1 class="w-100 d-block text-white text-center mb-4"><?=$mainHeading ?? '';?></h1>
                     <div class="about_top_img" style="background-image: url('<?php echo $mainImage;  ?>');"></div>
                     <div class="w-100 d-block text-white text-center p-10p"><?=$mainText ?? '';?></div>
                 </div>
@@ -44,7 +44,7 @@ $storyTextMore = get_post_meta($post->ID,$prefix.'story_more',true);
                 <div class="about_top_img" style="background-image: url('<?php echo $mainImage;  ?>');"></div>
                 <div class="w-50 d-block">
                     <p class="w-100 d-block text-center heading_title" style="color: #d1862b;">Vasileios  Vasakos</p>
-                    <h2 class="w-100 d-block text-white text-center"><?=$mainHeading ?? '';?></h2>
+                    <h1 class="w-100 d-block text-white text-center"><?=$mainHeading ?? '';?></h1>
                     <div class="w-100 d-block text-white text-center p-10p"><?=$mainText ?? '';?></div>
                 </div>
                 <?php } ?>
@@ -100,7 +100,7 @@ $storyTextMore = get_post_meta($post->ID,$prefix.'story_more',true);
 <?php $funFacts = get_post_meta($post->ID,'fun_facts_meta',true);?>
 <div class="container-fluid w-100 mb-20 mt-5 bg-black">
     <div class="fun-facts container d-flex flex-wrap w-100">
-        <h2 class="w-100 d-block text-center text-white mb-2">Fun Facts</h2>
+        <h3 class="w-100 d-block text-center text-white mb-2">Fun Facts</h3>
         <p class="w-100 d-block text-center text-white heading_title mb-5">Things to know about me</p>
         <?php foreach ($funFacts as $funFact){ ?>
             <div class="column">

@@ -7,15 +7,13 @@ $settings = get_option('basic_settings');
     <div class="loader"></div>
 </div>
 
-<?php
-get_template_part('templates/slider-homepage');
-?>
+<?php get_template_part('templates/slider-homepage'); ?>
 
 <div class="container container_pages mb-20p d-block mx-auto align-items-center p-0">
 
 <div class="section_categories d-flex flex-wrap mt-50p w-100">
         <img alt="camera lens" src="<?php echo get_stylesheet_directory_uri().'/assets/images/lensdivider.svg'?>" width="150" height="70" class="d-block img-fluid m-auto" loading="lazy">
-        <p class="w-100 d-block text-dark text-center heading_title ">Vasileios  Vasakos</p>
+        <h1 class="w-100 d-block text-dark text-center heading_title ">Vasileios  Vasakos</h1>
         <h2 class="w-100 d-block text-dark text-center"><?=get_the_title($post->ID) ?? '';?></h2>
         <div class="w-100 d-block text-dark text-center p-10p"><?=get_the_content($post->ID) ?? '';?></div>
 

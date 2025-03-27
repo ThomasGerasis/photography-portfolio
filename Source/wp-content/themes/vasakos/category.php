@@ -21,12 +21,10 @@ $orderBy = $category->term_id === 4 ? 'DESC' : 'ASC';
 
 <div class="container_pages mt-20p mb-20p d-block mx-auto align-items-center">
 
-        <div class="container mb-20p text-center w-100 d-block mx-auto align-items-center p-0">
+        <div class="container mb-20p text-center w-60 w-sm-100 d-block mx-auto align-items-center p-0">
             <h1><?=$category->name?></h1>
-            <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-
-           
-            <span class="text-dark heading_title">Photos</span>
+            <p class="text-dark"><?=$category->description?></p>
+            <h2 class="text-dark text-center heading_title">Photos</h2>
             <img alt="camera" src="<?php echo get_stylesheet_directory_uri().'/assets/images/camera.svg'?>" style="filter: invert(1);" width="30" height="30" class="d-block img-fluid m-auto" loading="lazy">
         </div>
 

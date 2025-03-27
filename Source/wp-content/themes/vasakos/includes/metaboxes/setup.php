@@ -16,7 +16,7 @@ wp_editor(html_entity_decode($mb->get_the_value(), ENT_QUOTES, 'UTF-8'), 'welcom
                 </th>
             </tr>
             <tr>
-                <?php $metabox->the_field($prefix.'bg_image')?>
+                <?php $metabox->the_field($prefix.'image')?>
                 <td>
                     <input type="text" id="<?php $metabox->the_name(); ?>" name="<?php $metabox->the_name(); ?>" value="<?= $metabox->get_the_value()?>" class="mr-1" />
                 </td>
@@ -36,7 +36,7 @@ wp_editor(html_entity_decode($mb->get_the_value(), ENT_QUOTES, 'UTF-8'), 'welcom
                 </th>
             </tr>
             <tr>
-                <?php $metabox->the_field($prefix.'image')?>
+                <?php $metabox->the_field($prefix.'bg_image')?>
                 <td>
                     <input type="text" id="<?php $metabox->the_name(); ?>" name="<?php $metabox->the_name(); ?>" value="<?= $metabox->get_the_value()?>" class="mr-1" />
                 </td>

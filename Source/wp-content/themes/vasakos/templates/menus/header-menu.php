@@ -52,7 +52,7 @@
         <div class="site-title d-flex align-self-center position-relative">
             <a href="<?php echo home_url();?>" class="custom-logo-link d-flex" rel="home" aria-current="page">
                 <img class="img img-fluid p-5p" src="<?php echo get_stylesheet_directory_uri().'/assets/images/lensdivider.svg'; ?>" width="<?php echo $width;?>" height="<?php echo $height;?>" alt="Logo">
-                <span class="w-100 d-block text-center heading_title" style="margin: auto;">Vasileios Vasakos</h1>
+                <span class="w-100 d-block text-center heading_title m-auto">Vasileios Vasakos</span>
             </a>
         </div>
         <div class="menu ml-auto d-flex align-items-center">

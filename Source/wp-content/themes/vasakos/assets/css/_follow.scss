@@ -5,10 +5,7 @@
     position: relative;
     z-index: 1;
     overflow: hidden;
-    @media only screen and (min-width: 769px) {
-        padding-left: 10px;
-    }
-    padding-left: 3px;
+    padding-left: 10px;
     @include transition-duration(500ms);
     img {
         width: 100%;
@@ -31,8 +28,6 @@
 
         a {
             text-align: center;
-            height: 100%;
-            width: 100%;
 
             i {
                 color: $white;
