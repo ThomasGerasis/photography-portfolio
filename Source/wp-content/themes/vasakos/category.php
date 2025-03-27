@@ -9,6 +9,9 @@
  * @since Twenty Fourteen 1.0
  */
 get_header();
+
+var_dump('test');
+
 ?>
 <div id="preloader">
     <div class="loader"></div>
