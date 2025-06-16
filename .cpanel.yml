@@ -1,4 +1,4 @@
 ---
 deployment:
   tasks:
-    - /usr/bin/rsync -avz --delete $GIT_ROOT/Source/wp-content/themes/vasakos/ /home/vasakosh/public_html/wp-content/themes/vasakos/
+    - /usr/bin/rsync -avz --delete /home/vasakosh/repositories/photography-portfolio/Source/wp-content/themes/vasakos/ /home/vasakosh/public_html/wp-content/themes/vasakos/
