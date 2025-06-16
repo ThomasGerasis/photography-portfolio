@@ -159,6 +159,7 @@
 <script defer src="<?php echo get_template_directory_uri().'/assets/js/default-assets/active.js?v=4.2'; ?>"></script>
 <script defer type="text/javascript" src="<?php echo get_template_directory_uri().'/assets/js/scripts.js?v=3.8'; ?>"></script>
 <script defer type="text/javascript" src="<?php echo get_template_directory_uri().'/assets/js/slider.js'; ?>"></script>
+<script defer type="text/javascript" src="<?php echo get_template_directory_uri().'/assets/js/infinite-scroll.js'; ?>"></script>
 
 
 <?php if (!is_category()){ ?>

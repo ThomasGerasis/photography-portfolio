@@ -47,11 +47,3 @@ use SettingsPages\BasicSettings;
 new SliderSettings('photos');
 new SliderSettingsCarousel('photos');
 new BasicSettings('photos');
-
-//function wpb_change_search_url() {
-//    if ( is_search() && ! empty( $_GET['s'] ) ) {
-//        wp_redirect( home_url( "/akinita/" ) . urlencode( get_query_var( 's' ) ) );
-//        exit();
-//    }
-//}
-//add_action( 'template_redirect', 'wpb_change_search_url' );

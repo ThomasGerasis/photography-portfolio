@@ -10,7 +10,7 @@
 <meta name="MSSmartTagsPreventParsing" content="true" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <?php wp_head();?>
-<link rel="stylesheet" href="<?= get_stylesheet_directory_uri().'/assets/css/core.css?v=11.7'?>">
+<link rel="stylesheet" href="<?= get_stylesheet_directory_uri().'/assets/css/core.css?v=12.1'?>">
 <script type="text/javascript"> (function() { let css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.8.1/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
 <script>window.FontAwesomeConfig = {searchPseudoElements: true}</script>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
