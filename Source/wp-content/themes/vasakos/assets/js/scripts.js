@@ -1,3 +1,9 @@
+import "../css/core.scss";
+
+import $ from "jquery";
+
+import 'magnific-popup';
+
 jQuery(document).ready(function() {
 
     jQuery('#loader').show();
@@ -59,24 +65,6 @@ jQuery(document).ready(function() {
             }
         }
     });
-
-    // setTimeout(function() {
-    //     $('.masonry-layout-container').masonry({
-    //         // options
-    //         itemSelector: '.media-slice',
-    //         percentPosition: true
-    //     });
-    // }, 500);
-
-    if ($.fn.imagesLoaded) {
-        $('.masonry-layout-container').imagesLoaded(function () {
-            $('.masonry-layout-container').masonry({
-                // options
-                itemSelector: '.media-slice',
-                percentPosition: true
-            });
-        });
-    }
 
 
     $(".collapse")
@@ -154,6 +142,7 @@ jQuery(document).ready(function() {
 function emailIsValid(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
+
 let contactForm = document.querySelector("#contactForm");
 
 if (contactForm) {

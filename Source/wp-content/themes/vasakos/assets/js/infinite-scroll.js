@@ -1,97 +1,106 @@
+import $ from 'jquery';
+import 'magnific-popup';
+import imagesLoaded from 'imagesloaded';
+import Masonry from 'masonry-layout';
+
+let page = 1;
+let loading = false;
+
 jQuery(function ($) {
-    let page = 1;
-    let loading = false;
 
     const $container = $(".masonry-layout-container");
     const maxPage = parseInt($container.attr("data-max-pages"));
     const category = parseInt($container.attr("data-category-id"));
 
-    // Initial Masonry setup
-    if ($.fn.imagesLoaded) {
-        $container.imagesLoaded(function () {
-            $container.masonry({
-                itemSelector: '.media-slice',
-                percentPosition: true
-            });
-        });
+    let masonryContainer = document.querySelector('.masonry-layout-container');
+
+    if (masonryContainer === null) {
+        return;
     }
-   
-    // Scroll Throttle
+
+    // Initialize Masonry and assign to msnryItem
+    const msnryItem = new Masonry(masonryContainer, {
+        itemSelector: '.media-slice',
+        percentPosition: true
+    });
+
+    // Make sure Masonry layout is triggered after images load
+    imagesLoaded(masonryContainer, () => {
+        msnryItem.layout();
+    });
+
+
+    // Throttled scroll handler
     let throttleTimer;
     $(window).on("scroll", function () {
         clearTimeout(throttleTimer);
         throttleTimer = setTimeout(function () {
             if (loading || page >= maxPage) return;
 
-            let scrollPosition = $(window).scrollTop() + $(window).height();
-            let containerBottom = $container.offset().top + $container.height();
+            const scrollPosition = $(window).scrollTop() + $(window).height();
+            const containerBottom = $container.offset().top + $container.height();
 
             if (scrollPosition >= containerBottom - 100) {
-                loadNextPage();
+                loadNextPage($container, category,msnryItem);
             }
         }, 150);
     });
-
-    function loadNextPage() {
-        loading = true;
-        page++;
-
-        const $loader = $('#infinite-loader');
-        $loader.show();
-
-        $.ajax({
-            url: window.location.origin + "/wp-admin/admin-ajax.php",
-            type: "POST",
-            data: {
-                action: "load_more_gallery",
-                page: page,
-                category: category
-            },
-            success: function (data) {
-
-                const $newItems = $(data).css("opacity", 0); // hide new items for smooth fade-in
-                // Step 1: Append new HTML (hidden)
-                $container.append($newItems);
-
-                $newItems.imagesLoaded(function () {
-                    // Step 3: Masonry appends and re-layout
-                    $container.masonry("appended", $newItems);
-                    // $container.masonry("layout");
-
-                    // Step 4: Fade in content
-                    $newItems.css("opacity", 1);
-                    
-                    // Step 5: Keep loader until visual layout is ready
-                    setTimeout(() => {
-
-                        $loader.hide(); // instead of .remove()
-
-                        // Re-init plugins
-                        $('.image-popup-vertical-fit').magnificPopup({
-                            type: 'image',
-                            mainClass: 'mfp-with-zoom',
-                            gallery: { enabled: true },
-                            zoom: {
-                                enabled: true,
-                                duration: 300,
-                                easing: 'ease-in-out',
-                                opener: function (openerElement) {
-                                    return openerElement.is('img') ? openerElement : openerElement.find('img');
-                                }
-                            }
-                        });
-
-                        // new WOW().init(); // Re-init animations
-                        loading = false;
-                    }, 400); // give a little breathing room after layout
-
-                });
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                console.log(thrownError);
-                loading = false;
-                $loader.remove();
-            }
-        });
-    }
 });
+
+
+function loadNextPage(container, category,msnryItem) {
+    loading = true;
+    page++;
+
+    const $loader = $('#infinite-loader');
+    $loader.show();
+
+    $.ajax({
+        url: window.location.origin + "/wp-admin/admin-ajax.php",
+        type: "POST",
+        data: {
+            action: "load_more_gallery",
+            page: page,
+            category: category
+        },
+        success: function (data) {
+            const $newItems = $(data).css("opacity", 0);
+            container.append($newItems);
+
+            imagesLoaded($newItems.get(), () => {
+
+                // Tell Masonry about new appended items
+                msnryItem.appended($newItems.get());
+
+                msnryItem.layout();
+
+                $newItems.css("opacity", 1);
+
+                setTimeout(() => {
+                    $loader.hide();
+
+                    $('.image-popup-vertical-fit').magnificPopup({
+                        type: 'image',
+                        mainClass: 'mfp-with-zoom',
+                        gallery: { enabled: true },
+                        zoom: {
+                            enabled: true,
+                            duration: 300,
+                            easing: 'ease-in-out',
+                            opener: function (openerElement) {
+                                return openerElement.is('img') ? openerElement : openerElement.find('img');
+                            }
+                        }
+                    });
+
+                    loading = false;
+                }, 400);
+            });
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.error(thrownError);
+            loading = false;
+            $loader.remove();
+        }
+    });
+}

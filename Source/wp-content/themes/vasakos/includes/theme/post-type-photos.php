@@ -31,7 +31,7 @@ function register_photos()
         'hierarchical' => true,
         'menu_position' => null,
         'taxonomies' => array( 'category' ),
-        'supports' => array('custom-fields','thumbnail'),
+        'supports' => array('title','custom-fields','thumbnail'),
         'menu_icon' => get_template_directory_uri() . '/assets/images/camera.png',
     );
     register_post_type('photos', $args);

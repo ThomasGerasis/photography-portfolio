@@ -14,8 +14,9 @@ $simple_mb = new WPAlchemy_MetaBox(array
     'title' => 'Photos',
     'mode' => WPALCHEMY_MODE_EXTRACT,
     'template' => get_stylesheet_directory() . '/includes/metaboxes/photos-meta.php',
-    'types' => array('photos')
+    'types' => array('photos','gallery')
 ));
+
 
 $simple_mb = new WPAlchemy_MetaBox(array(
     'id' => '_homepage_meta',

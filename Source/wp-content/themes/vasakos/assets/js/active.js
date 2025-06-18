@@ -1,3 +1,9 @@
+
+import $ from 'jquery';
+
+import 'magnific-popup';
+import 'owl.carousel';
+
 (function ($) {
     'use strict';
 
@@ -25,57 +31,61 @@
     // :: 3.0 Welcome Slides Active Code
     // *********************************
 
-    if ($.fn.owlCarousel) {
         var welcomeSlider = $('.welcome-slides');
-        welcomeSlider.owlCarousel({
-            items: 1,
-            loop: true,
-            autoplay: true,
-            smartSpeed: 1000,
-            autoplayTimeout: 10000,
-            nav: true,
-            navText: [('<i class="fas fa-arrow-left"></i>'), ('<i class="fas fa-arrow-right"></i>')]
-        })
+            if (welcomeSlider.length) {
+                welcomeSlider.owlCarousel({
+                items: 1,
+                loop: true,
+                autoplay: true,
+                smartSpeed: 1000,
+                autoplayTimeout: 10000,
+                nav: true,
+                dots: false,
+                navText: [('<i class="fas fa-arrow-left"></i>'), ('<i class="fas fa-arrow-right"></i>')]
+            })
 
-        welcomeSlider.on('translate.owl.carousel', function () {
-            var layer = $("[data-animation]");
-            layer.each(function () {
-                var anim_name = $(this).data('animation');
-                $(this).removeClass('animated ' + anim_name).css('opacity', '0');
+            welcomeSlider.on('translate.owl.carousel', function () {
+                var layer = $("[data-animation]");
+                layer.each(function () {
+                    var anim_name = $(this).data('animation');
+                    $(this).removeClass('animated ' + anim_name).css('opacity', '0');
+                });
             });
-        });
 
-        $("[data-delay]").each(function () {
-            var anim_del = $(this).data('delay');
-            $(this).css('animation-delay', anim_del);
-        });
-
-        $("[data-duration]").each(function () {
-            var anim_dur = $(this).data('duration');
-            $(this).css('animation-duration', anim_dur);
-        });
-
-        welcomeSlider.on('translated.owl.carousel', function () {
-            var layer = welcomeSlider.find('.owl-item.active').find("[data-animation]");
-            layer.each(function () {
-                var anim_name = $(this).data('animation');
-                $(this).addClass('animated ' + anim_name).css('opacity', '1');
+            $("[data-delay]").each(function () {
+                var anim_del = $(this).data('delay');
+                $(this).css('animation-delay', anim_del);
             });
-        });
-    }
+
+            $("[data-duration]").each(function () {
+                var anim_dur = $(this).data('duration');
+                $(this).css('animation-duration', anim_dur);
+            });
+
+            welcomeSlider.on('translated.owl.carousel', function () {
+                var layer = welcomeSlider.find('.owl-item.active').find("[data-animation]");
+                layer.each(function () {
+                    var anim_name = $(this).data('animation');
+                    $(this).addClass('animated ' + anim_name).css('opacity', '1');
+                });
+            });
+        }
+      
+    
 
     // ************************************
     // :: 4.0 Instragram Slides Active Code
     // ************************************
 
-    if ($.fn.owlCarousel) {
         var instagramFeedSlider = $('.instragram-feed-area');
+        if (instagramFeedSlider.length){
         instagramFeedSlider.owlCarousel({
             items: 6,
             loop: true,
             autoplay: true,
             smartSpeed: 1000,
             autoplayTimeout: 3000,
+            dots: false,
             responsive: {
                 0: {
                     items: 2
@@ -94,34 +104,37 @@
                 }
             }
         })
-    }
-    if ($.fn.owlCarousel) {
+    
+
         let testimonials = $('.testimonials__area');
-        testimonials.owlCarousel({
-            items: 2,
-            loop: true,
-            margin:20,
-            autoplay: true,
-            smartSpeed: 5000,
-            autoplayTimeout: 7000,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                576: {
-                    items: 1
-                },
-                768: {
-                    items: 2
-                },
-                992: {
-                    items: 2
-                },
-                1200: {
-                    items: 2
+        if (testimonials.length){
+            testimonials.owlCarousel({
+                items: 2,
+                loop: true,
+                margin:20,
+                autoplay: true,
+                smartSpeed: 5000,
+                autoplayTimeout: 7000,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    576: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    992: {
+                        items: 2
+                    },
+                    1200: {
+                        items: 2
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 
     // *********************************
@@ -157,12 +170,6 @@
         $(this).addClass('active');
     })
 
-    // ********************************
-    // :: 7.0 Search Button Active Code
-    // ********************************
-    $('.search-btn').on('click', function () {
-        $('.search-form').toggleClass('search-form-active');
-    })
 
     // ************************
     // :: 8.0 Stick Active Code
@@ -205,28 +212,10 @@
     // ***********************
     // :: 11.0 WOW Active Code
     // ***********************
-    if (alime_window.width() > 767) {
-        new WOW().init();
-    }
-
-    // ****************************
-    // :: 12.0 Jarallax Active Code
-    // ****************************
-    if ($.fn.jarallax) {
-        $('.jarallax').jarallax({
-            speed: 0.5
-        });
-    }
-
-    // // ****************************
-    // // :: 13.0 Scrollup Active Code
-    // // ****************************
-    // if ($.fn.scrollUp) {
-    //     alime_window.scrollUp({
-    //         scrollSpeed: 1000,
-    //         scrollText: '<i class="fas fa-angle-up"</i>'
-    //     });
+    // if (alime_window.width() > 767) {
+    //     new WOW().init();
     // }
+
 
     // *********************************
     // :: 14.0 Prevent Default 'a' Click
