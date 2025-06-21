@@ -1,0 +1,39 @@
+/* :: 7.0 Header CSS */
+
+.header-area {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    top:0;
+    @include transition-duration(500ms);
+    background-color: transparent;
+
+    .search-icon {
+        position: relative;
+        z-index: 1;
+        margin-left: 80px;
+
+        i {
+            font-size: 18px;
+            color: $white;
+            cursor: pointer;
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .main-header-area {
+        height: 55px !important;
+    }
+}
+
+.justify-content-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+
+.justify-content-center {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+

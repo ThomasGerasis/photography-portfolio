@@ -1,49 +1,7 @@
 @import "custom";
-@import "../../../../../../bootstrap/functions";
-@import "../../../../../../bootstrap/variables";
-@import "../../../../../../bootstrap/mixins/breakpoints";
-@import "../../../../../../bootstrap/mixins/grid-framework";
-@import "../../../../../../bootstrap/mixins/grid";
-@import "../../../../../../bootstrap/grid";
-@import "../../../../../../bootstrap/utilities/display";
-@import "../../../../../../bootstrap/utilities/flex";
-@import "../../../../../../bootstrap/utilities/spacing";
-@import "../../../../../../bootstrap/mixins";
-@import "../../../../../../bootstrap/root";
-@import "../../../../../../bootstrap/reboot";
-@import "../../../../../../bootstrap/type";
-@import "../../../../../../bootstrap/images";
-@import "../../../../../../bootstrap/code";
-@import "../../../../../../bootstrap/grid";
-@import "../../../../../../bootstrap/tables";
-@import "../../../../../../bootstrap/forms";
-@import "../../../../../../bootstrap/buttons";
-@import "../../../../../../bootstrap/transitions";
-@import "../../../../../../bootstrap/dropdown";
-//@import "../../../../../../bootstrap/button-group";
-//@import "../../../../../../bootstrap/input-group";
-//@import "../../../../../../bootstrap/custom-forms";
-@import "../../../../../../bootstrap/nav";
-@import "../../../../../../bootstrap/navbar";
-//@import "../../../../../../bootstrap/card";
-//@import "../../../../../../bootstrap/breadcrumb";
-//@import "../../../../../../bootstrap/pagination";
-//@import "../../../../../../bootstrap/badge";
-//@import "../../../../../../bootstrap/jumbotron";
-//@import "../../../../../../bootstrap/alert";
-@import "../../../../../../bootstrap/progress";
-@import "../../../../../../bootstrap/media";
-@import "../../../../../../bootstrap/list-group";
-@import "../../../../../../bootstrap/close";
-@import "../../../../../../bootstrap/modal";
-//@import "../../../../../../bootstrap/tooltip";
-//@import "../../../../../../bootstrap/popover";
-@import "../../../../../../bootstrap/carousel";
-@import "../../../../../../bootstrap/utilities";
-//@import "../../../../../../bootstrap/print";
-
 
 html { scroll-behavior: smooth; }
+
 body{
   a:hover {
     cursor: pointer;
@@ -51,6 +9,7 @@ body{
   }
   .clear { clear: both; }
 }
+
 .pointer{
   cursor: pointer;
 }
@@ -94,7 +53,7 @@ body{
   //top: 50px;
 }
 .rounded-5{
-  border-radius: 5px;
+  border-radius: 5px !important;
 }
 .rounded-top-left-5{
   border-top-left-radius: 5px;
@@ -118,7 +77,7 @@ body{
 }
 
 .rounded-10{
-  border-radius: 10px;
+  border-radius: 10px !important;
 }
 .background_sections{
   background: #F5F5F5;
@@ -258,47 +217,52 @@ $sides: (top, bottom, left, right); // Leave this variable alone
   }
 }
 
-
-  @import "testimonials";
-  // Utilities
-  @import "utilities/fonts";
-  @import "utilities/variables";
-  @import "utilities/responsive";
-  @import "utilities/color";
-
   // Mixins
   @import "mixins/flex";
   @import "mixins/miscellaneous";
 
-  // Stylesheet
-  @import "reboot";
-  @import "spacing";
-  @import "preloader";
-  @import "heading";
-  @import "backtotop";
-  @import "buttons";
-  @import "header";
-  @import "hero";
-  @import "footer";
-  @import "follow";
-  @import "breadcrumb";
+  
+  // Utilities
+
+  @import "utilities/fonts";
+  @import "utilities/variables";
+  @import "utilities/responsive";
+  // @import "utilities/color";
+  @import "utilities/reboot";
+  @import "utilities/spacing";
+  @import "utilities/preloader";
+
+  // Components
+  @import "components/heading";
+  @import "components/backtotop";
+  @import "components/buttons";
+  @import "components/header";
+  @import "components/hero";
+  @import "components/footer";
+  @import "components/follow";
+  @import "components/breadcrumb";
+  @import "components/testimonials";
   //@import "blog";
   //@import "team";
-  @import "gallery";
-  @import "contact";
-  @import "slider";
-  @import "glyphs";
-  @import "themefi-icons";
-  @import "socials";
-  @import "profile";
-  @import "menu";
-  @import "categories-shortcode";
-  @import "masonry-layout";
-  @import "about";
-  @import "services";
-  @import "faq";
-  @import "404";
+  @import "components/gallery";
+  @import "components/contact";
+  @import "components/slider";
 
+  
+  @import "components/socials";
+  @import "components/profile";
+  @import "components/menu";
+  @import "components/categories-shortcode";
+  @import "components/masonry-layout";
+  @import "components/about";
+  @import "components/services";
+  @import "components/faq";
+  @import "components/404";
+  @import "components/pricing";
+
+//icons
+@import "icons/glyphs";
+@import "icons/themefi-icons";
 
 .bg-trans {
   background-color: rgba(0,0,0,0.5);
@@ -1037,7 +1001,7 @@ blockquote {
   height: 40px;
   margin: 20px auto;
   border: 4px solid #ddd;
-  border-top-color: #333;
+  border-top-color: #D1862B;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }

@@ -1,0 +1,83 @@
+/* :: 16.0 Contact CSS */
+
+.form-control:focus{
+    color:#495057;
+    background-color:#fff;
+    border-color:#fff;
+    outline:0;
+    box-shadow:0 0 0 .2rem rgba(225,225,225,0.25);
+}
+
+.form-control::placeholder{
+    color:#6c757d;
+    opacity:1
+}
+
+.form-control:disabled,.form-control[readonly]{
+    background-color:#e9ecef;
+    opacity:1
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.contact_wrap{
+    margin-top: 50px;
+    .lens{
+        left: 50%;
+        top: -4px;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        border-radius: 50%;
+        background: $primary;
+        img{
+            padding: 10px;
+        }
+    }
+    .wrapper{
+        border-radius: 10px;
+    }
+}
+
+#contactForm{
+    .form-control {
+        background: #fff;
+        color: rgba(0, 0, 0, 0.8);
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        appearance: none;
+        box-shadow: 0 8px 6px 3px #00000017 !important;
+    }
+    .form-control:not(#message){
+        height: 50px;
+    }
+}
+
+.submit-btn {
+    @media only screen and (min-width: 769px) {
+        padding: 17px 34px;
+    }
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2.8px;
+    margin-top: 14px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    border-radius: 0;
+    appearance: none;   
+    font-style: normal;
+    padding: 10px 25px;
+    border: 1px solid #111;
+    background: #111;
+    color: #fff;
+    position: relative;
+}
+
+.submit-btn:hover {
+    border-color: #111;
+    background: #fff;
+    color: #111;
+}
