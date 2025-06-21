@@ -7,35 +7,8 @@ import 'magnific-popup';
 jQuery(document).ready(function() {
 
     jQuery('#loader').show();
-
-    // jQuery('.select2-trigger').select2();
     /**** SCROLL TO TOP ****/
     let backToTop = document.getElementById("scrollUp");
-
-    function fadeOut(el){
-        el.style.opacity = 1;
-
-        (function fade() {
-            if ((el.style.opacity -= .1) < 0) {
-                el.style.display = "none";
-            } else {
-                requestAnimationFrame(fade);
-            }
-        })();
-    }
-
-    function fadeIn(el, display){
-        el.style.opacity = 0;
-        el.style.display = display || "block";
-
-        (function fade() {
-            var val = parseFloat(el.style.opacity);
-            if (!((val += .1) > 1)) {
-                el.style.opacity = val;
-                requestAnimationFrame(fade);
-            }
-        })();
-    }
 
     jQuery(window).scroll(function() {
         if ($(this).scrollTop() > 150 ) {
@@ -67,22 +40,6 @@ jQuery(document).ready(function() {
     });
 
 
-    $(".collapse")
-        .on("show.bs.collapse", function () {
-            $(this)
-                .prev(".title")
-                .find(".fas")
-                .removeClass("fa-chevron-down")
-                .addClass("fa-chevron-up");
-        })
-        .on("hide.bs.collapse", function () {
-            $(this)
-                .prev(".title")
-                .find(".fas")
-                .removeClass("fa-chevron-up")
-                .addClass("fa-chevron-down");
-        });
-
     $('.counter').each(function () {
         $(this).prop('Counter',0).animate({
             Counter: $(this).text()
@@ -113,30 +70,42 @@ jQuery(document).ready(function() {
         });
     });
 
-    // const swiper = new Swiper('.swiper', {
-    //     // Optional parameters
-    //     direction: 'horizontal',
-    //     loop: true,
-    //
-    //     // If we need pagination
-    //     pagination: {
-    //         el: '.swiper-pagination',
-    //     },
-    //
-    //     // Navigation arrows
-    //     navigation: {
-    //         nextEl: '.swiper-button-next',
-    //         prevEl: '.swiper-button-prev',
-    //     },
-    //
-    //     // And if we need scrollbar
-    //     scrollbar: {
-    //         el: '.swiper-scrollbar',
-    //     },
-    // });
+    const toggles = document.querySelectorAll('.faq__item .title');
+
+    toggles.forEach(btn => {
+      btn.addEventListener('click', function () {
+        const icon = this.querySelector('i');
+        icon.classList.toggle('rotate');
+      });
+    });
+
 
 });
 
+function fadeOut(el){
+    el.style.opacity = 1;
+
+    (function fade() {
+        if ((el.style.opacity -= .1) < 0) {
+            el.style.display = "none";
+        } else {
+            requestAnimationFrame(fade);
+        }
+    })();
+}
+
+function fadeIn(el, display){
+    el.style.opacity = 0;
+    el.style.display = display || "block";
+
+    (function fade() {
+        var val = parseFloat(el.style.opacity);
+        if (!((val += .1) > 1)) {
+            el.style.opacity = val;
+            requestAnimationFrame(fade);
+        }
+    })();
+}
 
 
 function emailIsValid(email) {

@@ -1,6 +1,5 @@
 <?php
-$simple_mb = new WPAlchemy_MetaBox(array
-(
+$simple_mb = new WPAlchemy_MetaBox(array(
     'id' => '_testimonial_author',
     'title' => 'Testimonial author',
     'mode' => WPALCHEMY_MODE_EXTRACT,
@@ -8,14 +7,34 @@ $simple_mb = new WPAlchemy_MetaBox(array
     'types' => array('testimonials')
 ));
 
-$simple_mb = new WPAlchemy_MetaBox(array
-(
+$simple_mb = new WPAlchemy_MetaBox(array(
     'id' => '_photos',
     'title' => 'Photos',
     'mode' => WPALCHEMY_MODE_EXTRACT,
     'template' => get_stylesheet_directory() . '/includes/metaboxes/photos-meta.php',
-    'types' => array('photos','gallery')
+    'types' => array('photos', 'gallery')
 ));
+
+
+$simple_mb = new WPAlchemy_MetaBox(array(
+    'id' => '_parallax',
+    'title' => 'Parallax Banner Image',
+    'mode' => WPALCHEMY_MODE_EXTRACT,
+    'include_template' => 'pricing-page.php',
+    'template' => get_stylesheet_directory() . '/includes/metaboxes/parallax-image.php',
+    'types' => array('page'),
+));
+
+
+$simple_mb = new WPAlchemy_MetaBox(array(
+    'id' => '_pricing',
+    'title' => 'Pricing Packages',
+    'mode' => WPALCHEMY_MODE_EXTRACT,
+    'include_template' => 'pricing-page.php',
+    'template' => get_stylesheet_directory() . '/includes/metaboxes/pricing-meta.php',
+    'types' => array('page'),
+));
+
 
 
 $simple_mb = new WPAlchemy_MetaBox(array(
@@ -26,6 +45,7 @@ $simple_mb = new WPAlchemy_MetaBox(array(
     'autosave' => TRUE,
     'types' => array('page'),
     'mode' => WPALCHEMY_MODE_EXTRACT,
+    'include_template' => 'front-page.php',
     'template' => get_stylesheet_directory() . '/includes/metaboxes/homepage-meta.php',
 ));
 
@@ -115,5 +135,3 @@ $simple_mb = new WPAlchemy_MetaBox(array(
     'mode' => WPALCHEMY_MODE_EXTRACT,
     'template' => get_stylesheet_directory() . '/includes/metaboxes/fun_facts.php',
 ));
-
-

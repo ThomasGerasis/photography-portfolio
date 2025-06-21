@@ -1,3 +1,6 @@
 import "../css/bootstrap.scss";
 
-// import "../js/bootstrap.js";
+// import collapse from bootstrap
+
+import "bootstrap/js/dist/collapse";
+// import "bootstrap/col

@@ -38,5 +38,5 @@ Source/wp-content/mu-plugins/*
 Deploy/*
 Source/wp-content/uploads/*
 Source/wp-content/themes/vasakos/node_modules/*
-Source/wp-content/themes/vasakos/dist/*
+# Source/wp-content/themes/vasakos/dist/*
 Source/wp-content/themes/vasakos/package-lock.json

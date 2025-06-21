@@ -31,10 +31,10 @@ function register_gallery()
         'hierarchical' => true,
         'menu_position' => null,
         'taxonomies' => array('category'),
-        'supports' => array('title','custom-fields'),
+        'supports' => array('title', 'custom-fields'),
         'menu_icon' => get_template_directory_uri() . '/assets/images/camera.png',
     );
     register_post_type('gallery', $args);
 }
 
-add_action( 'init', 'register_gallery' );
+// add_action( 'init', 'register_gallery' );
