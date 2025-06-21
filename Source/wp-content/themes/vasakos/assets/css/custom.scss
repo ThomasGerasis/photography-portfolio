@@ -1,4 +1,3 @@
-//$primary:   #FC6060;
 $primary:   #E1E1E1;
 $secondary: #d1862b;
 $light-gray: #ECEFF3;
@@ -12,6 +11,28 @@ $state-success-text: #1bbe00;
 $state-danger-text: #e41d06;
 $container-large-desktop: 1280px;
 $warning: #f25a29;
+
+// Heading Color
+$heading: #111;
+// Text Color
+$text: #111;
+// Text Dark
+$text-dark: #161715;
+// Text Gray
+$text-gray: #625b66;
+// Gray Background
+$bg-gray: #f7f7f7;
+// White Color
+$white: #ffffff;
+// Dark Color
+$dark: #000000;
+// Hover Color
+$hover: #fc6060;
+// Dark 2 Color
+$dark2: #0e2737;
+// Border Color
+$border: #d1862b;
+
 $brand-warning: $warning;
 $state-warning-text: $brand-warning;
 $state-warning-bg: $brand-warning;

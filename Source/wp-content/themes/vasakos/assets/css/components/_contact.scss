@@ -1,5 +1,27 @@
 /* :: 16.0 Contact CSS */
 
+.form-control:focus{
+    color:#495057;
+    background-color:#fff;
+    border-color:#fff;
+    outline:0;
+    box-shadow:0 0 0 .2rem rgba(225,225,225,0.25);
+}
+
+.form-control::placeholder{
+    color:#6c757d;
+    opacity:1
+}
+
+.form-control:disabled,.form-control[readonly]{
+    background-color:#e9ecef;
+    opacity:1
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
 .contact_wrap{
     margin-top: 50px;
     .lens{
@@ -17,6 +39,7 @@
         border-radius: 10px;
     }
 }
+
 #contactForm{
     .form-control {
         background: #fff;
@@ -24,9 +47,7 @@
         font-size: 16px;
         border-radius: 5px;
         border: none;
-        -webkit-appearance: none;
-        -webkit-box-shadow: 0 8px 6px 3px #00000017 !important;
-        -moz-box-shadow: 0 8px 6px 3px #00000017 !important;
+        appearance: none;
         box-shadow: 0 8px 6px 3px #00000017 !important;
     }
     .form-control:not(#message){
@@ -46,7 +67,7 @@
     display: block;
     text-align: center;
     border-radius: 0;
-    -webkit-appearance: none;
+    appearance: none;   
     font-style: normal;
     padding: 10px 25px;
     border: 1px solid #111;
@@ -54,6 +75,7 @@
     color: #fff;
     position: relative;
 }
+
 .submit-btn:hover {
     border-color: #111;
     background: #fff;

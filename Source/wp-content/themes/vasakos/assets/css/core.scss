@@ -227,7 +227,7 @@ $sides: (top, bottom, left, right); // Leave this variable alone
   @import "utilities/fonts";
   @import "utilities/variables";
   @import "utilities/responsive";
-  @import "utilities/color";
+  // @import "utilities/color";
   @import "utilities/reboot";
   @import "utilities/spacing";
   @import "utilities/preloader";
@@ -1000,7 +1000,7 @@ blockquote {
   height: 40px;
   margin: 20px auto;
   border: 4px solid #ddd;
-  border-top-color: #333;
+  border-top-color: #D1862B;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
