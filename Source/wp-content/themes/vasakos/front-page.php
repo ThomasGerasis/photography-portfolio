@@ -57,7 +57,7 @@ $settings = get_option('basic_settings');
 
 <div class="contact_wrap container position-relative mb-50p mt-40p">
     <?php if (!$GLOBALS['is_mobile']){ ?>
-        <div class="position-absolute" style="right: -6%; top: -2%;">
+        <div class="position-absolute camera-lens" style="right: -6%; top: -2%;">
             <img alt="lens" src="<?php echo get_stylesheet_directory_uri().'/assets/images/lensdivider.svg'?>" width="355" height="460" class="d-block img-fluid" loading="lazy">
         </div>
         <?php } ?>

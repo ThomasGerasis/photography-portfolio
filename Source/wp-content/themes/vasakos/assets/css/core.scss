@@ -1009,3 +1009,17 @@ blockquote {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+
+ @media screen and (max-width: 1860px) {
+  .camera-lens{
+   right: 0 !important;
+  }
+ }
+
+
+  @media screen and (max-width: 960px) {
+  .camera-lens{
+    display: none !important;
+  }
+ }

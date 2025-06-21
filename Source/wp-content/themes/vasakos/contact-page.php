@@ -12,7 +12,7 @@ $settings = get_option('basic_settings');
 </div>
 
 <!-- Breadcrumb Area Start -->
-<section class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url('<?php echo get_the_post_thumbnail_url($post->ID)?>')">
+<section class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url('<?php echo get_the_post_thumbnail_url($post->ID) ?>')">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
@@ -20,7 +20,7 @@ $settings = get_option('basic_settings');
                     <h1 class="page-title">Contact</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a href="<?php echo home_url();?>"><i class="fas fa-home"></i> Home</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>"><i class="fas fa-home"></i> Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Contact</li>
                         </ol>
                     </nav>
@@ -34,12 +34,12 @@ $settings = get_option('basic_settings');
 <div class="container container_pages mt-20p mb-20p d-block mx-auto align-items-center">
     <div class="contact_wrap container position-relative mb-50p mt-40p">
         <?php
-        if (!$GLOBALS['is_mobile']){
-            ?>
-            <div class="position-absolute" style="right: -6%; top: -2%;">
-                <img alt="lens" src="<?php echo get_stylesheet_directory_uri().'/assets/images/lensdivider.svg'?>" width="355" height="460" class="d-block img-fluid" loading="lazy">
+        if (!$GLOBALS['is_mobile']) {
+        ?>
+            <div class="position-absolute camera-lens" style="right: -6%; top: -2%;">
+                <img alt="lens" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/lensdivider.svg' ?>" width="355" height="460" class="d-block img-fluid" loading="lazy">
             </div>
-            <?php
+        <?php
         }
         ?>
         <div class="wrapper img">
@@ -47,15 +47,15 @@ $settings = get_option('basic_settings');
                 <div class="col-12 col-md-6 p-md-5 p-4">
                     <p class="w-100 d-block heading_title">Contact</p>
                     <h3 class="mb-10p">Got Some Questions ? More than happy to help you !</h3>
-                    <a class="mt-10p mb-10p" href=mailto:“<?=$settings['email'] ?? '';?>”><?=$settings['email'] ?? '';?></a>
+                    <a class="mt-10p mb-10p" href=mailto:“<?= $settings['email'] ?? ''; ?>”><?= $settings['email'] ?? ''; ?></a>
                     <ul class="social mt-20p">
                         <li>
-                            <a href="<?=$settings['facebook'] ?? '';?>" target="_blank" title="">
+                            <a href="<?= $settings['facebook'] ?? ''; ?>" target="_blank" title="">
                                 <i class="fab fa-facebook"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="<?=$settings['instagram'] ?? '';?>" target="_blank" title="">
+                            <a href="<?= $settings['instagram'] ?? ''; ?>" target="_blank" title="">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </li>
@@ -67,7 +67,8 @@ $settings = get_option('basic_settings');
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="name" id="name" placeholder="Your Name*">
-                                    <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                                    <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -102,5 +103,3 @@ $settings = get_option('basic_settings');
 <?php
 get_footer();
 ?>
-
-
