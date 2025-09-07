@@ -11,7 +11,7 @@ get_header();
             <div class="notfound-404">
                 <h1 class="d-flex">
                     4
-                    <img src="<?php echo get_stylesheet_directory_uri().'/assets/images/lensdivider.svg'?>" width="140" height="125" class="d-block img-fluid">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/lensdivider.svg' ?>" width="140" height="125" class="d-block img-fluid">
                     4
                 </h1>
                 <h2>Oops! Page Not Be Found</h2>

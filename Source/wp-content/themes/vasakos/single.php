@@ -8,10 +8,10 @@ get_header();
 
 <div class="container mt-20p mb-20p d-block mx-auto align-items-center">
     <?php
-    while ( have_posts() ) :
+    while (have_posts()) :
         the_post();
 
-        get_template_part( 'templates/content-single', get_post_type() );
+        get_template_part('templates/content-single', get_post_type());
 
     endwhile; // End of the loop.
     ?>

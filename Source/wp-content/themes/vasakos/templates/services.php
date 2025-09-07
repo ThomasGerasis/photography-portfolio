@@ -13,7 +13,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-cat text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: fadeInUp;">
                     <div class="cat-icon">
-                        <img loading="lazy" src="<?=get_stylesheet_directory_uri().'/assets/images/services1.svg'?>" alt="lens">
+                        <img loading="lazy" src="<?= get_stylesheet_directory_uri() . '/assets/images/services1.svg' ?>" alt="lens">
                     </div>
                     <div class="cat-cap">
                         <span>Ipsam voluptatem quia voluptas</span>
@@ -23,7 +23,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-cat text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.4s; animation-name: fadeInUp;">
                     <div class="cat-icon">
-                        <img loading="lazy" src="<?=get_stylesheet_directory_uri().'/assets/images/services2.svg'?>" alt="photos">
+                        <img loading="lazy" src="<?= get_stylesheet_directory_uri() . '/assets/images/services2.svg' ?>" alt="photos">
                     </div>
                     <div class="cat-cap">
                         <span>Voluptatem quia voluptas</span>
@@ -33,7 +33,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-cat text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.6s; animation-name: fadeInUp;">
                     <div class="cat-icon">
-                        <img loading="lazy" src="<?=get_stylesheet_directory_uri().'/assets/images/services3.svg'?>" alt="scenery">
+                        <img loading="lazy" src="<?= get_stylesheet_directory_uri() . '/assets/images/services3.svg' ?>" alt="scenery">
                     </div>
                     <div class="cat-cap">
                         <span>Ipsam voluptatem quia voluptas</span>
@@ -43,7 +43,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-cat text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay=".8s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.8s; animation-name: fadeInUp;">
                     <div class="cat-icon">
-                        <img loading="lazy" src="<?=get_stylesheet_directory_uri().'/assets/images/services4.svg'?>" alt="pictures">
+                        <img loading="lazy" src="<?= get_stylesheet_directory_uri() . '/assets/images/services4.svg' ?>" alt="pictures">
                     </div>
                     <div class="cat-cap">
                         <span>Ipsam voluptatem quia voluptas</span>

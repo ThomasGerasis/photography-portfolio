@@ -8,7 +8,7 @@ if ($faqs) {
         <span class="w-100 d-block text-center heading_title">What people ask</span>
     </div>
 
-    <div class="d-flex flex-wrap align-items-start" id="faqs">
+    <div class="d-flex flex-wrap align-items-start justify-content-center" id="faqs">
         <?php $i = 0;
         foreach ($faqs as $value): ?>
             <div class="faq__item mb-3">

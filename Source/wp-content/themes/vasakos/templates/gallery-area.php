@@ -19,9 +19,9 @@
             <!-- Single Gallery Item -->
             <div class="col-12 col-sm-6 col-lg-3 single_gallery_item nature mb-30 wow fadeInUp" data-wow-delay="100ms">
                 <div class="single-portfolio-content">
-                    <img src="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/8.jpg" alt="">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/8.jpg" alt="">
                     <div class="hover-content">
-                        <a href="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/8.jpg" class="portfolio-img">+</a>
+                        <a href="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/8.jpg" class="portfolio-img">+</a>
                     </div>
                 </div>
             </div>
@@ -29,9 +29,9 @@
             <!-- Single Gallery Item -->
             <div class="col-12 col-sm-6 col-lg-3 single_gallery_item video human mb-30 wow fadeInUp" data-wow-delay="300ms">
                 <div class="single-portfolio-content">
-                    <img src="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/8.jpg" alt="">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/8.jpg" alt="">
                     <div class="hover-content">
-                        <a href="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/8.jpg" class="portfolio-img">+</a>
+                        <a href="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/8.jpg" class="portfolio-img">+</a>
                     </div>
                 </div>
             </div>
@@ -39,9 +39,9 @@
             <!-- Single Gallery Item -->
             <div class="col-12 col-sm-6 col-lg-3 single_gallery_item country mb-30 wow fadeInUp" data-wow-delay="500ms">
                 <div class="single-portfolio-content">
-                    <img src="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/9.jpg" alt="">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/9.jpg" alt="">
                     <div class="hover-content">
-                        <a href="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/9.jpg" class="portfolio-img">+</a>
+                        <a href="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/9.jpg" class="portfolio-img">+</a>
                     </div>
                 </div>
             </div>
@@ -49,9 +49,9 @@
             <!-- Single Gallery Item -->
             <div class="col-12 col-sm-6 col-lg-3 single_gallery_item human mb-30 wow fadeInUp" data-wow-delay="700ms">
                 <div class="single-portfolio-content">
-                    <img src="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/8.jpg" alt="">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/8.jpg" alt="">
                     <div class="hover-content">
-                        <a href="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/8.jpg" class="portfolio-img">+</a>
+                        <a href="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/8.jpg" class="portfolio-img">+</a>
                     </div>
                 </div>
             </div>
@@ -59,9 +59,9 @@
             <!-- Single Gallery Item -->
             <div class="col-12 col-sm-6 col-lg-3 single_gallery_item nature mb-30 wow fadeInUp" data-wow-delay="100ms">
                 <div class="single-portfolio-content">
-                    <img src="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/10.jpg" alt="">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/10.jpg" alt="">
                     <div class="hover-content">
-                        <a href="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/10.jpg" class="portfolio-img">+</a>
+                        <a href="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/10.jpg" class="portfolio-img">+</a>
                     </div>
                 </div>
             </div>
@@ -69,9 +69,9 @@
             <!-- Single Gallery Item -->
             <div class="col-12 col-sm-6 col-lg-3 single_gallery_item video country mb-30 wow fadeInUp" data-wow-delay="300ms">
                 <div class="single-portfolio-content">
-                    <img src="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/10.jpg" alt="">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/10.jpg" alt="">
                     <div class="hover-content">
-                        <a href="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/10.jpg" class="portfolio-img">+</a>
+                        <a href="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/10.jpg" class="portfolio-img">+</a>
                     </div>
                 </div>
             </div>
@@ -79,9 +79,9 @@
             <!-- Single Gallery Item -->
             <div class="col-12 col-sm-6 col-lg-3 single_gallery_item human mb-30 wow fadeInUp" data-wow-delay="500ms">
                 <div class="single-portfolio-content">
-                    <img src="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/10.jpg" alt="">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/10.jpg" alt="">
                     <div class="hover-content">
-                        <a href="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/10.jpg" class="portfolio-img">+</a>
+                        <a href="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/10.jpg" class="portfolio-img">+</a>
                     </div>
                 </div>
             </div>
@@ -89,9 +89,9 @@
             <!-- Single Gallery Item -->
             <div class="col-12 col-sm-6 col-lg-3 single_gallery_item nature mb-30 wow fadeInUp" data-wow-delay="700ms">
                 <div class="single-portfolio-content">
-                    <img src="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/9.jpg" alt="">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/9.jpg" alt="">
                     <div class="hover-content">
-                        <a href="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/9.jpg" class="portfolio-img">+</a>
+                        <a href="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/9.jpg" class="portfolio-img">+</a>
                     </div>
                 </div>
             </div>
@@ -99,9 +99,9 @@
             <!-- Single Gallery Item -->
             <div class="col-12 col-sm-6 col-lg-3 single_gallery_item human mb-30 wow fadeInUp" data-wow-delay="300ms">
                 <div class="single-portfolio-content">
-                    <img src="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/8.jpg" alt="">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/8.jpg" alt="">
                     <div class="hover-content">
-                        <a href="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/8.jpg" class="portfolio-img">+</a>
+                        <a href="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/8.jpg" class="portfolio-img">+</a>
                     </div>
                 </div>
             </div>
@@ -109,9 +109,9 @@
             <!-- Single Gallery Item -->
             <div class="col-12 col-sm-6 col-lg-3 single_gallery_item country mb-30 wow fadeInUp" data-wow-delay="500ms">
                 <div class="single-portfolio-content">
-                    <img src="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/8.jpg" alt="">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/8.jpg" alt="">
                     <div class="hover-content">
-                        <a href="<?php echo get_stylesheet_directory_uri().'/assets/bg-img' ?>/8.jpg" class="portfolio-img">+</a>
+                        <a href="<?php echo get_stylesheet_directory_uri() . '/assets/bg-img' ?>/8.jpg" class="portfolio-img">+</a>
                     </div>
                 </div>
             </div>

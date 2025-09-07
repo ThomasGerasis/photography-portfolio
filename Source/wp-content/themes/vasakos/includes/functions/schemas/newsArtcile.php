@@ -17,7 +17,7 @@ function newsArtcileSchema($postId)
         {
             "@context": "https://schema.org",
             "@type": "NewsArticle",
-            "headline":<?php echo json_encode(get_site_metadata(), JSON_UNESCAPED_UNICODE); ?>,
+            "headline": <?php echo json_encode(get_site_metadata(), JSON_UNESCAPED_UNICODE); ?>,
             "mainEntityOfPage": {
                 "@type": "WebPage",
                 "url": "<?= get_site_metadata('canonical') ?>"
