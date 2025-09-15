@@ -35,7 +35,7 @@ $storyTextMore = get_post_meta($post->ID, $prefix . 'story_more', true);
     <div class="container p-0 container_pages d-flex flex-lg-row flex-column  align-items-center all-starups-area justify-content-center">
         <?php if ($GLOBALS['is_mobile']) { ?>
             <div class="w-100 pt-20p d-block">
-                <p class="w-100 d-block text-center heading_title" style="color: #ff385c;">Vasileios Vasakos</p>
+                <p class="w-100 d-block text-center heading_title" style="color: #D1862B;">Vasileios Vasakos</p>
                 <h1 class="w-100 d-block text-white text-center mb-4"><?= $mainHeading ?? ''; ?></h1>
                 <div class="about_top_img" style="background-image: url('<?php echo $mainImage;  ?>');"></div>
                 <div class="w-100 d-block text-white text-center p-10p"><?= $mainText ?? ''; ?></div>
@@ -43,7 +43,7 @@ $storyTextMore = get_post_meta($post->ID, $prefix . 'story_more', true);
         <?php } else { ?>
             <div class="about_top_img" style="background-image: url('<?php echo $mainImage;  ?>');"></div>
             <div class="w-50 d-block">
-                <p class="w-100 d-block text-center heading_title" style="color: #ff385c;">Vasileios Vasakos</p>
+                <p class="w-100 d-block text-center heading_title" style="color: #D1862B;">Vasileios Vasakos</p>
                 <h1 class="w-100 d-block text-white text-center"><?= $mainHeading ?? ''; ?></h1>
                 <div class="w-100 d-block text-white text-center p-10p"><?= $mainText ?? ''; ?></div>
             </div>
