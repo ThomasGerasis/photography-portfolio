@@ -36,20 +36,20 @@ $simple_mb = new WPAlchemy_MetaBox(array(
 ));
 
 
+$front_page_id = get_option('page_on_front'); // ID of the front page
 
 $simple_mb = new WPAlchemy_MetaBox(array(
     'id' => '_homepage_meta',
     'title' => 'HomePage Fields',
-    'context' => 'normal', // same as above, defaults to "normal"
-    'priority' => 'high', // same as above, defaults to "high"
-    'autosave' => TRUE,
+    'context' => 'normal',
+    'priority' => 'high',
+    'autosave' => true,
     'types' => array('page'),
     'mode' => WPALCHEMY_MODE_EXTRACT,
-    'include_template' => 'front-page.php',
+    'include_template' => '', // optional, can leave blank
     'template' => get_stylesheet_directory() . '/includes/metaboxes/homepage-meta.php',
+    'include_post_id' => $front_page_id, // <-- only show on front page
 ));
-
-
 
 $simple_mb = new WPAlchemy_MetaBox(array(
     'id' => '_faq_info',
