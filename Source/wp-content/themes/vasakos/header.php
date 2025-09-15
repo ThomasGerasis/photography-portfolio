@@ -11,8 +11,8 @@
     <meta name="MSSmartTagsPreventParsing" content="true" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <?php wp_head(); ?>
-    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/bootstrap.min.css?v=555' ?>">
-    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/main.min.css?v=999553' ?>">
+    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/bootstrap.min.css?v=3.2' ?>">
+    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/main.min.css?v=3.2' ?>">
     <script type="text/javascript">
         (function() {
             let css = document.createElement('link');
