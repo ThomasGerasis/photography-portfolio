@@ -116,58 +116,88 @@ let contactForm = document.querySelector("#contactForm");
 
 if (contactForm) {
 
-    contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        let ajax = {"ajax_url": window.location.origin + "/wp-admin/admin-ajax.php"};
-        let formEl = document.forms.contactForm;
-        let formData = new FormData(formEl);
-        let name = formData.get('name');
-        let message = formData.get('message');
-        let email = formData.get('email');
-        let captchaResponse = formData.get('g-recaptcha-response');
-        let loader = document.querySelector(".loader");
-        loader.style.display = 'block';
+ contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-        let formErrors = document.getElementById('form-message-success');
-        if (captchaResponse === '' || captchaResponse === 0){
+    let ajax = { "ajax_url": window.location.origin + "/wp-admin/admin-ajax.php" };
+    let formEl = document.forms.contactForm;
+    let formData = new FormData(formEl);
+
+    let name = formData.get('name')?.trim();
+    let email = formData.get('email')?.trim();
+    let message = formData.get('message')?.trim();
+    let captchaResponse = formData.get('g-recaptcha-response');
+    let serviceEl = document.querySelector('#service');
+    let service = '';
+    if (serviceEl) {
+       service = serviceEl.options[serviceEl.selectedIndex]?.text || '';
+    }
+
+    let loader = document.querySelector(".loader");
+    let formErrors = document.getElementById('form-message-success');
+
+    // Show loader
+    loader.style.display = 'block';
+
+    // Clear previous messages
+    formErrors.innerHTML = '';
+    formErrors.classList.remove('text-danger', 'text-success');
+
+    // Validation
+    if (!name) {
+        loader.style.display = 'none';
+        formErrors.classList.add('text-danger');
+        formErrors.innerHTML = 'Please enter your name!';
+        return;
+    }
+
+    if (!email) {
+        loader.style.display = 'none';
+        formErrors.classList.add('text-danger');
+        formErrors.innerHTML = 'Please enter your email!';
+        return;
+    }
+
+    if (!emailIsValid(email)) {
+        loader.style.display = 'none';
+        formErrors.classList.add('text-danger');
+        formErrors.innerHTML = 'Please enter a valid email!';
+        return;
+    }
+
+    if (!captchaResponse) {
+        loader.style.display = 'none';
+        formErrors.classList.add('text-danger');
+        formErrors.innerHTML = 'Please verify you are a human!';
+        return;
+    }
+
+    // AJAX request
+    $.ajax({
+        type: 'POST',
+        url: ajax.ajax_url,
+        data: {
+            action: "send_email",
+            name: name,
+            userEmail: email,
+            message: message,
+            service: service
+        },
+        dataType: 'html',
+        success: function (data) {
+            loader.style.display = 'none';
+            formErrors.classList.add('text-success');
+            formErrors.innerHTML = data;
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
             loader.style.display = 'none';
             formErrors.classList.add('text-danger');
-            formErrors.classList.remove('text-success');
-            formErrors.innerHTML ='Please verify your are a human!';
-            return;
-        }
-
-        if (emailIsValid(email) === true ) {
-            $.ajax({
-                type: 'POST',
-                url: ajax.ajax_url,
-                data: {
-                    action: "send_email",
-                    name: name,
-                    userEmail: email,
-                    message: message,
-                },
-                dataType: 'html',
-                success: function (data) {
-                    loader.style.display = 'none';
-                    formErrors.classList.add('text-success');
-                    formErrors.classList.remove('text-danger');
-                    formErrors.innerHTML = data;
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(thrownError);
-                },
-                complete: function () {
-                }
-
-            });
-        } else {
-            loader.style.display = 'none';
-            formErrors.classList.add('text-danger');
-            formErrors.classList.remove('text-success');
-            formErrors.innerHTML ='Please fill in a valid email !';
+            formErrors.innerHTML = 'Something went wrong. Please try again.';
+            console.error(thrownError);
         }
     });
+});
+
 }
 
 
@@ -247,5 +277,24 @@ jQuery(function() {
         });
     };
     siteMenuClone();
+
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Check for data in hash click
+    const bookNowLinks = document.querySelectorAll('.package-btn');
+    console.log(bookNowLinks);
+    bookNowLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const service = this.getAttribute('data-service');
+            const contactForm = document.getElementById('contactForm');
+       
+            if (contactForm && service) {
+                const serviceSelect = document.getElementById('service');
+                serviceSelect.value = service;
+                document.getElementById('contactForm').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
 
 });

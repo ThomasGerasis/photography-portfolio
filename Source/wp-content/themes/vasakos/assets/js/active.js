@@ -1,5 +1,3 @@
-import $ from "jquery";
-
 import "magnific-popup";
 import "owl.carousel";
 

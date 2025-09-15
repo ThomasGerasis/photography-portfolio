@@ -10,7 +10,7 @@
 
     <div class="d-flex flex-wrap justify-content-start pl-lg-5 pl-0 mt-20p">
         <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/lensdivider.svg' ?>" alt="camera lens" width="80" height="90" class="d-block img-fluid" loading="lazy">
-        <h3 class="w-100">TESTIMONIALS</h3>
+        <h3 class="w-100">MEMORABLE REVIEWS</h3>
     </div>
 
     <div class="testimonials__area owl-carousel d-flex flex-wrap w-100">

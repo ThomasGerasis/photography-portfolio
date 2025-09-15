@@ -1,46 +1,27 @@
 <?php
 function faqSchema($faqs)
 {
-    ob_start();
-    $i = 0;
-    $len = count($faqs);
-?>
-    <script type="application/ld+json">
-        {
-            "@context": "https:\/\/schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [<?php
-                            $to_be_replaced = array("\r\n", "\n", "\r");
-                            $replacement = array(" ", " ", " ");
-                            foreach ($faqs as $value) {
-                                $stripped = str_replace('"', '', $value['answer']);
-                                if ($i === $len - 1) {
-                            ?> {
-                            "@type": "Question",
-                            "name": "<?= str_replace('"', '', $value['question']) ?>",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "<?= str_replace($to_be_replaced, $replacement, strip_tags($stripped)) ?>"
-                            }
-                        }
-                    <?php
-                                } else {
-                    ?> {
-                            "@type": "Question",
-                            "name": "<?= str_replace('"', '', $value['question']) ?>",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "<?= str_replace($to_be_replaced, $replacement, strip_tags($stripped)) ?>"
-                            }
-                        },
-                <?php
-                                }
-                                $i++;
-                            }
-                ?>
+    $mainEntity = [];
+
+    foreach ($faqs as $faq) {
+        $question = strip_tags($faq['question']);
+        $answer   = strip_tags($faq['answer']);
+
+        $mainEntity[] = [
+            "@type" => "Question",
+            "name" => $question,
+            "acceptedAnswer" => [
+                "@type" => "Answer",
+                "text"  => $answer
             ]
-        }
-    </script>
-<?php
-    return ob_get_clean();
+        ];
+    }
+
+    $schema = [
+        "@context" => "https://schema.org",
+        "@type"    => "FAQPage",
+        "mainEntity" => $mainEntity
+    ];
+
+    return '<script type="application/ld+json">' . json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>';
 }

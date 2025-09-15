@@ -11,8 +11,8 @@
     <meta name="MSSmartTagsPreventParsing" content="true" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <?php wp_head(); ?>
-    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/bootstrap.min.css' ?>">
-    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/main.min.css' ?>">
+    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/bootstrap.min.css?v=555' ?>">
+    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/main.min.css?v=999553' ?>">
     <script type="text/javascript">
         (function() {
             let css = document.createElement('link');
@@ -34,6 +34,12 @@
     $faqs = get_post_meta(get_the_ID(), 'faqs', true) ?? false;
     if (!empty($faqs)) {
         echo faqSchema($faqs);
+    }
+
+    $pricingPakcages = get_post_meta(get_the_ID(), 'pricing', true) ?? false;
+
+    if (!empty($pricingPakcages)) {
+        echo pricingSchema($pricingPakcages);
     }
     ?>
 </head>

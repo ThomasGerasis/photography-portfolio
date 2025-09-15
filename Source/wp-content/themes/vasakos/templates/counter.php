@@ -1,4 +1,4 @@
-<section class="wow fadeIn animated bg-black" style="visibility: visible; animation-name: fadeIn;">
+<section class="wow fadeIn animated bg-dark" style="visibility: visible; animation-name: fadeIn;">
     <div class="container">
         <div class="row">
             <?php $counters = get_post_meta($post->ID, 'counter_meta', true); ?>

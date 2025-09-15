@@ -11,16 +11,15 @@
     z-index: 1;
     min-width: 160px;
     height: 46px;
-    line-height: 42px;
+    line-height: 46px;
     font-size: 16px;
     font-weight: 500;
     display: inline-block;
     padding: 0 30px;
     text-align: center;
-    text-transform: capitalize;
     background-color: transparent;
     color: $white;
-    border: 2px solid $primary;
+    // border: 2px solid $primary;
     border-radius: 60px;
     @include transition-duration(500ms);
 
@@ -131,4 +130,21 @@
 }
 .border-btn:hover:before, .border-btn:hover:after{
     width: 85% !important;
+}
+
+
+.button-glow {
+    background-color: #ff385c;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(209,134,43,0.4);
+    transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.button-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(209,134,43,0.6);
 }

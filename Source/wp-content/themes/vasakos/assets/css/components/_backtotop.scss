@@ -9,7 +9,7 @@
     width: 40px;
     height: 40px;
     bottom: 40px;
-    background-color: #D1862B;
+    background-color: #ff385c;
     color: $white;
     text-align: center;
     @include transition-duration(500ms);
@@ -25,7 +25,7 @@
     &:focus,
     &:hover {
         background-color: $dark;
-        border:1px solid #D1862B;
+        border:1px solid #ff385c;
         color: $white;
     }
 }

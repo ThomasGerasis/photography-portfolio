@@ -1,5 +1,5 @@
 <?php $settings = get_option('basic_settings');  ?>
-<footer class="footer-area bg-black pt-10p">
+<footer class="footer-area bg-dark pt-10p">
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex justify-content-center flex-wrap">
@@ -157,8 +157,14 @@
 <script defer type="text/javascript" src="<?php echo get_template_directory_uri() . '/dist/bootstrap.min.js'; ?>"></script>
 <script defer type="text/javascript" src="<?php echo get_template_directory_uri() . '/dist/main.min.js'; ?>"></script>
 <script defer type="text/javascript" src="<?php echo get_template_directory_uri() . '/dist/active.min.js'; ?>"></script>
-<script defer type="text/javascript" src="<?php echo get_template_directory_uri() . '/dist/slider.min.js'; ?>"></script>
-<script defer type="text/javascript" src="<?php echo get_template_directory_uri() . '/dist/infinite-scroll.min.js'; ?>"></script>
+
+<?php if (is_front_page()) { ?>
+    <script defer type="text/javascript" src="<?php echo get_template_directory_uri() . '/dist/slider.min.js'; ?>"></script>
+<?php } ?>
+
+<?php if (is_category()) { ?>
+    <script defer type="text/javascript" src="<?php echo get_template_directory_uri() . '/dist/infinite-scroll.min.js'; ?>"></script>
+<?php } ?>
 
 <?php if (!is_category()) { ?>
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=en" async defer></script>

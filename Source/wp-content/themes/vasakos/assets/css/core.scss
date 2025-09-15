@@ -24,14 +24,14 @@ body{
   height: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background:#D1862B;
+  background:#ff385c;
   -webkit-box-shadow: inset 1px 1px 2px rgba(155, 155, 155, 0.4);
 }
 
 ::-webkit-scrollbar-track {
   background: #FFFFFF;
-  -webkit-box-shadow: inset 1px 1px 2px #D1862B;
-  border: 1px solid #D1862B;
+  -webkit-box-shadow: inset 1px 1px 2px #ff385c;
+  border: 1px solid #ff385c;
 }
 
 .lazy-background{
@@ -43,8 +43,13 @@ body{
   max-width: 1200px;
 }
 .bg-black{
-  background: #000;
+  background: #111;
 }
+
+.bg-dark{
+  background: #111 !important;
+}
+
 .color-dark{
   color: $dark;
 }
@@ -223,7 +228,6 @@ $sides: (top, bottom, left, right); // Leave this variable alone
 
   
   // Utilities
-
   @import "utilities/fonts";
   @import "utilities/variables";
   @import "utilities/responsive";
@@ -267,6 +271,7 @@ $sides: (top, bottom, left, right); // Leave this variable alone
 .bg-trans {
   background-color: rgba(0,0,0,0.5);
 }
+
 
 .no-pad{
   padding-left: 0;
@@ -352,6 +357,7 @@ a.image-popup-vertical-fit {
 .mfp-arrow-left:before {
   border-right: none !important;
 }
+
 .mfp-arrow-right:before {
   border-left: none !important;
 }
@@ -963,25 +969,27 @@ blockquote {
     place-items: center;
     transition: 0.5s;
   }
-  .card:hover {
+  .card {
     background-position: 0 100%;
     background-size: cover;
   }
-  .card:hover .icon-wrapper {
+  .card .icon-wrapper {
     background-color: #ffffff;
     color: $secondary;
   }
-  .card:hover > .icon-wrapper img{
+
+  .card > .icon-wrapper img{
     filter:invert(1);
   }
 
-  .card:hover h3 {
+  .card h3 {
     color: #ffffff;
   }
-  .card:hover p {
+  .card p {
     color: #fff;
     font-weight: bold;
   }
+
   @media screen and (min-width: 768px) {
     .column {
       flex: 0 50%;
@@ -1001,7 +1009,7 @@ blockquote {
   height: 40px;
   margin: 20px auto;
   border: 4px solid #ddd;
-  border-top-color: #D1862B;
+  border-top-color: #ff385c;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
