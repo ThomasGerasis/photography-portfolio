@@ -83,7 +83,7 @@
 <div class="container container_pages mt-40p mb-20p d-block mx-auto align-items-center p-0">
     <?php get_template_part('templates/content-faq'); ?>
 
-    <div class="mt-40p mb-20p">
+    <div class="mt-20p mb-20p pl-10p pr-10p">
         <?= do_shortcode('[trustindex no-registration=airbnb]'); ?>
     </div>
 

@@ -33,7 +33,9 @@ $settings = get_option('basic_settings');
 
     <?php get_template_part('templates/testimonials'); ?>
 
-    <?= do_shortcode('[trustindex no-registration=airbnb]'); ?>
+    <div class="pr-10p pl-10p">
+        <?= do_shortcode('[trustindex no-registration=airbnb]'); ?>
+    </div>
 </div>
 
 <style>

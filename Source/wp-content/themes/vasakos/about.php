@@ -103,7 +103,12 @@ $storyTextMore = get_post_meta($post->ID, $prefix . 'story_more', true);
 
 <div class="container container_pages mt-40p mb-20p d-block mx-auto align-items-center p-0">
     <?php get_template_part('templates/testimonials'); ?>
-    <?= do_shortcode('[trustindex no-registration=airbnb]'); ?>>
+
+
+    <div class="pr-10p pl-10p">
+        <?= do_shortcode('[trustindex no-registration=airbnb]'); ?>
+    </div>
+
     <?php get_template_part('templates/content-faq'); ?>
 </div>
 
