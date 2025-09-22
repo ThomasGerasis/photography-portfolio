@@ -13,18 +13,17 @@ $settings = get_option('basic_settings');
 
     <div class="section_categories d-flex flex-wrap mt-50p w-100">
         <img alt="camera lens" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/lensdivider.svg' ?>" width="150" height="70" class="d-block img-fluid m-auto" loading="lazy">
-        <h1 class="w-100 d-block text-dark text-center heading_title ">Vasileios Vasakos</h1>
-        <h2 class="w-100 d-block text-dark text-center"><?= get_the_title($post->ID) ?? ''; ?></h2>
-        <div class="w-100 d-block text-dark text-center p-10p"><?= get_the_content($post->ID) ?? ''; ?></div>
+        <h1 class="w-100 d-block text-dark text-center"><?= get_the_title($post->ID) ?? ''; ?></h2>
+            <div class="w-100 d-block text-dark text-center p-10p"><?= get_the_content($post->ID) ?? ''; ?></div>
 
-        <div class="position-relative w-100">
-            <?php if (!$GLOBALS['is_mobile']) { ?>
-                <div class="position-absolute divider w-100 text-center" style="background: #E1E1E1;height: 220px;top:120px;"></div>
-            <?php } ?>
-            <div style="z-index: 2">
-                <?php echo do_shortcode('[popular_categories]') ?>
+            <div class="position-relative w-100">
+                <?php if (!$GLOBALS['is_mobile']) { ?>
+                    <div class="position-absolute divider w-100 text-center" style="background: #E1E1E1;height: 220px;top:120px;"></div>
+                <?php } ?>
+                <div style="z-index: 2">
+                    <?php echo do_shortcode('[popular_categories]') ?>
+                </div>
             </div>
-        </div>
     </div>
 
     <div class="w-70 w-sm-100 d-block mx-auto text-dark text-center p-10p">
