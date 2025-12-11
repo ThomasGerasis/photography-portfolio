@@ -23,6 +23,18 @@
                         </div>
                         <span>VasakosShots</span>
                     </a>
+                    <a class="socials_button" target="_blank" href="<?= $settings['whatsapp'] ?? ''; ?>">
+                        <div class="icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <span><?= $settings['whatsapp'] ?? ''; ?></span>
+                    </a>
+                    <a class="socials_button" target="_blank" href="<?= $settings['airbnb'] ?? ''; ?>">
+                        <div class="icon">
+                            <i class="fab fa-airbnb"></i>
+                        </div>
+                        <span>Airbnb Experience</span>
+                    </a>
                 </div>
 
                 <!-- Social Info -->

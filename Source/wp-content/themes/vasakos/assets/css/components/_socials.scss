@@ -32,6 +32,11 @@
     margin-left: 10px;
   }
 }
+
+.socials_button:first-child {
+  margin-left: 0;
+}
+
 .socials_button:hover {
   width: 200px;
   i {
@@ -39,20 +44,37 @@
   }
 }
 
-.socials_button:nth-child(1) .icon,.socials_button:nth-child(1) span {
-  color: #e1306c;
+/* Assign unique colors using CSS variables */
+.socials_button:nth-child(1) {
+  --social-color: #e1306c;
 }
-.socials_button:nth-child(1):hover .icon {
-  background: #e1306c;
+.socials_button:nth-child(2) {
+  --social-color: #4267b2;
+}
+.socials_button:nth-child(3) {
+  --social-color: #25d366;
+}
+.socials_button:nth-child(4) {
+  --social-color: #ff5a5f;
+}
+
+/* Icon: background = color, icon = white */
+.socials_button .icon {
+  background: var(--social-color);
   color: #fff;
+  transition: 0.2s ease;
 }
-.socials_button:nth-child(2) .icon,.socials_button:nth-child(2) span{
-  color: #4267b2;
+
+/* Span text = color */
+.socials_button span {
+  color: var(--social-color);
 }
-.socials_button:nth-child(2):hover .icon {
-  background: #4267b2;
-  color: #fff;
+
+/* Optional hover effect */
+.socials_button:hover .icon {
+  filter: brightness(1.15);
 }
+
 
 @media screen and (max-width: 768px) {
   .socials_contact ul {

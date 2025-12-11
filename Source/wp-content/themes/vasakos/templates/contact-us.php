@@ -24,6 +24,17 @@
                              <i class="fab fa-instagram"></i>
                          </a>
                      </li>
+
+                     <li>
+                         <a href="<?= $settings['airbnb'] ?? ''; ?>" aria-label="Airbnb" target="_blank" title="Airbnb">
+                             <i class="fab fa-airbnb"></i>
+                         </a>
+                     </li>
+                     <li>
+                         <a href="<?= $settings['whatsapp'] ?? ''; ?>" aria-label="Whatsapp" target="_blank" title="Whatsapp">
+                             <i class="fab fa-whatsapp"></i>
+                         </a>
+                     </li>
                  </ul>
              </div>
              <div class="contact-wrap col-12 col-md-6 p-md-5 p-4">

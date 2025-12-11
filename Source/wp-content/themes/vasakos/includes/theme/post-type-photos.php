@@ -19,9 +19,9 @@ function register_photos()
 
     $args = array(
         'labels' => $labels,
-        'public' => true,
-        'has_front' => true,
-        'publicly_queryable' => true,
+        'public' => false,
+        'has_front' => false,
+        'publicly_queryable' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'query_var' => true,
@@ -30,11 +30,11 @@ function register_photos()
         'has_archive' => false,
         'hierarchical' => true,
         'menu_position' => null,
-        'taxonomies' => array( 'category' ),
-        'supports' => array('title','custom-fields','thumbnail'),
+        'taxonomies' => array('category'),
+        'supports' => array('custom-fields', 'thumbnail'),
         'menu_icon' => get_template_directory_uri() . '/assets/images/camera.png',
     );
     register_post_type('photos', $args);
 }
 
-add_action( 'init', 'register_photos' );
+add_action('init', 'register_photos');

@@ -43,7 +43,9 @@ require_once(get_template_directory() . '/includes/settings-page/SliderSettingsC
 use SettingsPages\SliderSettings;
 use SettingsPages\SliderSettingsCarousel;
 use SettingsPages\BasicSettings;
+use SettingsPages\PhotoAlbumsAdminGrid;
 
 new SliderSettings('photos');
 new SliderSettingsCarousel('photos');
 new BasicSettings('photos');
+new PhotoAlbumsAdminGrid();

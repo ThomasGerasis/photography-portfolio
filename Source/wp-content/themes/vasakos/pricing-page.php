@@ -1,6 +1,9 @@
 <?php /* Template Name: Pricing Page */ ?>
 
-<?php get_header(); ?>
+<?php get_header();
+$settings = get_option('basic_settings');
+
+?>
 
 <div id="preloader">
     <div class="loader"></div>
@@ -83,9 +86,9 @@
 <div class="container container_pages mt-40p mb-20p d-block mx-auto align-items-center p-0">
     <?php get_template_part('templates/content-faq'); ?>
 
-    <div class="mt-20p mb-20p pl-10p pr-10p">
+    <a href="<?= $settings['airbnb'] ?? ''; ?>" target="_blank" class="pr-10p pl-10p">
         <?= do_shortcode('[trustindex no-registration=airbnb]'); ?>
-    </div>
+    </a>
 
     <?php get_template_part('templates/contact-us', null, ['packages' => $packages, 'settings' => $settings]); ?>
 </div>

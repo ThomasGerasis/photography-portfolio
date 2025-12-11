@@ -32,9 +32,9 @@ $settings = get_option('basic_settings');
 
     <?php get_template_part('templates/testimonials'); ?>
 
-    <div class="pr-10p pl-10p">
+    <a href="<?= $settings['airbnb'] ?? ''; ?>" target="_blank" class="pr-10p pl-10p">
         <?= do_shortcode('[trustindex no-registration=airbnb]'); ?>
-    </div>
+    </a>
 </div>
 
 <style>

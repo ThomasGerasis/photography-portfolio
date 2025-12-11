@@ -1,120 +1,234 @@
-jQuery(document).ready(function() {
+jQuery(document).ready(function ($) {
 
-if (document.getElementById("sortable1") !== null) {
-    jQuery(function () {
-        const sortable_list2 = jQuery('#sortable2');
-        jQuery("#sortable1, #sortable2").sortable({
-            sort: function (event, ui) {
-                if ('#sortable2' === ui.item.parent()) {
-                    alert(ui.item.attr('data-id'));
-                }
-            },
-            receive: function (event, ui) {
-                if ('sortable1' === ui.sender.attr('id')) {
-                    mVal += ',' + ui.item.attr('data-id');
-                }
-                if ('sortable2' === ui.sender.attr('id')) {
-                    mVal = mVal.replace(',' + ui.item.attr('data-id'), '');
-                    sortable_list2.attr('data-front', mVal);
-                    hiddenpatent.attr('value', mVal);
-                }
-            },
-            update: function (event, ui) {
-                if ('sortable2' === ui.item.parent().attr('id')) {
-                    var mVal = '';
-                    sortable_list2.find('li').each(function () {
-                        mVal += ',' + jQuery(this).attr('data-id');
-                    });
-                    //mVal = mVal.substring(1);
-                    sortable_list2.attr('data-front', mVal);
-                    jhiddenpatent.attr('value', mVal);
+   const $form = $("#add-photo-form");
+    const $uploadButton = $form.find("#upload-photo-button");
+    const $attachmentId = $form.find("#photo_attachment_id");
+    const $preview = $form.find("#photo-preview");
+    const $addPhotoButton = $form.find("#add-photo-button");
 
-                }
-            },
-            connectWith: ".connectedSortable"
-        }).disableSelection();
+    let frame;
+
+    $uploadButton.on("click", function(e) {
+        e.preventDefault();
+
+        // Reuse existing frame if it exists
+        if (frame) {
+            frame.open();
+            return;
+        }
+
+        // Create a new media frame
+        frame = wp.media({
+            title: "Select Photo",
+            button: { text: "Use Photo" },
+            multiple: false
+        });
+
+        // When an image is selected
+        frame.on("select", function() {
+            const attachment = frame.state().get("selection").first().toJSON();
+
+            // Set the hidden input
+            $attachmentId.val(attachment.id);
+
+            // Show image preview with remove button
+            $preview.html(`
+                <img src="${attachment.url}" class="img-fluid mt-2" style="max-width:150px;">
+                <button type="button" class="btn btn-sm btn-link mt-1 text-danger" id="remove-photo">Remove</button>
+            `);
+
+            // Enable the Add Photo button
+            $addPhotoButton.prop("disabled", false);
+        });
+
+        frame.open();
     });
-}
 
-    jQuery( ".repeater-rows-links" ).sortable({
+    // Remove photo functionality scoped to the form
+    $form.on("click", "#remove-photo", function() {
+        $attachmentId.val("");
+        $preview.empty();
+        $addPhotoButton.prop("disabled", true);
+    });
+    /*
+    |--------------------------------------------------------------------------
+    | CONNECTED SORTABLE LISTS
+    |--------------------------------------------------------------------------
+    */
+    if ($("#sortable1").length) {
+
+        const sortable_list2 = $('#sortable2');
+        let hiddenpatent = $("#hiddenpatent");  // FIX: Should exist in form
+        let mVal = sortable_list2.data("front") || "";
+
+        $("#sortable1, #sortable2").sortable({
+            connectWith: ".connectedSortable",
+
+            sort: function (event, ui) {
+                // FIXED: correct parent() check
+                if (ui.item.parent().attr("id") === "sortable2") {
+                    // alert(ui.item.data("id"));
+                }
+            },
+
+            receive: function (event, ui) {
+                const movedID = ui.item.data("id");
+
+                if (ui.sender.attr("id") === "sortable1") {
+                    mVal += "," + movedID;
+                }
+
+                if (ui.sender.attr("id") === "sortable2") {
+                    mVal = mVal.replace("," + movedID, "");
+                    sortable_list2.attr("data-front", mVal);
+                    hiddenpatent.val(mVal);
+                }
+            },
+
+            update: function (event, ui) {
+                if (ui.item.parent().attr("id") === "sortable2") {
+
+                    let mVal = "";
+                    sortable_list2.find("li").each(function () {
+                        mVal += "," + $(this).data("id");
+                    });
+
+                    sortable_list2.attr("data-front", mVal);
+                    hiddenpatent.val(mVal);
+                }
+            }
+
+        }).disableSelection();
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | SIMPLE SORTABLE
+    |--------------------------------------------------------------------------
+    */
+    $(".repeater-rows-links").sortable({
         placeholder: "sortable-placeholder",
-        create: function(event, ui){
-        },
-        update: function(event, ui){
+        update: function () {
             sortableIn = 1;
-        },
-    }).disableSelection();
+        }
+    });
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | WORDPRESS MEDIA UPLOADER (GLOBAL HANDLER)
+    |--------------------------------------------------------------------------
+    */
+    function openMediaUploader(targetKey) {
+        let frame = wp.media({
+            title: "Select Image",
+            button: { text: "Use this image" },
+            multiple: false
+        });
+
+        frame.on("select", function () {
+            let attachment = frame.state().get("selection").first().toJSON();
+
+            $(`.media_image_${targetKey}`).val(attachment.url);
+            $(`.custom_media_image_${targetKey}`)
+                .attr("src", attachment.url)
+                .css("display", "block");
+        });
+
+        frame.open();
+    }
 
 
-if (document.querySelector('.custom_media_button') !== null) {
-        media_upload('.custom_media_button');
-}
+    /*
+    |--------------------------------------------------------------------------
+    | REPEATER WITH ADD / REMOVE AND MEDIA UPLOADER
+    |--------------------------------------------------------------------------
+    */
+    if ($(".repeater-content-links").length) {
 
-if (document.getElementsByClassName('repeater-content-links').length > 0) {
+        $(".repeater-content-links").each(function () {
 
-        const containers = document.querySelectorAll('.repeater-content-links');
-        console.log(containers);
+            const container = this;
+            const rows = $(container).find(".repeater-rows-links");
+            const group = $(container).data("group");
 
-        containers.forEach((container, index) => {
-            const rows = container.querySelector('.repeater-rows-links');
-            let datagroup = container.dataset.group;
-            let count = parseInt(rows.children[(rows.children.length -1)]?.dataset?.id) + 1;
+            let count =
+                parseInt(rows.children().last().data("id") ?? 0) + 1;
 
-            container.addEventListener('click', (e) => {
-                if(e.target.classList.contains('repeater-add-btn')){
+            // CLICK HANDLER inside this repeater
+            container.addEventListener("click", function (e) {
+
+                /*
+                -------------------------------------------------------------
+                ADD NEW ROW
+                -------------------------------------------------------------
+                */
+                if (e.target.classList.contains("repeater-add-btn")) {
                     e.preventDefault();
 
-                    let mediaButton = '<input type="button" class="button button-primary custom_media_button custom_media_'+ count + '"  id="custom_media_button" data-name="repeat" name="' + count + '"  value="Upload Icon" style="margin-top:5px;">';
-                    let imgPreview = '<img class="custom_media_image_'+ count + '" src="" style="margin:10px;padding:0;max-width:100px;float:left;display:inline-block" >';
-                    let inputmedia = '<input type="text"  placeholder="image" class="media_image_'+ count + ' form-control form-control-sm col-3" data-name="repeat" name="' + datagroup + '[' + count + '][image]" id="' + datagroup + '_" value="" placeholder="Image">';
-                    let containersTitle = '<textarea class="form-control form-control-sm col-2 main-text" data-name="repeat" name="' + datagroup + '[' + count + '][title]" id="' + datagroup + '_"  placeholder="Title"></textarea>';
-                    let containersLastText = '<textarea class="form-control form-control-sm col-2 main-text" data-name="repeat" name="' + datagroup + '[' + count + '][text]" id="' + datagroup + '_"  placeholder="text"></textarea>';
-                    let containersLastDeleteBtn = '<div class="pull-right repeater-remove-btn col-2">' +
-                        '<button class="remove-btn bg-red text-fff action_btns">Remove</button>' +
-                        '</div>';
+                    // UNIQUE KEY
+                    let key = count++;
 
-                    const div = document.createElement('div');
-                    div.classList.add(...['items', 'd-flex','mb-1']);
-                    div.style.display = `flex`;
-                    div.style.alignItems = `center`;
-                    div.innerHTML = `${mediaButton} ${imgPreview} ${inputmedia} ${containersTitle} ${containersLastText} ${containersLastDeleteBtn}`;
-                    rows.insertAdjacentElement('beforeend', div);
-                    count++;
+                    const html = `
+                        <div class="items d-flex mb-1" data-id="${key}">
+                            
+                            <button type="button"
+                                class="button button-primary custom-media-btn"
+                                data-key="${key}">
+                                Upload Icon
+                            </button>
+
+                            <img class="custom_media_image_${key}"
+                                src=""
+                                style="display:none;max-width:100px;margin-left:10px;">
+
+                            <input type="text"
+                                class="media_image_${key} form-control form-control-sm col-3 ml-2"
+                                name="${group}[${key}][image]"
+                                placeholder="Image">
+
+                            <textarea class="form-control form-control-sm col-2 ml-2"
+                                name="${group}[${key}][title]"
+                                placeholder="Title"></textarea>
+
+                            <textarea class="form-control form-control-sm col-2 ml-2"
+                                name="${group}[${key}][text]"
+                                placeholder="Text"></textarea>
+
+                            <button class="remove-btn btn btn-danger ml-3">
+                                Remove
+                            </button>
+                        </div>
+                    `;
+
+                    rows.append(html);
                 }
 
-                if(e.target.classList.contains('remove-btn')){
+
+                /*
+                -------------------------------------------------------------
+                REMOVE ROW
+                -------------------------------------------------------------
+                */
+                if (e.target.classList.contains("remove-btn")) {
                     e.preventDefault();
-                    e.target.parentElement.parentElement.remove();
+                    e.target.closest(".items").remove();
                 }
-            })
-        })
+
+
+                /*
+                -------------------------------------------------------------
+                MEDIA BUTTON CLICK
+                -------------------------------------------------------------
+                */
+                if (e.target.classList.contains("custom-media-btn")) {
+                    e.preventDefault();
+                    const key = e.target.dataset.key;
+                    openMediaUploader(key);
+                }
+            });
+        });
     }
 
 });
-
-function media_upload(button_class) {
-    var _custom_media = true,
-        _orig_send_attachment = wp.media.editor.send.attachment;
-    jQuery('body').on('click', button_class, function(e) {
-        var button_id = '#' + jQuery(this).attr('id');
-        var self = jQuery(button_id);
-        var send_attachment_bkp = wp.media.editor.send.attachment;
-        var button = jQuery(button_id);
-        var id = button.attr('id').replace('_button', '');
-        var myName = jQuery(this).attr('name').replace('custom_media_button_', '');
-        _custom_media = true;
-        wp.media.editor.send.attachment = function(props, attachment) {
-            if (_custom_media) {
-                jQuery('.custom_media_id_' + myName).val(attachment.id);
-                jQuery('.media_image_' + myName).val(attachment.url);
-                jQuery('.custom_media_image_' + myName).attr('src', attachment.url).css('display', 'block');
-            } else {
-                return _orig_send_attachment.apply(button_id, [props, attachment]);
-            }
-        }
-        wp.media.editor.open(button);
-        return false;
-    });
-}
