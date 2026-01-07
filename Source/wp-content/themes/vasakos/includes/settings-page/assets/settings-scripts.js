@@ -1,54 +1,47 @@
 jQuery(document).ready(function ($) {
 
-   const $form = $("#add-photo-form");
-    const $uploadButton = $form.find("#upload-photo-button");
-    const $attachmentId = $form.find("#photo_attachment_id");
-    const $preview = $form.find("#photo-preview");
-    const $addPhotoButton = $form.find("#add-photo-button");
-
-    let frame;
-
-    $uploadButton.on("click", function(e) {
+    $('#upload-photo-button').on('click', function (e) {
         e.preventDefault();
 
-        // Reuse existing frame if it exists
-        if (frame) {
-            frame.open();
-            return;
-        }
-
-        // Create a new media frame
-        frame = wp.media({
-            title: "Select Photo",
-            button: { text: "Use Photo" },
-            multiple: false
+        const frame = wp.media({
+            title: 'Select Photos',
+            library: { type: 'image' },
+            button: { text: 'Add selected photos' },
+            multiple: 'add'   // 🔥 THIS is the key for library multi-select
         });
 
-        // When an image is selected
-        frame.on("select", function() {
-            const attachment = frame.state().get("selection").first().toJSON();
+        frame.on('open', function(){
+            // Optional: open in GRID mode
+            frame.content.mode('browse');
+        });
 
-            // Set the hidden input
-            $attachmentId.val(attachment.id);
+        frame.on('select', function(){
+            let selection = frame.state().get('selection');
+            let ids = [];
+            let preview = $('#photo-preview');
 
-            // Show image preview with remove button
-            $preview.html(`
-                <img src="${attachment.url}" class="img-fluid mt-2" style="max-width:150px;">
-                <button type="button" class="btn btn-sm btn-link mt-1 text-danger" id="remove-photo">Remove</button>
-            `);
+            preview.empty();
 
-            // Enable the Add Photo button
-            $addPhotoButton.prop("disabled", false);
+            selection.each(function (attachment) {
+                attachment = attachment.toJSON();
+                ids.push(attachment.id);
+
+                const thumb =
+                    attachment?.sizes?.thumbnail?.url ||
+                    attachment?.sizes?.medium?.url ||
+                    attachment.url;
+
+                preview.append(
+                    `<img src="${thumb}" class="img-thumbnail mr-2 mb-2" style="max-width:80px;">`
+                );
+            });
+
+            $('#photo_attachment_ids').val(ids.join(','));
+
+            $('#add-photo-button').prop('disabled', ids.length === 0);
         });
 
         frame.open();
-    });
-
-    // Remove photo functionality scoped to the form
-    $form.on("click", "#remove-photo", function() {
-        $attachmentId.val("");
-        $preview.empty();
-        $addPhotoButton.prop("disabled", true);
     });
     /*
     |--------------------------------------------------------------------------

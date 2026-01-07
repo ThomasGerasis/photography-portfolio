@@ -17,12 +17,13 @@ function collectSafelist() {
 module.exports = {
   context: path.resolve(__dirname, "assets"),
   entry: {
-    //   main: './js/index.js',
     main: "./js/scripts.js",
     bootstrap: "./js/bootstrap.js",
     slider: "./js/slider.js",
     "infinite-scroll": "./js/infinite-scroll.js",
     "active": "./js/active.js",
+    "about": "./js/about.js",
+    // "contact": "./js/contact.js",
   },
   output: {
     filename: "[name].min.js",

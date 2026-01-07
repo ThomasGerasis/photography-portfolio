@@ -3,18 +3,23 @@
 #scrollUp {
     cursor: pointer;
     position: fixed;
-    right: 40px;
-    font-size: 20px;
-    line-height: 40px;
-    width: 40px;
-    height: 40px;
-    bottom: 40px;
+    right: 35px;
+    // font-size: 20px;
+    // line-height: 35px;
+    width: 35px;
+    height: 35px;
+    bottom: 35px;
     background-color: #D1862B;
     color: $white;
     text-align: center;
     @include transition-duration(500ms);
     border-radius: 50%;
-    @include box-shadow($box-shadow);
+    // @include box-shadow($box-shadow);
+
+    svg {
+        fill: #fff;
+    }
+
     z-index: 2147483647;
 
     @media #{$breakpoint-xs} {

@@ -8,18 +8,18 @@
   width: 100%;
 }
 
-.all-starups-area .starups-img {
-  @media screen and (min-width: 1024px) {
-    width: 50%;
-    height: 500px;
-  }
-  width: 100%;
-  height: 250px;
-  background-image: url('../images/about-me.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left top;
-}
+// .all-starups-area .starups-img {
+//   @media screen and (min-width: 1024px) {
+//     width: 50%;
+//     height: 500px;
+//   }
+//   width: 100%;
+//   height: 250px;
+//   background-image: url('../images/about-me.jpg');
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: left top;
+// }
 
 
 .gallery {
@@ -144,5 +144,38 @@
   margin-bottom: 15px !important;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
+blockquote {
+  .line {
+    @media screen and (min-width: 1024px) {
+      width: 180px;
+    }
+    width: 120px;
+    height: 2px;
+    background: #111;
+    margin: 18px auto 12px;
+  }
+  @media screen and (min-width: 1024px) {
+    padding: 0.5rem;
+    margin-top: 150px;
+  }
+  position: relative;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.4rem;
+  max-width: 900px;
+  p{
+    @media screen and (min-width: 1024px) {
+      font-size: 2rem;
+    }
+    color: #111;
+    font-family: 'Special Elite', cursive;
+    font-weight: 100;
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+}
 
 

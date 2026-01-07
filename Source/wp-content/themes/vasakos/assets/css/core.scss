@@ -258,15 +258,14 @@ $sides: (top, bottom, left, right); // Leave this variable alone
   @import "components/menu";
   @import "components/categories-shortcode";
   @import "components/masonry-layout";
-  @import "components/about";
   @import "components/services";
   @import "components/faq";
   @import "components/404";
   @import "components/pricing";
 
 //icons
-@import "icons/glyphs";
-@import "icons/themefi-icons";
+// @import "icons/glyphs";
+// @import "icons/themefi-icons";
 
 .bg-trans {
   background-color: rgba(0,0,0,0.5);
@@ -856,39 +855,6 @@ img.mfp-img {
 }
 
 
-@import url('https://fonts.googleapis.com/css?family=Special+Elite');
-
-blockquote {
-  .line {
-    @media screen and (min-width: 1024px) {
-      width: 180px;
-    }
-    width: 120px;
-    height: 2px;
-    background: #111;
-    margin: 18px auto 12px;
-  }
-  @media screen and (min-width: 1024px) {
-    padding: 0.5rem;
-    margin-top: 150px;
-  }
-  position: relative;
-  margin-top: 25px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0.4rem;
-  max-width: 900px;
-  p{
-    @media screen and (min-width: 1024px) {
-      font-size: 2rem;
-    }
-    color: #111;
-    font-family: 'Special Elite', cursive;
-    font-weight: 100;
-    font-size: 1.5rem;
-    line-height: 1.4;
-  }
-}
 
 
 .read-more-btn{

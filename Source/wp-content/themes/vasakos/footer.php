@@ -23,17 +23,19 @@
                         </div>
                         <span>VasakosShots</span>
                     </a>
-                    <a class="socials_button" target="_blank" href="<?= $settings['whatsapp'] ?? ''; ?>">
-                        <div class="icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <span><?= $settings['whatsapp'] ?? ''; ?></span>
-                    </a>
+                    <?php if (!empty($settings['whatsapp']) && $settings['whatsapp']) { ?>
+                        <a class="socials_button" target="_blank" href="<?= $settings['whatsapp'] ?? ''; ?>">
+                            <div class="icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <span><?= $settings['whatsapp'] ?? ''; ?></span>
+                        </a>
+                    <?php } ?>
                     <a class="socials_button" target="_blank" href="<?= $settings['airbnb'] ?? ''; ?>">
                         <div class="icon">
                             <i class="fab fa-airbnb"></i>
                         </div>
-                        <span>Airbnb Experience</span>
+                        <span>Airbnb Services</span>
                     </a>
                 </div>
 
@@ -44,7 +46,10 @@
                         <p class="text-white text-center copyright" style="font-size: 15px;">
                             Copyright &copy;<script>
                                 document.write(new Date().getFullYear());
-                            </script> All rights reserved Vasileios Vasakos | Made with <i class="fa fa-heart pulse"></i> by Thomas Gerasis
+                            </script> All rights reserved Vasileios Vasakos | Made with
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#e90606" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                <path d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z" />
+                            </svg> by Thomas Gerasis
                         </p>
                     </div>
                 </div>
@@ -55,7 +60,14 @@
 <!-- Footer Area End -->
 
 <span id="scrollUp" style="display: none;">
-    <i class="fas fa-angle-up"></i>
+    <svg xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 320 512"
+        width="25" height="25"
+        aria-hidden="true" focusable="false">
+        <path d="M168.5 164.6c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.4 9.4-9.4 24.6 
+             0 33.9s24.6 9.4 33.9 0L160 231.9l127.5 127.6c9.4 9.4 24.6 9.4 
+             33.9 0s9.4-24.6 0-33.9l-136-136z" />
+    </svg>
 </span>
 
 <div id="deferred-styles">
@@ -179,27 +191,47 @@
 <?php } ?>
 
 <?php if (!is_category()) { ?>
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=en" async defer></script>
-    <script type="text/javascript">
+
+    <script>
+        function loadRecaptcha() {
+            var script = document.createElement("script");
+            script.src = "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=en";
+            script.async = true;
+            script.defer = true;
+            document.body.appendChild(script);
+        }
+
         var onloadCallback = function() {
             grecaptcha.render('recaptcha', {
                 'sitekey': '6LfORqslAAAAAO_VAaiMqqHSSV_Mi22qaNt7D1w7'
             });
         };
+
+        setTimeout(loadRecaptcha, 3000);
     </script>
 <?php } ?>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WP6KF2ZDH2"></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
+    function loadGtag() {
+        // Load the gtag.js script
+        var script = document.createElement("script");
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-WP6KF2ZDH2";
+        script.async = true;
+        document.head.appendChild(script);
 
-    function gtag() {
-        dataLayer.push(arguments);
+        // Initialize gtag after the script loads
+        script.onload = function() {
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+            gtag('config', 'G-WP6KF2ZDH2');
+        };
     }
-    gtag('js', new Date());
-
-    gtag('config', 'G-WP6KF2ZDH2');
+    setTimeout(loadGtag, 2000);
 </script>
 
 </body>
