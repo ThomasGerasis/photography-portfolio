@@ -24,8 +24,8 @@
                         <span>VasakosShots</span>
                     </a>
                     <?php if (!empty($settings['whatsapp']) && $settings['whatsapp']) { ?>
-                        <a class="socials_button" target="_blank" href="<?= $settings['whatsapp'] ?? ''; ?>">
-                            <div class="icon">
+                        <a class="socials_button" target="_blank" href="https://wa.me/<?= $settings['whatsapp'] ?>">
+                            <div class=" icon">
                                 <i class="fab fa-whatsapp"></i>
                             </div>
                             <span><?= $settings['whatsapp'] ?? ''; ?></span>

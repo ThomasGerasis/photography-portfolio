@@ -33,7 +33,7 @@
 
                      <?php if (!empty($settings['whatsapp']) && $settings['whatsapp']) { ?>
                          <li>
-                             <a href="<?= $settings['whatsapp'] ?? ''; ?>" aria-label="Whatsapp" target="_blank" title="Whatsapp">
+                             <a href="https://wa.me/<?= $settings['whatsapp']; ?>" aria-label="Whatsapp" target="_blank" title="Whatsapp">
                                  <i class="fab fa-whatsapp"></i>
                              </a>
                          </li>
