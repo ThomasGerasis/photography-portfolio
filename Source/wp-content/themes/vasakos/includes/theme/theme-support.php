@@ -53,7 +53,6 @@ add_filter('comments_array', 'disable_comments_hide_existing', 10, 2);
 function disable_comments_admin_menu()
 {
     remove_menu_page('edit-comments.php');
-    remove_menu_page('edit.php');
 }
 add_action('admin_menu', 'disable_comments_admin_menu');
 
