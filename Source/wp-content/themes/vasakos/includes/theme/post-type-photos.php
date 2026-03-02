@@ -30,7 +30,7 @@ function register_photos()
         'has_archive' => false,
         'hierarchical' => true,
         'menu_position' => null,
-        'taxonomies' => array('category'),
+        // 'taxonomies' => array('category'),
         'supports' => array('custom-fields', 'thumbnail'),
         'menu_icon' => get_template_directory_uri() . '/assets/images/camera.png',
     );
@@ -38,3 +38,22 @@ function register_photos()
 }
 
 add_action('init', 'register_photos');
+
+function register_photoshoot_taxonomy()
+{
+
+    register_taxonomy('photoshoots', 'photos', array(
+        'labels' => array(
+            'name' => 'Photoshoots',
+            'singular_name' => 'Photoshoot',
+        ),
+        'hierarchical' => true,
+        'rewrite' => array(
+            'slug' => 'photoshoots',
+            'with_front' => false
+        ),
+        'show_ui' => true,
+        'show_admin_column' => true,
+    ));
+}
+add_action('init', 'register_photoshoot_taxonomy');

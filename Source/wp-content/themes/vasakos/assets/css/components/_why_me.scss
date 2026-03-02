@@ -1,0 +1,91 @@
+// Why Choose Me Section Styles
+.why-choose-section {
+    // background-color: $bg-gray;
+    padding: 50px 0;
+
+    .section-title {
+        color: $heading;
+        font-weight: 600;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    // Default: 4 items per row (3 columns each)
+    .col-lg-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+
+    // When there are 5 items, make them 4 columns (3 items + 2 items layout)
+    &.has-5-items {
+        .col-lg-3 {
+            flex: 0 0 20%;
+            max-width: 20%;
+            
+            @media (max-width: 991px) {
+                flex: 0 0 33.333%;
+                max-width: 33.333%;
+            }
+            
+                        @media (max-width: 767px) {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    }
+
+    .choose-card {
+        background: $white;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        height: 100%;
+        box-shadow: 0 2px 10px #0000003d;
+
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .icon-wrapper {
+            color: $secondary;
+            transition: color 0.3s ease;
+        }
+
+        &:hover .icon-wrapper {
+            color: $hover;
+        }
+
+        .card-title {
+            color: $heading;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .card-description {
+            color: $text-gray;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .col-lg-3 {
+                flex: 0 0 100%;
+                max-width: 100%;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .col-lg-3 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+}

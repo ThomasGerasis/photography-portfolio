@@ -283,7 +283,6 @@ jQuery(function() {
 document.addEventListener('DOMContentLoaded', function() {
     // Check for data in hash click
     const bookNowLinks = document.querySelectorAll('.package-btn');
-    console.log(bookNowLinks);
     bookNowLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const service = this.getAttribute('data-service');

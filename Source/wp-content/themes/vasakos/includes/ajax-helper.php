@@ -118,17 +118,26 @@ function load_more_gallery()
 
     $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
     $categoryId = isset($_POST['category']) ? intval($_POST['category']) : 0;
+    $perPage = isset($_POST['per_page']) && intval($_POST['per_page']) > 0
+        ? intval($_POST['per_page'])
+        : get_option('posts_per_page');
 
     $args = array(
         'post_type'      => 'photos',
-        'posts_per_page' => get_option('posts_per_page'), // You can tweak this
+        'posts_per_page' => $perPage,
         'paged'          => $paged,
-        'orderby'        => 'publish_date',
+        'orderby'        => 'date',
         'order'          => 'DESC',
     );
 
     if ($categoryId) {
-        $args['cat'] = $categoryId;
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'photoshoots',
+                'field'    => 'term_id',
+                'terms'    => $categoryId,
+            ),
+        );
     }
 
     $query = new WP_Query($args);

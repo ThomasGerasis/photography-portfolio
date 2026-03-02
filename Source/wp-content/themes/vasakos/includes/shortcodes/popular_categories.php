@@ -4,20 +4,23 @@ function popular_categories_callback($atts, $content = null)
 {
     $atts = shortcode_atts(
         array(
-            '' => '',
+            'limit'   => '4',
+            'orderby' => 'count',
         ),
         $atts,
         'popular_categories'
     );
 
+    $orderby = in_array($atts['orderby'], ['count', 'name', 'slug']) ? $atts['orderby'] : 'count';
+
     ob_start();
 
     $categories = get_categories([
-        'taxonomy'  => 'category',
-        'orderby'   => 'count',
-        'order'     => 'DESC',
+        'taxonomy'   => 'photoshoots',
+        'orderby'    => $orderby,
+        'order'      => 'DESC',
         'hide_empty' => true,
-        'number'    => 4
+        'number'     => (int) $atts['limit']
     ]);
 ?>
     <div class="top__categories d-flex flex-wrap justify-content-center <?= wp_is_mobile() ? 'mt-40p mb-20p' : 'mt-40p mb-40p' ?> ">
@@ -32,7 +35,7 @@ function popular_categories_callback($atts, $content = null)
                     background-image: url('<?php echo $image; ?>');
                 }
             </style>
-            <a href="<?php echo get_term_link($category->slug, 'category'); ?>" class="mt-10p mb-10p single_gallery_item category_item b-30 wow fadeInUp" data-wow-delay="100ms">
+            <a href="<?php echo esc_url(get_term_link($category->slug, 'photoshoots')); ?>" class="mt-10p mb-10p single_gallery_item category_item b-30 wow fadeInUp" data-wow-delay="100ms">
                 <div class="single-portfolio-content lazy-background <?= $category->slug ?>">
                     <div class="image-overlay"></div>
                     <span class="font-weight-bold d-block category_name text-white text-35 text-center"><?php echo $category->name; ?>

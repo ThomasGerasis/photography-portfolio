@@ -186,9 +186,7 @@
     <script defer type="text/javascript" src="<?php echo get_template_directory_uri() . '/dist/slider.min.js'; ?>"></script>
 <?php } ?>
 
-<?php if (is_category()) { ?>
-    <script defer type="text/javascript" src="<?php echo get_template_directory_uri() . '/dist/infinite-scroll.min.js'; ?>"></script>
-<?php } ?>
+
 
 <?php if (!is_category()) { ?>
 

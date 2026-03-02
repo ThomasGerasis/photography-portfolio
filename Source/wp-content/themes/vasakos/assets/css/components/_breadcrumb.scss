@@ -4,10 +4,11 @@
 .breadcrumb-area {
     position: relative;
     z-index: 1;
-    height: 300px;
+    height: auto;
+    min-height: 300px;
 
     @media #{$breakpoint-xs} {
-        height: 220px;
+        min-height: 220px;
     }
 
     .page-title {

@@ -52,20 +52,6 @@ $simple_mb = new WPAlchemy_MetaBox(array(
 ));
 
 $simple_mb = new WPAlchemy_MetaBox(array(
-    'id' => '_faq_info',
-    'title' => 'FAQ',
-    'context' => 'normal', // same as above, defaults to "normal"
-    'priority' => 'high', // same as above, defaults to "high"
-    'autosave' => TRUE,
-    'types' => array('page'),
-    'mode' => WPALCHEMY_MODE_EXTRACT,
-    'template' => get_stylesheet_directory() . '/includes/metaboxes/faq-meta.php',
-));
-
-
-
-
-$simple_mb = new WPAlchemy_MetaBox(array(
     'id' => '_basic',
     'title' => 'Set up Main Content',
     'context' => 'normal', // same as above, defaults to "normal"

@@ -40,6 +40,10 @@ require_once(get_template_directory() . '/includes/plugins/wpalchemy/set_metabox
 require_once(get_template_directory() . '/includes/settings-page/SliderSettings.php');
 require_once(get_template_directory() . '/includes/settings-page/SliderSettingsCarousel.php');
 
+require_once(get_template_directory() . '/includes/metaboxes/category-faq-fields.php');
+require_once(get_template_directory() . '/includes/metaboxes/page-faq-fields.php');
+require_once(get_template_directory() . '/includes/metaboxes/why-choose-me-meta-box.php');
+
 use SettingsPages\SliderSettings;
 use SettingsPages\SliderSettingsCarousel;
 use SettingsPages\BasicSettings;
