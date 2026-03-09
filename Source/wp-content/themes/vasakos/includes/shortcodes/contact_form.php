@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Contact Form Shortcode
  * Usage: [contact_form show_packages="yes"]
@@ -20,18 +21,15 @@ function contact_form_shortcode($atts)
 
     // Get packages if requested
     if ($atts['show_packages'] === 'yes') {
-        if (!empty($atts['page_id'])) {
-            $packages = get_post_meta($atts['page_id'], 'pricing', true);
-        } else {
-            // Try to find pricing page
-            $pricing_pages = get_pages(array(
-                'meta_key' => '_wp_page_template',
-                'meta_value' => 'pricing-page.php'
-            ));
-            if (!empty($pricing_pages)) {
-                $packages = get_post_meta($pricing_pages[0]->ID, 'pricing', true);
-            }
-        }
+        $pricing_query_args = array(
+            'post_type'      => 'pricing_package',
+            'post_status'    => 'publish',
+            'posts_per_page' => -1,
+            'orderby'        => 'menu_order',
+            'order'          => 'ASC',
+        );
+
+        $packages = get_posts($pricing_query_args);
     }
 
     ob_start();
@@ -97,9 +95,9 @@ function contact_form_shortcode($atts)
                                     <div class="form-group">
                                         <select name="service" id="service" class="form-select form-select-md">
                                             <option value="" disabled selected>Select a service</option>
-                                            <?php foreach ($packages as $id => $package) { ?>
-                                                <option value="<?= $id ?>">
-                                                    <?= $package['title'] ?>
+                                            <?php foreach ($packages as $package) { ?>
+                                                <option value="<?= $package->ID ?>">
+                                                    <?= $package->post_title ?>
                                                 </option>
                                             <?php } ?>
                                         </select>

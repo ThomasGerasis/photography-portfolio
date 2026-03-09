@@ -34,31 +34,8 @@ $settings = get_option('basic_settings');
 <div class="container container_pages mt-20p mb-20p d-block mx-auto align-items-center">
     <section class="pricing-section mt-2 mb-5">
         <h1 class="section-title w-100 d-block text-dark text-center">Pricing - Packages in Edinburgh</h1>
-        <h3 class="heading_title w-100 d-block text-dark text-center mb-5">Photoshooting couples, families, and solo travelers in the Old Town of Edinburgh.</h3>
-
         <div class="pricing-cards mt-5 mb-5">
-            <?php $packages = get_post_meta($post->ID, 'pricing', true);
-            if (!empty($packages)) {
-                foreach ($packages as $id => $package) { ?>
-                    <div class="card h-100 d-flex flex-column">
-                        <div class="card-img-wrapper">
-                            <img src="<?= $package['image'] ?? '' ?>" alt="<?= $package['title'] ?? '' ?>" class="card-img-top" />
-                        </div>
-                        <div class="card-body d-flex flex-column flex-grow-1">
-                            <h5 class="card-title"><?= $package['title'] ?? '' ?></h5>
-                            <div class="meta mb-2">
-                                <span><i class="fas fa-pound-sign"></i><?= $package['price'] ?></span>
-                                <span><i class="fas fa-clock"></i><?= $package['hours'] ?? '1' ?></span>
-                            </div>
-                            <p class="card-text"><?= $package['description'] ?? '' ?></p>
-                            <div class="mt-auto mx-auto">
-                                <a href="#contactForm" class="package-btn alime-btn bg-secondary" data-service="<?= $id ?? '' ?>">Book This Package</a>
-                            </div>
-                        </div>
-                    </div>
-            <?php }
-            } ?>
-
+            <?php echo do_shortcode('[pricing_packages show_book_button="yes"]'); ?>
         </div>
     </section>
 </div>

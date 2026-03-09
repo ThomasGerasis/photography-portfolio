@@ -75,67 +75,6 @@ li {
     letter-spacing: 2.8px;
 }
 
-//img {
-//    width: 100%;
-//    height: auto;
-//}
-.post-content,.page-content ,.category-content-section {
-
-   ul {
-        list-style: none;
-        padding-left: 0;
-        margin: 20px 0;
-        
-        li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 12px;
-            line-height: 1.6;
-            color: $text;
-            
-            &:before {
-                content: "•";
-                position: absolute;
-                left: 10px;
-                bottom: 1px;
-                color: $secondary;
-                font-size: 1.5rem;
-                line-height: 1.2;
-                font-weight: bold;
-            }
-            
-            // Nested lists
-            ul {
-                margin-top: 10px;
-                margin-bottom: 10px;
-                
-                li {
-                    &:before {
-                        content: "◦";
-                        font-size: 1.3rem;
-                    }
-                }
-            }
-        }
-    }
-    
-    // Ordered lists
-    ol {
-        padding-left: 30px;
-        margin: 20px 0;
-        
-        li {
-            margin-bottom: 12px;
-            line-height: 1.6;
-            color: $text;
-            
-            &::marker {
-                color: $secondary;
-                font-weight: 600;
-            }
-        }
-    }
-}
 .bg-overlay {
     position: relative;
     z-index: 1;

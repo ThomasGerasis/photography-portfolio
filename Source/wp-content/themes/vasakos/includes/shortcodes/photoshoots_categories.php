@@ -1,27 +1,37 @@
 <?php
 
-function popular_categories_callback($atts, $content = null)
+function photoshoots_categories_callback($atts, $content = null)
 {
     $atts = shortcode_atts(
         array(
-            'limit'   => '4',
-            'orderby' => 'count',
+            'limit'      => '4',
+            'orderby'    => 'count',
+            'categories' => '', // comma-separated slugs; empty = use limit/orderby
         ),
         $atts,
-        'popular_categories'
+        'photoshoots_categories'
     );
 
     $orderby = in_array($atts['orderby'], ['count', 'name', 'slug']) ? $atts['orderby'] : 'count';
 
     ob_start();
 
-    $categories = get_categories([
+    $query_args = [
         'taxonomy'   => 'photoshoots',
-        'orderby'    => $orderby,
-        'order'      => 'DESC',
         'hide_empty' => true,
-        'number'     => (int) $atts['limit']
-    ]);
+    ];
+
+    $specific_slugs = array_filter(array_map('trim', explode(',', $atts['categories'])));
+
+    if (!empty($specific_slugs)) {
+        $query_args['slug'] = $specific_slugs;
+    } else {
+        $query_args['orderby'] = $orderby;
+        $query_args['order']   = 'DESC';
+        $query_args['number']  = (int) $atts['limit'];
+    }
+
+    $categories = get_categories($query_args);
 ?>
     <div class="top__categories d-flex flex-wrap justify-content-center <?= wp_is_mobile() ? 'mt-40p mb-20p' : 'mt-40p mb-40p' ?> ">
         <?php
@@ -49,4 +59,4 @@ function popular_categories_callback($atts, $content = null)
 
     return ob_get_clean();
 }
-add_shortcode('popular_categories', 'popular_categories_callback');
+add_shortcode('photoshoots_categories', 'photoshoots_categories_callback');

@@ -3,9 +3,6 @@ import Masonry from 'masonry-layout';
 
 jQuery(function ($) {
 
-    // Support multiple gallery containers on the same page.
-    // magnificPopup is NOT initialised here — scripts.js handles it via delegation
-    // on .masonry-layout-container so dynamic items are automatically covered.
     $(".masonry-layout-container").each(function () {
         initGallery($(this));
     });
@@ -17,56 +14,50 @@ jQuery(function ($) {
 
         $container.attr('data-current-page', 1);
 
-        const msnryItem = new Masonry($container[0], {
+        const msnry = new Masonry($container[0], {
             itemSelector: '.media-slice',
             percentPosition: true
         });
 
-        // Attach scroll handler AFTER images load and Masonry has set container height,
-        // otherwise container height is 0 and the threshold fires on first tiny scroll.
-        imagesLoaded($container[0], () => {
-            msnryItem.layout();
+        // Re-layout once initial images are loaded
+        imagesLoaded($container[0], () => msnry.layout());
+             console.log('here');
+        if (maxPage <= 1) return;
 
-            if (maxPage <= 1) return;
+        // Scope the button to this specific gallery — supports multiple galleries per page
+        const buttonWrap = $container.closest('.alime-portfolio-area');
+        const loadMorebtn  = buttonWrap.find('.gallery-load-more-btn');
 
-            let loading = false;
-            let throttleTimer;
+        loadMorebtn.on('click', function () {
+            console.log('test');
+            const currentPage = parseInt($container.attr('data-current-page'));
+            if (currentPage >= maxPage) return;
 
-            $(window).on('scroll', function () {
-                clearTimeout(throttleTimer);
-                throttleTimer = setTimeout(function () {
-                    const currentPage = parseInt($container.attr('data-current-page'));
-                    if (loading || currentPage >= maxPage) return;
-
-                    const scrollPosition = $(window).scrollTop() + $(window).height();
-                    const containerBottom = $container.offset().top + $container.height();
-
-                    if (scrollPosition >= containerBottom - 200) {
-                        loading = true;
-                        loadNextPage($container, category, perPage, msnryItem, function () {
-                            loading = false;
-                        });
-                    }
-                }, 150);
+            loadMorebtn.prop('disabled', true);
+            loadNextPage($container, category, perPage, msnry, function () {
+                const updatedPage = parseInt($container.attr('data-current-page'));
+                if (updatedPage >= maxPage) {
+                    loadMorebtn.hide();
+                } else {
+                    loadMorebtn.prop('disabled', false);
+                }
             });
         });
     }
 
-    function loadNextPage($container, category, perPage, msnryItem, onComplete) {
+    function loadNextPage($container, category, perPage, msnry, onComplete) {
         const nextPage = parseInt($container.attr('data-current-page')) + 1;
 
         const $wrapper = $container.closest('.alime-portfolio-area');
-        const $loader  = $wrapper.find('.infinite-loader').length
-            ? $wrapper.find('.infinite-loader')
-            : $('#infinite-loader');
+        const $loader  = $wrapper.find('.infinite-loader');
         $loader.show();
 
         $.ajax({
             url: window.location.origin + "/wp-admin/admin-ajax.php",
             type: "POST",
             data: {
-                action: "load_more_gallery",
-                page: nextPage,
+                action:   "load_more_gallery",
+                page:     nextPage,
                 category: category,
                 per_page: perPage
             },
@@ -75,15 +66,12 @@ jQuery(function ($) {
                 $container.append($newItems);
 
                 imagesLoaded($newItems.get(), () => {
-                    msnryItem.appended($newItems.get());
-                    msnryItem.layout();
+                    msnry.appended($newItems.get());
+                    msnry.layout();
                     $newItems.css("opacity", 1);
-
-                    setTimeout(() => {
-                        $loader.hide();
-                        $container.attr('data-current-page', nextPage);
-                        if (onComplete) onComplete();
-                    }, 400);
+                    $loader.hide();
+                    $container.attr('data-current-page', nextPage);
+                    if (onComplete) onComplete();
                 });
             },
             error: function (xhr, ajaxOptions, thrownError) {

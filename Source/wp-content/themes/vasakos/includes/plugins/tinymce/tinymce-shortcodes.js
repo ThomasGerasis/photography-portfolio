@@ -7,11 +7,17 @@
             { label: 'Button',              slug: 'button',             tag: 'button' },
             { label: 'Banner Image',        slug: 'banner-image',       tag: 'banner_image' },
             { label: 'Photo Gallery',       slug: 'photo-gallery',      tag: 'photo_gallery' },
-            { label: 'Popular Categories',  slug: 'popular-categories', tag: 'popular_categories' },
+            { label: 'Photoshoots Categories', slug: 'photoshoots-categories', tag: 'photoshoots_categories' },
             { label: 'Pricing Packages',    slug: 'pricing-packages',   tag: 'pricing_packages' },
             { label: 'FAQ',                 slug: 'faq',                tag: 'faq' },
             { label: 'Why Choose Me',       slug: 'why-choose-me',      tag: 'why_choose_me' },
             { label: 'Contact Form',        slug: 'contact-form',       tag: 'contact_form' },
+            { label: 'Airbnb Reviews',      slug: 'airbnb-reviews',     tag: 'airbnb_reviews' },
+            { label: 'Target Audience',     slug: 'target-audience',    tag: 'target_audience' },
+            { label: 'Video Embed',         slug: 'video-embed',        tag: 'video_embed' },
+            { label: 'Timeline',            slug: 'timeline',           tag: 'timeline' },
+            { label: 'CTA Section',         slug: 'cta-section',        tag: 'cta_section' },
+            { label: 'Stats Bar',           slug: 'stats-bar',          tag: 'stats_bar' },
         ];
 
         // Build a tag→sc lookup for the dblclick handler
@@ -87,6 +93,7 @@
 
             $modal.find('[data-att]').each(function() {
                 var $el  = jQuery(this);
+                if ($el.data('uiOnly')) return;
                 var att  = $el.data('att');
 
                 if (!(att in atts)) return;
@@ -94,6 +101,8 @@
                 if ($el.is(':checkbox')) {
                     $el.prop('checked', atts[att] === 'yes' || atts[att] === '1');
                     $el.trigger('change'); // fire any conditional show/hide listeners
+                } else if ($el.is('select[multiple]')) {
+                    $el.val(atts[att].split(',').map(function(s) { return s.trim(); }));
                 } else {
                     $el.val(atts[att]);
                     // Refresh image preview if there's one
@@ -185,11 +194,15 @@
 
                 $modal.find('[data-att]').each(function() {
                     var $el = jQuery(this);
+                    if ($el.data('uiOnly')) return; // UI-only controls, not shortcode attributes
                     var att = $el.data('att');
                     var val;
 
                     if ($el.is(':checkbox')) {
                         val = $el.is(':checked') ? ($el.val() || 'yes') : '';
+                    } else if ($el.is('select[multiple]')) {
+                        var selected = $el.val(); // array or null
+                        val = (selected && selected.length) ? selected.join(',') : '';
                     } else {
                         val = $el.val();
                     }

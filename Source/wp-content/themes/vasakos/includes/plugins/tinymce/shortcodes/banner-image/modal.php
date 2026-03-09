@@ -20,6 +20,18 @@
 </div>
 
 <div class="form-group">
+    <label>Title tag</label>
+    <select class="form-control" data-att="title_tag">
+        <option value="h1">H1</option>
+        <option value="h2" selected>H2</option>
+        <option value="h3">H3</option>
+        <option value="h4">H4</option>
+        <option value="p">Paragraph</option>
+        <option value="none">None (hide title)</option>
+    </select>
+</div>
+
+<div class="form-group">
     <label>Subtitle</label>
     <input type="text" class="form-control" data-att="subtitle">
 </div>

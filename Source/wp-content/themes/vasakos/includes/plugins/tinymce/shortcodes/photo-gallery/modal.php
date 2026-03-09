@@ -18,6 +18,23 @@ $terms = get_terms([
     </select>
 </div>
 
+<div class="form-group">
+    <label>Title <small class="text-muted">(optional)</small></label>
+    <input type="text" class="form-control" data-att="title" placeholder="e.g. Wedding Gallery">
+</div>
+
+<div class="form-group">
+    <label>Title tag</label>
+    <select class="form-control" data-att="title_tag">
+        <option value="h1">H1</option>
+        <option value="h2" selected>H2</option>
+        <option value="h3">H3</option>
+        <option value="h4">H4</option>
+        <option value="p">Paragraph</option>
+        <option value="none">None (hide title)</option>
+    </select>
+</div>
+
 <div class="form-check mb-3">
     <input type="checkbox" class="form-check-input" id="vsc-load-more" data-att="load_more" value="yes">
     <label class="form-check-label" for="vsc-load-more">Enable infinite scroll (load more)</label>

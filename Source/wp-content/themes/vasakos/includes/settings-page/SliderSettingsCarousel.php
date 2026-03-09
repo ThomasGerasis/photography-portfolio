@@ -12,7 +12,6 @@ class SliderSettingsCarousel
      */
     public function __construct($postTypeName)
     {
-        add_action('admin_menu', [$this, 'add_settings']);
         add_action( 'admin_enqueue_scripts', [ $this, 'registerAssets' ] );
         add_action( 'admin_init', [ $this, 'registerSettings' ] );
         $this->postTypeName = $postTypeName;
@@ -107,29 +106,47 @@ class SliderSettingsCarousel
                     foreach ($option as $key=>$value){
                         $number = (int) filter_var($key, FILTER_SANITIZE_NUMBER_INT);
                         ?>
-                        <div class="items d-flex mb-1" data-id="<?php echo $number;?>" style="display: flex;align-items: center;">
-                            <div class="slider_order" style="cursor: pointer; margin-right: 5px;">
+                        <div class="items d-flex mb-1 align-items-center" data-id="<?php echo $number;?>">
+                            <div class="slider_order" style="cursor:pointer;margin-right:5px;">
                                 <span class="dashicons dashicons-sort"></span>
                             </div>
-                            <input type="button" class="button button-primary custom_media_button custom_media_<?php echo $number;?>" id="custom_media_button" name="<?php echo $number;?>" value="Upload Icon" style="margin-top:5px;" />
-                            <img class="custom_media_image_<?php echo $number;?>" src="<?php echo $value['image'] ?? '';?>" style="margin:10px;padding:0;max-width:100px;float:left;display:inline-block" />
-                            <input class="media_image_<?php echo $number;?> form-control form-control-sm col-2" data-name="repeat" type="text" name="slider_home_settings[<?php echo $number;?>][image]" value="<?php echo $value['image'] ?? '';?>" placeholder="Image"/>
-                            <textarea class="form-control form-control-sm col-2 main-text" data-name="repeat" name="slider_home_settings[<?php echo $number;?>][title]" id="slider_home_settings[<?php echo $number;?>][title]" placeholder="<?= 'Title' ?>"><?php echo $value['title'] ?? '';?></textarea>
-                            <textarea class="form-control form-control-sm col-2 main-text" data-name="repeat" name="slider_home_settings[<?php echo $number;?>][text]" id="slider_home_settings[<?php echo $number;?>][text]" placeholder="<?= 'Text' ?>"><?php echo $value['text'] ?? '';?></textarea>
-                            <div class="pull-right repeater-remove-btn col-2"><button class="remove-btn bg-red action_btns text-fff">Remove</button></div>
+                            <button type="button"
+                                class="button button-primary custom-media-btn"
+                                data-key="<?php echo $number;?>">
+                                Upload Icon
+                            </button>
+                            <img class="custom_media_image_<?php echo $number;?>"
+                                src="<?php echo $value['image'] ?? '';?>"
+                                style="max-width:100px;margin:0 10px;<?php echo empty($value['image']) ? 'display:none;' : '';?>">
+                            <input class="media_image_<?php echo $number;?> form-control form-control-sm col-2 ml-2"
+                                data-name="repeat" type="text"
+                                name="slider_home_settings[<?php echo $number;?>][image]"
+                                value="<?php echo $value['image'] ?? '';?>"
+                                placeholder="Image"/>
+                            <textarea class="form-control form-control-sm col-2 ml-2"
+                                data-name="repeat"
+                                name="slider_home_settings[<?php echo $number;?>][title]"
+                                placeholder="Title"><?php echo $value['title'] ?? '';?></textarea>
+                            <textarea class="form-control form-control-sm col-2 ml-2"
+                                data-name="repeat"
+                                name="slider_home_settings[<?php echo $number;?>][text]"
+                                placeholder="Text"><?php echo $value['text'] ?? '';?></textarea>
+                            <button class="remove-btn btn btn-danger ml-3">Remove</button>
                         </div>
                         <?php
                     }
                 }else{
                     ?>
-                    <div class="items d-flex mb-1" data-id="0" style="display: flex;align-items: center;">
-
-                        <input type="button" class="button button-primary custom_media_button custom_media_0" id="custom_media_button" name="0" value="Upload Icon" style="margin-top:5px;" />
-                        <img class="custom_media_image_0" src="" style="margin:10px;padding:0;max-width:100px;float:left;display:inline-block" />
-                        <input class="media_image_0 form-control form-control-sm col-3" data-name="repeat" type="text" name="slider_home_settings[0][image]" value="" placeholder="Image"/>
-                        <textarea class="form-control form-control-sm col-2 main-text" data-name="repeat" name="slider_home_settings[0][title]" id="slider_home_settings[0][title]" placeholder="<?= 'Title' ?>"></textarea>
-                        <textarea class="form-control form-control-sm col-2 main-text" data-name="repeat" name="slider_home_settings[0][text]" id="slider_home_settings[0][text]" placeholder="<?= 'Text' ?>"></textarea>
-                        <div class="pull-right repeater-remove-btn col-2"><button class="remove-btn bg-red action_btns text-fff">Remove</button></div>
+                    <div class="items d-flex mb-1 align-items-center" data-id="0">
+                        <div class="slider_order" style="cursor:pointer;margin-right:5px;">
+                            <span class="dashicons dashicons-sort"></span>
+                        </div>
+                        <button type="button" class="button button-primary custom-media-btn" data-key="0">Upload Icon</button>
+                        <img class="custom_media_image_0" src="" style="display:none;max-width:100px;margin:0 10px;">
+                        <input class="media_image_0 form-control form-control-sm col-3 ml-2" data-name="repeat" type="text" name="slider_home_settings[0][image]" value="" placeholder="Image"/>
+                        <textarea class="form-control form-control-sm col-2 ml-2" data-name="repeat" name="slider_home_settings[0][title]" placeholder="Title"></textarea>
+                        <textarea class="form-control form-control-sm col-2 ml-2" data-name="repeat" name="slider_home_settings[0][text]" placeholder="Text"></textarea>
+                        <button class="remove-btn btn btn-danger ml-3">Remove</button>
                     </div>
                     <?php
                 }

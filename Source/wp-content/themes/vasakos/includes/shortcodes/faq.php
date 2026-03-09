@@ -2,50 +2,33 @@
 /**
  * FAQ Shortcode
  * Usage: [faq page_id="123" title="Frequently Asked Questions" subtitle="What people ask"]
+ * On category/taxonomy archive pages the queried term is used automatically.
  */
 
 function faq_shortcode($atts)
 {
     $atts = shortcode_atts(
         array(
-            'page_id' => '', // Page ID containing FAQ metabox
-            'category_id' => '', // Category ID containing FAQ term meta
-            'title' => 'Frequently Asked Questions',
+            'page_id'  => '',
+            'title'    => 'Frequently Asked Questions',
             'subtitle' => 'What people ask',
         ),
         $atts,
         'faq'
     );
 
-    $faqs = array();
+    $faqs     = array();
     $faqColor = '#fff';
 
-    // Check if we're getting FAQs from a category
-    if (!empty($atts['category_id'])) {
-        $faqs = get_term_meta($atts['category_id'], 'faqs', true);
-        $faqColor = get_term_meta($atts['category_id'], 'faqs_color', true) ?: '#fff';
-        
-        // Override title/subtitle from category if not explicitly set in shortcode
-        $stored_title = get_term_meta($atts['category_id'], 'faqs_intro_heading', true);
-        $stored_subtitle = get_term_meta($atts['category_id'], 'faqs_intro_text', true);
-        
-        if (!empty($stored_title) && $atts['title'] === 'Frequently Asked Questions') {
-            $atts['title'] = $stored_title;
-        }
-        if (!empty($stored_subtitle) && $atts['subtitle'] === 'What people ask') {
-            $atts['subtitle'] = $stored_subtitle;
-        }
-    } 
-    // Check if we're on a category archive page (auto-detect)
-    elseif (is_category() && empty($atts['page_id'])) {
-        $category = get_queried_object();
-        if ($category && isset($category->term_id)) {
-            $faqs = get_term_meta($category->term_id, 'faqs', true);
-            $faqColor = get_term_meta($category->term_id, 'faqs_color', true) ?: '#fff';
-            
-            $stored_title = get_term_meta($category->term_id, 'faqs_intro_heading', true);
-            $stored_subtitle = get_term_meta($category->term_id, 'faqs_intro_text', true);
-            
+    if (is_category() || is_tax()) {
+        $term = get_queried_object();
+        if ($term && isset($term->term_id)) {
+            $faqs     = get_term_meta($term->term_id, 'faqs', true);
+            $faqColor = get_term_meta($term->term_id, 'faqs_color', true) ?: '#fff';
+
+            $stored_title    = get_term_meta($term->term_id, 'faqs_intro_heading', true);
+            $stored_subtitle = get_term_meta($term->term_id, 'faqs_intro_text', true);
+
             if (!empty($stored_title) && $atts['title'] === 'Frequently Asked Questions') {
                 $atts['title'] = $stored_title;
             }
@@ -53,13 +36,11 @@ function faq_shortcode($atts)
                 $atts['subtitle'] = $stored_subtitle;
             }
         }
-    }
-    // Otherwise get from page
-    else {
+    } else {
         $page_id = !empty($atts['page_id']) ? $atts['page_id'] : get_the_ID();
 
         if (!empty($page_id)) {
-            $faqs = get_post_meta($page_id, 'faqs', true);
+            $faqs     = get_post_meta($page_id, 'faqs', true);
             $faqColor = get_post_meta($page_id, 'faqs_color', true) ?: '#fff';
         }
     }

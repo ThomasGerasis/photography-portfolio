@@ -12,7 +12,6 @@ class BasicSettings
      */
     public function __construct($postTypeName)
     {
-        add_action('admin_menu', [$this, 'add_settings']);
         add_action('admin_enqueue_scripts', [$this, 'registerAssets']);
         add_action('admin_init', [$this, 'registerSettings']);
         $this->postTypeName = $postTypeName;

@@ -15,22 +15,12 @@ class TinyMCE_Shortcode_Button
     }
     public function load_tinymce_assets($hook)
     {
-        // Only load on post editor screens
-        if (!in_array($hook, ['post.php', 'post-new.php'])) {
-            return;
-        }
-
-        $base_path = get_template_directory() . '/includes/plugins/tinymce/';
-        $base_url  = get_template_directory_uri() . '/includes/plugins/tinymce/';
-
-        // Pass AJAX url + nonce to the TinyMCE plugin
-        wp_enqueue_script(
-            'vasakos-tinymce-data',
-            $base_url . 'tinymce-shortcodes.js',
-            ['jquery'],
-            filemtime($base_path . 'tinymce-shortcodes.js'),
-            true
-        );
+        // Register a virtual script (no src) to carry the localized data.
+        // The actual tinymce-shortcodes.js is loaded by TinyMCE itself via
+        // mce_external_plugins — enqueueing it here would cause it to run as a
+        // plain <script> tag before tinymce is defined, triggering a JS error.
+        wp_register_script('vasakos-tinymce-data', false, ['jquery'], null, true);
+        wp_enqueue_script('vasakos-tinymce-data');
         wp_localize_script('vasakos-tinymce-data', 'VasakosTinyMCE', [
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'nonce'   => wp_create_nonce('vasakos_shortcode_modal'),

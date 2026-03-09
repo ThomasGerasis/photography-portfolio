@@ -21,7 +21,7 @@ $settings = get_option('basic_settings');
                     <div class="position-absolute divider w-100 text-center" style="background: #E1E1E1;height: 220px;top:120px;"></div>
                 <?php } ?>
                 <div style="z-index: 2">
-                    <?php echo do_shortcode('[popular_categories]') ?>
+                    <?php echo do_shortcode('[photoshoots_categories]') ?>
                 </div>
             </div>
     </div>

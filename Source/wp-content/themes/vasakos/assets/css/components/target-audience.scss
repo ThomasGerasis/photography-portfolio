@@ -1,0 +1,124 @@
+.target-audience-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+    background: $bg-gray;
+    border: 1px solid rgba(0,0,0,.07);
+    border-radius: 4px;
+    margin: 30px 0;
+
+    @media #{$breakpoint-xs} { padding: 24px 20px; gap: 30px; }
+
+    // Content column — full width when no image, 55% when image present
+    &__content {
+        flex: 1 1 300px;
+    }
+
+    // Image column
+    &__image-col {
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    // Polaroid frame
+    &__polaroid {
+        background: #fff;
+        padding: 12px 12px 40px;
+        box-shadow: 0 6px 24px rgba(0,0,0,.12), 0 1px 4px rgba(0,0,0,.08);
+        transform: rotate(2deg);
+        transition: transform .3s ease, box-shadow .3s ease;
+        max-width: 300px;
+
+        @media #{$breakpoint-xs} { max-width: 220px; padding: 8px 8px 28px; }
+
+        &:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 0 12px 40px rgba(0,0,0,.16);
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+
+            @media #{$breakpoint-xs} { height: 220px; }
+        }
+    }
+
+    .target-audience__heading {
+        font-size: 28px;
+        font-weight: 700;
+        color: $heading;
+        margin-bottom: 6px;
+        position: relative;
+        padding-bottom: 14px;
+
+        // accent underline
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 44px;
+            height: 3px;
+            background: $secondary;
+            border-radius: 2px;
+        }
+
+        @media #{$breakpoint-xs} { font-size: 22px; }
+    }
+
+    .target-audience__subheading {
+        font-size: 17px;
+        font-weight: 500;
+        color: $secondary;
+        margin-top: 18px;
+        margin-bottom: 12px;
+
+        @media #{$breakpoint-xs} { font-size: 15px; }
+    }
+
+    .target-audience__intro {
+        font-size: 15px;
+        color: $text-gray;
+        margin-bottom: 20px;
+    }
+
+    .target-audience__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .target-audience__item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 15px;
+        color: $text;
+
+        i {
+            margin-top: 4px;
+            color: $secondary;
+            font-size: 12px;
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            background: rgba($secondary, .1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &.fa-circle { font-size: 7px; }
+        }
+    }
+}

@@ -43,14 +43,13 @@ class PhotoAlbumsAdminGrid
 
     public function addMenu(): void
     {
-        add_menu_page(
-            __('Photo Albums', 'textdomain'),
-            __('Photo Albums', 'textdomain'),
+        add_submenu_page(
+            'edit.php?post_type=photos',
+            __('Photoshoots Rearrangement', 'textdomain'),
+            __('Photoshoots Rearrangement', 'textdomain'),
             'manage_options',
             'photo-albums',
-            [$this, 'renderPage'],
-            get_template_directory_uri() . '/assets/images/camera.png',
-            20
+            [$this, 'renderPage']
         );
     }
 
