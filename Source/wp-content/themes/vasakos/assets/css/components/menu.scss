@@ -1,24 +1,96 @@
-.sub-menu{
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  width: 180px;
-  opacity: 0;
-  background: #0e1319;
-  visibility: hidden;
-  transform: translate(30px,0);
-  transition: opacity .3s ease-in-out,visibility .3s ease-in-out,transform .3s ease-in-out;
-  padding: 5px;
-  list-style-type: none;
-  border-bottom: 3px solid #fd3a01;
-}
+.main-menu{
+  .sub-menu{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 180px;
+    opacity: 0;
+    background: #111111;
+    visibility: hidden;
+    transform: translate(30px,0);
+    transition: opacity .3s ease-in-out,visibility .3s ease-in-out,transform .3s ease-in-out;
+    padding: 5px;
+    list-style-type: none;
+    border-bottom: 3px solid #d0882b;
+    pointer-events: none;
+    z-index: 100;
 
+    li a {
+      color: rgba(255,255,255,.85);
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      font-weight: 600;
+      display: block;
+      padding: 7px 10px;
 
-.menu-main-menu-container{
-  .menu-item-has-children:hover .sub-menu {
+      &:hover {
+        color: #fff;
+        border-bottom: none;
+        background: rgba(255,255,255,.07);
+      }
+    }
+  }
+
+  .menu-item-has-children:hover > .sub-menu,
+  .menu-item-has-children:focus-within > .sub-menu {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
+  }
+
+  > .menu-item-has-children:hover > .sub-menu,
+  > .menu-item-has-children:focus-within > .sub-menu {
     transform: translate(-50%,0);
+  }
+
+  .sub-menu .menu-item-has-children > .sub-menu {
+    top: -5px;
+    left: 100%;
+    transform: translate(20px,0);
+  }
+
+  .sub-menu .menu-item-has-children:hover > .sub-menu,
+  .sub-menu .menu-item-has-children:focus-within > .sub-menu {
+    transform: translate(0,0);
+  }
+}
+
+.site-mobile-menu .site-nav-wrap {
+  .menu-item-has-children > ul.mobile-sub-menu {
+    // Reset desktop absolute-positioning so it lays out inline
+    position: static;
+    width: 100%;
+    transform: none;
+    background: transparent;
+    border-bottom: 0;
+    padding: 0 0 0 16px;
+    list-style-type: none;
+    // display is controlled by jQuery slideToggle
+  }
+
+  .arrow-collapse {
+    margin-left: auto; // pushed to the far right inside the flex <a>
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #555;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    font-size: 14px;
+    line-height: 1;
+    pointer-events: auto;
+
+    &::after {
+      content: '+';
+    }
+
+    &.active::after {
+      content: '\2212'; // − minus sign
+    }
   }
 }
 
@@ -37,7 +109,7 @@
 .main-menu{
   li{
     @media screen and (min-width: 1280px) {
-      padding: 20px 5px;
+      padding: 10px 5px;
       margin: 0 20px;
     }
     padding: 4px 5px;
@@ -58,6 +130,14 @@
 }
 .main-menu li a:hover{
   border-bottom: 1px solid $primary;
+}
+
+// Chevron indicator for top-level items that have a submenu
+.main-menu > li.menu-item-has-children > a::after {
+  content: ' ▾';
+  font-size: 10px;
+  vertical-align: middle;
+  opacity: .6;
 }
 
 
