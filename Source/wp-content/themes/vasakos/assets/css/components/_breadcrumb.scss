@@ -40,11 +40,12 @@
 .breadcrumb-area {
     position: relative;
     z-index: 1;
-    height: auto;
-    min-height: 220px;
+    height: 300px;
+    // min-height: 220px;
 
     @media #{$breakpoint-xs} {
-        min-height: 220px;
+        // min-height: 220px;
+        height: 220px;
     }
 
     .page-title {
