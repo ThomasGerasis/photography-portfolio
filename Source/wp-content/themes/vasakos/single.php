@@ -17,7 +17,7 @@
                     . ' image="'     . esc_url($thumbnail_url)      . '"'
                     . ' title="'     . esc_attr(get_the_title())    . '"'
                     . ' title_tag="h1"'
-                    . ' min_height="420px"'
+                    . ' min_height="370px"'
                     . ' overlay="yes"]'
             );
         else :
