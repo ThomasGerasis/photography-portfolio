@@ -1,5 +1,89 @@
 /* :: 13.0 Blog CSS */
 
+// ── Blog category filter tabs (home page) ─────────────────────────────────────
+
+.blog-filter__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 28px;
+    border-bottom: none !important;
+}
+
+.blog-filter__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: $bg-gray;
+    border: 1px solid darken($bg-gray, 8%);
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: $text;
+    cursor: pointer;
+    transition: background 250ms, color 250ms, border-color 250ms, box-shadow 250ms;
+
+    &:hover {
+        background: rgba($secondary, 0.1);
+        color: $secondary;
+        border-color: $secondary;
+    }
+
+    &.active {
+        background: $secondary;
+        color: $white;
+        border-color: $secondary;
+        box-shadow: 0 4px 14px rgba($secondary, 0.35);
+    }
+}
+
+.blog-filter__count {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.12);
+    color: inherit;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 3px 7px;
+    border-radius: 20px;
+
+    .blog-filter__btn.active & {
+        background: rgba(255, 255, 255, 0.25);
+    }
+}
+
+.blog-filter__view-all {
+    text-align: center;
+    margin-top: 28px;
+    margin-bottom: 8px;
+}
+
+// Fixed card height for consistent grid layout
+.single-post-area {
+    height: 300px;
+
+    .post-thumbnail {
+        height: 100%;
+        border-radius : 8px;
+
+        a {
+            display: block;
+            height: 100%;
+        }
+
+        img {
+            height: 100%;
+            border-radius : 8px;
+            object-fit: cover;
+        }
+    }
+}
+
 .blog-details-text {
     position: relative;
     z-index: 1;
@@ -241,139 +325,6 @@
     }
 }
 
-.comment_area {
-    position: relative;
-    z-index: 1;
-    padding-bottom: 20px;
-    border-bottom: 1px solid $border;
-
-    .single_comment_area {
-        position: relative;
-        z-index: 1;
-
-        &::after {
-            position: absolute;
-            width: 1px;
-            background-color: $border;
-            height: 100%;
-            content: '';
-            top: 0;
-            left: 90px;
-            z-index: 1;
-
-            @media #{$breakpoint-xs} {
-                left: 50px;
-            }
-        }
-
-        .single_comment_area {
-            &::after {
-                display: none;
-            }
-        }
-    }
-
-    .comment-content {
-        position: relative;
-        z-index: 1;
-        margin-bottom: 40px;
-
-        .comment-author {
-            @include flex(0 0 70px);
-            width: 70px;
-            max-width: 70px;
-            margin-right: 40px;
-            border-radius: 50%;
-
-            @media #{$breakpoint-xs} {
-                @include flex(0 0 40px);
-                width: 40px;
-                max-width: 40px;
-                margin-right: 20px;
-            }
-
-            img {
-                border-radius: 50%;
-            }
-        }
-
-        .comment-meta {
-            .post-date {
-                font-size: 12px;
-                text-transform: uppercase;
-                display: block;
-                margin-bottom: 5px;
-                font-weight: 300;
-                color: #b2b2b2;
-                letter-spacing: 1px;
-
-                &:hover,
-                &:focus {
-                    color: $primary;
-                }
-            }
-
-            h5 {
-                margin-bottom: 5px;
-                font-size: 18px;
-
-                @media #{$breakpoint-xs} {
-                    font-size: 16px;
-                }
-            }
-
-            p {
-                color: $text;
-                font-size: 14px;
-
-                @media #{$breakpoint-xs} {
-                    font-size: 13px;
-                }
-            }
-
-            .like,
-            .reply {
-                display: inline-block;
-                padding: 5px 25px 5px;
-                font-size: 12px;
-                font-weight: 600;
-                border: 1px solid $border;
-                text-transform: uppercase;
-                border-radius: 2px;
-
-                &:focus,
-                &:hover {
-                    border-color: $primary;
-                    background-color: $primary;
-                    color: $white;
-                }
-            }
-        }
-    }
-
-    .children {
-        margin-left: 120px;
-
-        @media #{$breakpoint-xs} {
-            margin-left: 60px;
-        }
-
-        .single_comment_area {
-            &:last-of-type {
-                margin-bottom: 0;
-            }
-
-            .comment-author {
-                margin-right: 20px;
-
-                @media #{$breakpoint-xs} {
-                    margin-right: 10px;
-                }
-            }
-        }
-    }
-}
-
 .alime-blog-area {
     position: relative;
     z-index: 1;
@@ -401,6 +352,7 @@
         height: 100%;
         top: 0;
         left: 0;
+        border-radius : 8px;
         background-color: rgba(0, 0, 0, 0.5);
         content: '';
         z-index: 1;
@@ -420,10 +372,10 @@
         position: absolute;
         padding: 2px 15px;
         border-radius: 2px;
-        font-size: 12px;
+        font-size: 13px;
         text-transform: uppercase;
         color: $white;
-        background-color: $primary;
+        background-color: $secondary;
         top: 15px;
         right: 15px;
         z-index: 20;
@@ -447,7 +399,9 @@
             position: relative;
             z-index: 1;
             margin-bottom: 5px;
-
+            .date{
+                font-size: 12px;
+            }
             a {
                 position: relative;
                 z-index: 1;
@@ -456,18 +410,9 @@
                 font-weight: 300;
                 margin-right: 21px;
 
-                &:last-child {
-                    &::after {
-                        content: '|';
-                        position: absolute;
-                        top: 0;
-                        left: -11px;
-                        z-index: 1;
-                    }
-                }
-
                 &:hover,
                 &:focus {
+                    cursor: pointer;
                     color: $hover;
 
                     &::after {

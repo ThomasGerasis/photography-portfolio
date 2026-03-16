@@ -16,7 +16,10 @@ $crumbs = [];
 // Always start with Home
 $crumbs[] = ['label' => __('Home'), 'url' => home_url('/')];
 
-if (is_tax()) {
+if (is_home() && !is_front_page()) {
+    $blog_page = get_option('page_for_posts');
+    $crumbs[]  = ['label' => get_the_title($blog_page), 'url' => ''];
+} elseif (is_tax()) {
     $term     = get_queried_object();
     $taxonomy = get_taxonomy($term->taxonomy);
 

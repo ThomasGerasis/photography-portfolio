@@ -5,6 +5,7 @@ class Page_FAQ_Fields
     {
         add_action('add_meta_boxes', array($this, 'add_meta_box'));
         add_action('save_post_page', array($this, 'save_page_faq_fields'));
+        add_action('save_post_post', array($this, 'save_page_faq_fields'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
     }
 
@@ -25,7 +26,7 @@ class Page_FAQ_Fields
             'page_faq_fields',
             'FAQ Settings',
             array($this, 'render_meta_box'),
-            'page',
+            ['page', 'post'],
             'normal',
             'default'
         );

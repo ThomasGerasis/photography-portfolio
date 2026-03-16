@@ -246,6 +246,7 @@ $sides: (top, bottom, left, right); // Leave this variable alone
   @import "components/follow";
   @import "components/breadcrumb";
   @import "components/testimonials";
+  @import "components/blog";
   //@import "blog";
   //@import "team";
   @import "components/gallery";
@@ -267,6 +268,7 @@ $sides: (top, bottom, left, right); // Leave this variable alone
   @import "components/video-embed";
   @import "components/timeline";
   @import "components/cta-section";
+  @import "components/related-posts";
   @import "components/stats-bar";
 
 //icons

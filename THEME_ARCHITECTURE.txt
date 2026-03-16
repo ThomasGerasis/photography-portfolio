@@ -1,0 +1,339 @@
+================================================================================
+VASAKOS WORDPRESS THEME - ARCHITECTURE OVERVIEW
+================================================================================
+
+DIRECTORY STRUCTURE:
+────────────────────
+vasakos/
+│
+├── 📄 ROOT TEMPLATES (Page Templates)
+│   ├── 404.php                    → Error page
+│   ├── about.php                  → About Me page (custom template)
+│   ├── category.php               → Category archives
+│   ├── contact-page.php           → Contact page (custom template)
+│   ├── footer.php                 → Footer with scripts & analytics
+│   ├── front-page.php             → Homepage
+│   ├── header.php                 → HTML <head> & navigation
+│   ├── index.php                  → Fallback template
+│   ├── pricing-page.php           → Pricing page (custom template)
+│   ├── single.php                 → Single post/article
+│   ├── taxonomy-photoshoots.php   → Photoshoots taxonomy archive
+│   ├── taxonomy.php               → Generic taxonomy fallback
+│   ├── functions.php              → MAIN: Loads all theme functionality
+│   ├── style.css                  → Theme header (metadata)
+│   └── webpack.config.js          → Webpack build config
+│
+├── 📁 templates/ - REUSABLE TEMPLATE PARTS
+│   ├── about-me.php               → Profile introduction component
+│   ├── breadcrumb.php             → Smart breadcrumb navigation
+│   ├── contact-us.php             → Contact form section
+│   ├── content-faq.php            → FAQ accordion
+│   ├── content-single.php         → Single post content wrapper
+│   ├── counter.php                → Statistics/counter section
+│   ├── follow-instagram.php       → Instagram feed carousel
+│   ├── fun-facts.php              → Fun facts cards grid
+│   ├── gallery-area.php           → Filterable photo gallery
+│   ├── profile.php                → Hero profile section
+│   ├── quote.php                  → Quotation block
+│   ├── services.php               → Services/categories grid
+│   ├── slider-homepage.php        → Full-width hero slider
+│   ├── testimonials.php           → Testimonials carousel
+│   └── menus/
+│       ├── header-menu.php        → Desktop/mobile navigation
+│       ├── header-menu-basic.php  → Basic menu
+│       └── nav-mobile.php         → Mobile menu
+│
+├── 📁 includes/ - THEME FUNCTIONALITY
+│   │
+│   ├── 📁 theme/                  → Core theme setup
+│   │   ├── assets.php             → Admin CSS/JS
+│   │   ├── images.php             → Featured image setup
+│   │   ├── menus.php              → Register nav menus
+│   │   ├── post-type-*.php        → Custom post type registrations
+│   │   ├── theme-support.php      → HTML5, mobile detection
+│   │   └── tinymce-shortcode-button.php
+│   │
+│   ├── 📁 metaboxes/              → WPAlchemy Metabox Framework
+│   │   ├── counter-meta.php       → Statistics
+│   │   ├── faq-meta.php           → FAQ items
+│   │   ├── fun_facts.php          → Fun facts
+│   │   ├── pricing-package-meta-box.php
+│   │   ├── testimonial-meta.php   → Author/content
+│   │   ├── category-faq-fields.php
+│   │   ├── page-faq-fields.php
+│   │   └── why-choose-me-meta-box.php
+│   │
+│   ├── 📁 settings-page/          → Admin Settings Pages
+│   │   ├── BasicSettings.php      → Site email, social, titles
+│   │   ├── SiteSettings.php       → Site configuration
+│   │   ├── SliderSettings.php     → Homepage slider config
+│   │   ├── SliderSettingsCarousel.php
+│   │   └── PhotoAlbums.php        → Photo management grid
+│   │
+│   ├── 📁 shortcodes/             → Custom Shortcodes (14+ codes)
+│   │   ├── pricing_packages.php   → [pricing_packages]
+│   │   ├── photoshoots_categories.php
+│   │   ├── contact_form.php       → [contact_form]
+│   │   ├── banner_image.php       → [banner_image]
+│   │   ├── photo_gallery.php      → [photo_gallery]
+│   │   ├── faq.php                → [faq]
+│   │   ├── testimonials.php       → [testimonials]
+│   │   ├── stats_bar.php          → [stats_bar]
+│   │   ├── video_embed.php        → [video_embed]
+│   │   ├── why_choose_me.php      → [why_choose_me]
+│   │   ├── timeline.php           → [timeline]
+│   │   ├── cta_section.php        → [cta_section]
+│   │   ├── button.php             → [button]
+│   │   ├── airbnb_reviews.php     → [airbnb_reviews]
+│   │   └── target_audience.php    → [target_audience]
+│   │
+│   ├── 📁 functions/              → Helper functions
+│   │   └── 📁 schemas/
+│   │       ├── faqSchema.php      → JSON-LD FAQ schema
+│   │       └── productsSchemas.php → Product/pricing schema
+│   │
+│   ├── 📁 plugins/                → Third-party integrations
+│   │   ├── 📁 wpalchemy/          → Metabox framework
+│   │   │   ├── MetaBox.php
+│   │   │   ├── MediaAccess.php
+│   │   │   ├── setup.php
+│   │   │   └── set_metaboxes.php
+│   │   └── 📁 tinymce/            → Editor integrations
+│   │       └── 📁 shortcodes/     → Modal dialogs for each shortcode
+│   │
+│   └── ajax-helper.php            → AJAX form processing
+│
+├── 📁 assets/ - SOURCE FILES
+│   ├── 📁 js/
+│   │   ├── scripts.js             → Main theme JS
+│   │   ├── bootstrap.js           → Bootstrap initialization
+│   │   ├── active.js              → Active states/animations
+│   │   ├── slider.js              → Slider/carousel logic
+│   │   ├── about.js               → About page specific
+│   │   └── infinite-scroll.js     → Pagination
+│   │
+│   ├── 📁 css/
+│   │   ├── main.scss              → Main stylesheet
+│   │   ├── bootstrap.scss         → Bootstrap overrides
+│   │   ├── about.scss             → About page styles
+│   │   ├── 📁 components/         → SCSS components
+│   │   │   ├── _hero.scss
+│   │   │   ├── _profile.scss
+│   │   │   ├── _pricing.scss
+│   │   │   ├── _gallery.scss
+│   │   │   ├── menu.scss
+│   │   │   ├── faq.scss
+│   │   │   ├── services.scss
+│   │   │   ├── timeline.scss
+│   │   │   └── masonry-layout.scss
+│   │   ├── 📁 utilities/          → Utility CSS classes
+│   │   ├── 📁 mixins/             → SCSS mixins
+│   │   │   ├── _flex.scss
+│   │   │   └── _miscellaneous.scss
+│   │   ├── 📁 icons/              → Icon font styles
+│   │   └── 📁 default/            → Third-party CSS
+│   │
+│   ├── 📁 images/
+│   │   ├── logo.jpg
+│   │   ├── lensdivider.svg        → Decorative lens SVG
+│   │   ├── about-me.jpg
+│   │   ├── services*.svg
+│   │   ├── bg-slider*.jpg
+│   │   └── ...more images
+│   │
+│   ├── 📁 fonts/
+│   │   ├── playfair/              → Display font
+│   │   ├── Mulish/                → Body font
+│   │   └── roboto/                → Fallback font
+│   │
+│   ├── 📁 bg-img/                 → Background images
+│   ├── 📁 icons/                  → Icon files
+│   └── 📁 favicon/                → Favicon assets
+│
+├── 📁 dist/ - COMPILED OUTPUT (Webpack)
+│   ├── 📁 css/
+│   │   ├── bootstrap.min.css      → Bootstrap 5
+│   │   ├── main.min.css           → Theme CSS (PurgeCSS optimized)
+│   │   └── about.min.css
+│   │
+│   ├── 📁 js/
+│   │   ├── bootstrap.min.js
+│   │   ├── main.min.js            → Main JS bundle
+│   │   ├── active.min.js
+│   │   ├── slider.min.js
+│   │   ├── about.min.js
+│   │   └── infinite-scroll.min.js
+│   │
+│   ├── 📁 fonts/
+│   │   └── (Preloaded fonts)
+│   │
+│   └── *.LICENSE.txt              → Package licenses
+│
+├── 📦 package.json                → NPM dependencies & build scripts
+├── 📦 package-lock.json
+├── webpack.config.js              → Webpack configuration
+└── 📁 node_modules/               → Installed dependencies
+
+================================================================================
+WORKFLOW & PATTERNS
+================================================================================
+
+1. CONTENT MANAGEMENT:
+   ┌─────────────────────────────────────────┐
+   │ WordPress Admin Editor                   │
+   │ ├─ Post Meta Fields (WPAlchemy Metabox) │
+   │ ├─ Settings Pages (Theme Options)        │
+   │ └─ Custom Post Types (Photos, etc.)      │
+   └────────────┬────────────────────────────┘
+                │
+                ↓
+   ┌─────────────────────────────────────────┐
+   │ Template Files fetch data via:           │
+   │ ├─ get_post_meta()                       │
+   │ ├─ get_option()                          │
+   │ ├─ WP_Query                              │
+   │ └─ get_posts()                           │
+   └────────────┬────────────────────────────┘
+                │
+                ↓
+   ┌─────────────────────────────────────────┐
+   │ Frontend Display                         │
+   │ (Using Bootstrap 5 + Custom CSS)         │
+   └─────────────────────────────────────────┘
+
+2. PAGE TEMPLATE HIERARCHY:
+   Custom Templates (about.php, pricing-page.php, contact-page.php)
+                        ↓
+   Specific Archives (single.php, category.php, taxonomy-photoshoots.php)
+                        ↓
+   Generic Fallbacks (taxonomy.php, index.php)
+
+3. COMPONENT REUSABILITY:
+   Templates loaded via: get_template_part('templates/component-name', null, $args)
+   
+   Example: get_template_part('templates/testimonials')
+   This loads: templates/testimonials.php with inherited scope
+
+4. DATA FLOW:
+   WordPress Data
+   (Posts, Meta, Options)
+        │
+        ↓
+   Template Variables
+   (PHP $variables)
+        │
+        ↓
+   HTML Output
+   (Bootstrap classes + custom CSS)
+        │
+        ↓
+   JavaScript Enhancement
+   (jQuery, WOW.js, Owl Carousel, etc.)
+
+================================================================================
+KEY DEPENDENCIES & TECHNOLOGIES
+================================================================================
+
+📦 BUILD TOOLS:
+   • Webpack 5          - Module bundler
+   • SASS/SCSS          - CSS preprocessing
+   • PostCSS            - CSS compatibility (autoprefixer)
+   • PurgeCSS           - Remove unused CSS
+   • Terser             - JS minification
+   • Mini CSS Extract   - Extract CSS to separate files
+
+📦 FRONTEND FRAMEWORKS:
+   • Bootstrap 5.1.3    - CSS framework
+   • jQuery 3.6.1       - DOM manipulation
+   • Swiper/Carousel    - Slider components
+   • Masonry Layout     - Grid layout
+   • Owl Carousel 2.3.4 - Product carousels
+
+📦 ANIMATIONS & INTERACTIONS:
+   • WOW.js 1.1.3       - Scroll animations
+   • Magnific Popup 1.2 - Lightbox
+   • Imagesloaded 5.0   - Image loading detection
+
+📦 WORDPRESS PLUGINS:
+   • WPAlchemy          - Metabox framework
+   • TinyMCE Shortcodes - Editor integrations
+
+📦 INTEGRATIONS:
+   • Google reCAPTCHA   - Form protection
+   • Google Analytics   - GA ID: G-WP6KF2ZDH2
+   • Google Fonts       - FontAwesome 5.8.1
+   • TrustIndex         - Airbnb/review embeds
+
+================================================================================
+BUILD PROCESS
+================================================================================
+
+SOURCE FILES (assets/)
+   │
+   ├─ SCSS Compilation (main.scss + components)
+   ├─ JavaScript Bundling (scripts.js + vendors)
+   │
+   ↓
+   
+WEBPACK Processing
+   │
+   ├─ PurgeCSS (remove unused Bootstrap + CSS)
+   ├─ Autoprefixer (add vendor prefixes)
+   ├─ Minification (CSS & JS)
+   │
+   ↓
+   
+DIST FILES (production-ready)
+   │
+   └─ Served to frontend via functions.php/wp_enqueue_*
+
+Commands:
+   npm start   → Development mode (watch for changes)
+   npm build   → Production build (optimized, minified)
+
+================================================================================
+CUSTOM CSS UTILITIES
+================================================================================
+
+Spacing (custom scale):
+   .mt-10p, .mt-15p, .mt-20p, .mt-40p, .mt-50p, .mt-70p (margin-top)
+   .mb-* (margin-bottom)
+   .pt-*, .pb-* (padding variants)
+
+Dimensions:
+   .w-40, .w-50, .w-70, .w-100
+   .w-sm-100 (mobile full-width)
+
+Flexbox:
+   .d-flex, .flex-wrap, .align-items-center, .justify-content-center
+
+Typography:
+   .heading_title (custom subtitle styling)
+   .text-center, .text-dark, .text-white, .text-secondary
+
+Components:
+   .border-btn, .border-btn-dark (custom button styling)
+   .lazy, .lazy-background (lazy loading)
+   .read-more-btn (expandable text)
+
+================================================================================
+COLOR PALETTE
+================================================================================
+
+Primary/Accent:   #D1862B (Gold/Orange)
+Secondary:        Used for highlights
+Dark:             #000000 (backgrounds)
+Light:            #FFFFFF (text/backgrounds)
+
+================================================================================
+RESPONSIVE BREAKPOINTS (Bootstrap 5)
+================================================================================
+
+Mobile:     < 576px
+Tablet:     576px - 767px
+Desktop:    768px - 991px
+Wide:       992px+
+
+Conditional rendering via $GLOBALS['is_mobile']
+
+================================================================================

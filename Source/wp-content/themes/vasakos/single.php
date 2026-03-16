@@ -34,6 +34,8 @@
         <?php get_template_part('templates/content-single', get_post_type()); ?>
     </div>
 
+    <?php get_template_part('templates/partials/related-posts'); ?>
+
 <?php endwhile; ?>
 
 <?php get_footer(); ?>
