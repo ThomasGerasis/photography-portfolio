@@ -149,6 +149,6 @@ function pricing_packages_shortcode($atts)
 <?php
     }
 
-    return ob_get_clean();
+    return ob_get_clean() . pricingSchema();
 }
 add_shortcode('pricing_packages', 'pricing_packages_shortcode');
