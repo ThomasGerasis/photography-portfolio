@@ -212,34 +212,26 @@ jQuery(function() {
 
         setTimeout(function() {
 
-            let counter = 0;
-            $('.site-mobile-menu .has-children').each(function(){
+            $('.site-mobile-menu .has-children, .site-mobile-menu .menu-item-has-children').each(function(){
                 var $this = $(this);
-
-                $this.prepend('<span class="arrow-collapse collapsed">');
-
-                $this.find('.arrow-collapse').attr({
-                    'data-toggle' : 'collapse',
-                    'data-target' : '#collapseItem' + counter,
-                });
-
-                $this.find('> ul').attr({
-                    'class' : 'collapse',
-                    'id' : 'collapseItem' + counter,
-                });
-                counter++;
+                // Append arrow inside the <a> so it stays in the link row via flexbox
+                $this.find('> a').append('<span class="arrow-collapse">');
+                $this.find('> ul').addClass('mobile-sub-menu').hide();
             });
         }, 1000);
 
         wrapper.on('click', '.arrow-collapse', function(e) {
-            var $this = $(this);
-            if ( $this.closest('li').find('.collapse').hasClass('show') ) {
-                $this.removeClass('active');
-            } else {
-                $this.addClass('active');
-            }
             e.preventDefault();
+            e.stopPropagation(); // prevent bubbling up to the <a> click handler
+            var $li = $(this).closest('li');
+            $(this).toggleClass('active');
+            $li.find('> ul').slideToggle(200);
+        });
 
+        // Intercept clicks on parent-item links: toggle submenu instead of navigating
+        wrapper.on('click', '.site-mobile-menu .site-nav-wrap .menu-item-has-children > a', function(e) {
+            e.preventDefault();
+            $(this).find('.arrow-collapse').trigger('click');
         });
 
         $(window).resize(function() {
@@ -283,7 +275,6 @@ jQuery(function() {
 document.addEventListener('DOMContentLoaded', function() {
     // Check for data in hash click
     const bookNowLinks = document.querySelectorAll('.package-btn');
-    console.log(bookNowLinks);
     bookNowLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const service = this.getAttribute('data-service');

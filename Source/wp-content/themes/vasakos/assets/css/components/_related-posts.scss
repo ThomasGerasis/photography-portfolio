@@ -1,0 +1,32 @@
+/* :: Related Posts Section */
+
+.related-posts-section {
+
+    .related-posts__title {
+        font-size: 22px;
+        font-weight: 700;
+        color: $dark;
+        margin-bottom: 24px;
+        position: relative;
+        display: inline-block;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 48px;
+            height: 3px;
+            background: $secondary;
+            border-radius: 2px;
+            margin-top: 8px;
+        }
+    }
+
+    // ── Divider above the section ──────────────────────────────────
+    &::before {
+        content: '';
+        display: block;
+        height: 1px;
+        background: rgba($border, 0.4);
+        margin-bottom: 32px;
+    }
+}

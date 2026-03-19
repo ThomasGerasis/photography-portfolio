@@ -186,13 +186,10 @@
     <script defer type="text/javascript" src="<?php echo get_template_directory_uri() . '/dist/slider.min.js'; ?>"></script>
 <?php } ?>
 
-<?php if (is_category()) { ?>
-    <script defer type="text/javascript" src="<?php echo get_template_directory_uri() . '/dist/infinite-scroll.min.js'; ?>"></script>
-<?php } ?>
 
-<?php if (!is_category()) { ?>
-
-    <script>
+<script>
+    // Only load reCAPTCHA on pages that actually contain the #recaptcha element.
+    if (document.getElementById('recaptcha')) {
         function loadRecaptcha() {
             var script = document.createElement("script");
             script.src = "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=en";
@@ -208,8 +205,8 @@
         };
 
         setTimeout(loadRecaptcha, 3000);
-    </script>
-<?php } ?>
+    }
+</script>
 
 <script>
     function loadGtag() {

@@ -86,7 +86,6 @@ define('DISALLOW_FILE_MODS', getenv_docker('WORDPRESS_DISABLE_UPDATES', 'false')
 define('WP_DEBUG', true);
 define('WP_DEBUG_LOG', true);
 define('WP_DEBUG_DISPLAY', false);
-
 // (See also https://wordpress.stackexchange.com/a/152905/199287)
 /**#@-*/
 /**

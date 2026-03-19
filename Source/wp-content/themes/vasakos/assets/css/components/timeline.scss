@@ -1,0 +1,143 @@
+$tl-marker:  56px;
+$tl-color:   $secondary;
+$tl-line:    rgba($secondary, .3);
+
+.vasakos-timeline {
+    margin: 40px 0;
+
+    &__heading {
+        font-size: 26px;
+        font-weight: 700;
+        color: $heading;
+        margin-bottom: 48px;
+        text-align: center;
+        position: relative;
+        padding-bottom: 16px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 44px;
+            height: 3px;
+            background: $tl-color;
+            border-radius: 2px;
+        }
+    }
+
+    // ── HORIZONTAL layout (desktop) ──────────────────────────────
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        // horizontal: items side by side
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        position: relative;
+
+        // horizontal connector line through marker centres
+        &::before {
+            content: '';
+            position: absolute;
+            top: calc(#{$tl-marker} / 2);
+            left: calc(#{$tl-marker} / 2);
+            right: calc(#{$tl-marker} / 2);
+            height: 2px;
+            background: $tl-line;
+            z-index: 0;
+        }
+
+        // ── VERTICAL layout (mobile) ─────────────────────────────
+        @media #{$breakpoint-xs} {
+            flex-direction: column;
+
+            &::before {
+                top:    calc(#{$tl-marker * .7} / 2);
+                bottom: calc(#{$tl-marker * .7} / 2);
+                left:   calc(#{$tl-marker * .7} / 2);
+                right:  auto;
+                width:  2px;
+                height: auto;
+            }
+        }
+    }
+
+    &__item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 16px;
+        position: relative;
+
+        @media #{$breakpoint-xs} {
+            flex-direction: row;
+            align-items: flex-start;
+            text-align: left;
+            padding: 0 0 36px 0;
+
+            &:last-child { padding-bottom: 0; }
+        }
+    }
+
+    // ── Marker ────────────────────────────────────────────────────
+    &__marker {
+        position: relative;
+        z-index: 1;
+        width: $tl-marker;
+        height: $tl-marker;
+        border-radius: 50%;
+        background: $tl-color;
+        box-shadow: 0 0 0 5px rgba($secondary, .15), 0 4px 12px rgba($secondary, .3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-bottom: 20px;
+        transition: transform .25s ease, box-shadow .25s ease;
+
+        span {
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 0 8px rgba($secondary, .12), 0 6px 18px rgba($secondary, .35);
+        }
+
+        @media #{$breakpoint-xs} {
+            width:  $tl-marker * .7;
+            height: $tl-marker * .7;
+            margin-bottom: 0;
+            margin-right: 18px;
+            span { font-size: 14px; }
+        }
+    }
+
+    // ── Body ──────────────────────────────────────────────────────
+    &__body {
+        @media #{$breakpoint-xs} { padding-top: 4px; }
+    }
+
+    &__step-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: $heading;
+        margin-bottom: 6px;
+    }
+
+    &__step-desc {
+        font-size: 13px;
+        color: $text-gray;
+        margin: 0;
+        line-height: 1.65;
+    }
+}

@@ -12,7 +12,7 @@ get_header();
 <section class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url('<?php echo get_the_post_thumbnail_url($post->ID) ?>')">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
-            <div class="col-12">
+            <div class="col-12 d-flex align-items-center justify-content-center">
                 <div class="breadcrumb-content text-center">
                     <h1 class="page-title">Contact</h1>
                     <nav aria-label="breadcrumb">

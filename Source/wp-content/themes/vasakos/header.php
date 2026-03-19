@@ -41,11 +41,8 @@
         echo faqSchema($faqs);
     }
 
-    $pricingPakcages = get_post_meta(get_the_ID(), 'pricing', true) ?? false;
-
-    if (!empty($pricingPakcages)) {
-        echo pricingSchema($pricingPakcages);
-    }
+    echo personSchema();
+    echo breadcrumbSchema();
     ?>
 </head>
 

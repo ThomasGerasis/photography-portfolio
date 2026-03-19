@@ -65,7 +65,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: #444;
       margin-bottom: 1rem;
     }
@@ -137,3 +137,64 @@
   
 
  
+
+// ── Package title info tooltip ──────────────────────────────────
+.pkg-info-tooltip {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 6px;
+    vertical-align: middle;
+
+    // the ⓘ icon
+    > i {
+        font-size: 15px;
+        color: dark;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    // tooltip box — hidden by default
+    &__box {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+
+        position: absolute;
+        bottom: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+
+        width: 250px;
+        padding: 10px 14px;
+        background: $dark;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.55;
+        border-radius: 4px;
+        box-shadow: 0 4px 16px rgba(0,0,0,.25);
+        white-space: normal;
+        transition: opacity .2s ease, transform .2s ease;
+
+        // arrow pointing down
+        &::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: $dark;
+        }
+    }
+
+    // show when toggled open (JS adds this class on click/tap)
+    &.is-open .pkg-info-tooltip__box {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(-2px);
+    }
+}

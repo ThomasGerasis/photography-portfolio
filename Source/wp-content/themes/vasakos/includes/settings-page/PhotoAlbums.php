@@ -43,14 +43,13 @@ class PhotoAlbumsAdminGrid
 
     public function addMenu(): void
     {
-        add_menu_page(
-            __('Photo Albums', 'textdomain'),
-            __('Photo Albums', 'textdomain'),
+        add_submenu_page(
+            'edit.php?post_type=photos',
+            __('Photoshoots Rearrangement', 'textdomain'),
+            __('Photoshoots Rearrangement', 'textdomain'),
             'manage_options',
             'photo-albums',
-            [$this, 'renderPage'],
-            get_template_directory_uri() . '/assets/images/camera.png',
-            20
+            [$this, 'renderPage']
         );
     }
 
@@ -85,7 +84,12 @@ class PhotoAlbumsAdminGrid
 
     private function renderCategoriesPage(): void
     {
-        $categories = get_terms(['taxonomy' => 'category', 'hide_empty' => false]);
+        $categories = get_terms(
+            [
+                'taxonomy' => 'photoshoots',
+                'hide_empty' => false
+            ]
+        );
 
         if (empty($categories)) {
             echo '<p>No categories found.</p>';
@@ -106,7 +110,7 @@ class PhotoAlbumsAdminGrid
 
     private function renderPhotosPage(int $category_id): void
     {
-        $category = get_term($category_id, 'category');
+        $category = get_term($category_id, 'photoshoots'); // changed from 'category'
 
         if (!$category || is_wp_error($category)) {
             echo '<p>Invalid category.</p>';
@@ -127,7 +131,11 @@ class PhotoAlbumsAdminGrid
             'post_type' => 'photos',
             'posts_per_page' => -1,
             'tax_query' => [
-                ['taxonomy' => 'category', 'field' => 'term_id', 'terms' => $category_id]
+                [
+                    'taxonomy' => 'photoshoots', // changed from 'category'
+                    'field' => 'term_id',
+                    'terms' => $category_id
+                ]
             ]
         ]);
 
@@ -230,7 +238,7 @@ class PhotoAlbumsAdminGrid
             $post_id = wp_insert_post([
                 'post_type' => 'photos',
                 'post_status' => 'publish',
-                'tax_input' => ['category' => [$category]],
+                'tax_input' => ['photoshoots' => [$category]], // changed from 'category'
                 'post_title' => get_the_title($attachment_id)
             ]);
 
@@ -252,7 +260,7 @@ class PhotoAlbumsAdminGrid
 
         if (!wp_verify_nonce($_GET['_wpnonce'], 'delete_photo_' . $photo_id)) wp_die('Security check failed');
 
-        $categories = wp_get_post_terms($photo_id, 'category', ['fields' => 'ids']);
+        $categories = wp_get_post_terms($photo_id, 'photoshoots', ['fields' => 'ids']); // changed from 'category'
         $category_id = $categories[0] ?? 0;
 
         wp_delete_post($photo_id, true);

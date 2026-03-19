@@ -1,0 +1,99 @@
+.why-choose-me-repeater {
+    margin: 20px 0;
+}
+
+.repeater-items {
+    margin-bottom: 15px;
+}
+
+.repeater-row {
+    background: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.repeater-row-header {
+    background: #f7f7f7;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+}
+
+.repeater-row-title {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.repeater-row-header .button {
+    padding: 4px 12px;
+    height: auto;
+    line-height: 1.4;
+    font-size: 12px;
+}
+
+.repeater-row-content {
+    padding: 15px;
+}
+
+.repeater-row-content p {
+    margin-bottom: 15px;
+}
+
+.repeater-row-content label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.repeater-row-content small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+}
+
+.repeater-row-content small a {
+    color: #0073aa;
+    text-decoration: none;
+}
+
+.repeater-row-content small a:hover {
+    text-decoration: underline;
+}
+
+.repeater-row-content input[type="text"],
+.repeater-row-content textarea {
+    width: 100%;
+    max-width: 100%;
+}
+
+.add-repeater-row {
+    margin-top: 10px;
+}
+
+.repeater-row-placeholder {
+    background: #f0f0f0;
+    border: 2px dashed #ccc;
+    margin-bottom: 10px;
+    height: 50px;
+}
+
+.remove-repeater-row {
+    background: #dc3232;
+    border-color: #c02020;
+    color: #fff;
+}
+
+.remove-repeater-row:hover {
+    background: #c02020;
+    border-color: #a01818;
+    color: #fff;
+}
+
+/* For category edit page */
+.form-field .why-choose-me-repeater {
+    max-width: 800px;
+}

@@ -164,8 +164,10 @@ jQuery(document).ready(function ($) {
                     let key = count++;
 
                     const html = `
-                        <div class="items d-flex mb-1" data-id="${key}">
-                            
+                        <div class="items d-flex mb-1 align-items-center" data-id="${key}">
+                            <div class="slider_order" style="cursor:pointer;margin-right:5px;">
+                                <span class="dashicons dashicons-sort"></span>
+                            </div>
                             <button type="button"
                                 class="button button-primary custom-media-btn"
                                 data-key="${key}">
@@ -174,7 +176,7 @@ jQuery(document).ready(function ($) {
 
                             <img class="custom_media_image_${key}"
                                 src=""
-                                style="display:none;max-width:100px;margin-left:10px;">
+                                style="display:none;max-width:100px;margin:0 10px;">
 
                             <input type="text"
                                 class="media_image_${key} form-control form-control-sm col-3 ml-2"

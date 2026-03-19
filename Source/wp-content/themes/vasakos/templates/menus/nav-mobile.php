@@ -18,21 +18,12 @@
         </section>
     </div>
 </nav>
-<ul class="f-top-menu js-clone-nav d-none">
-    <?php
-    $name = wp_get_nav_menu_name('main-menu');
-    $menumobile = wp_get_nav_menu_items($name); // all the "upper" menu items array
-    if ($menumobile) {
-        foreach ($menumobile as $item) {
-    ?>
-            <li class="f-top-menu__item">
-                <a href="<?php echo $item->url; ?>" class="f-top-menu__link text-decoration-none">
-                    <span class="pt-4p font-weight-bold"><?php echo $item->title; ?></span>
-                </a>
-            </li>
-    <?php
-        }
-        wp_reset_postdata();
-    }
-    ?>
-</ul>
+<?php
+wp_nav_menu(array(
+    'menu_class'     => 'f-top-menu js-clone-nav d-none',
+    'container'      => false,
+    'depth'          => 4,
+    'theme_location' => 'main-menu',
+    'walker'         => new Walker_Nav_Menu(),
+));
+?>

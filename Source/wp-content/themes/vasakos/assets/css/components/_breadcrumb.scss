@@ -1,12 +1,50 @@
 /* :: 12.0 Breadcrumb CSS */
 
+// Inline breadcrumb used via templates/partials/breadcrumb.php
+.vasakos-breadcrumb {
+    padding: 10px 0 4px;
+
+    .breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        background: transparent;
+        list-style: none;
+
+        .breadcrumb-item {
+            font-size: 13px;
+            color: $text-gray;
+
+            a {
+                color: $text-gray;
+                text-decoration: none;
+
+                &:hover { color: $secondary; }
+            }
+
+            &.active { color: $secondary; font-weight: 700; }
+
+            // separator
+            + .breadcrumb-item::before {
+                content: '/';
+                padding: 0 6px;
+                color: $text-gray;
+            }
+        }
+    }
+}
+
 
 .breadcrumb-area {
     position: relative;
     z-index: 1;
     height: 300px;
+    // min-height: 220px;
 
     @media #{$breakpoint-xs} {
+        // min-height: 220px;
         height: 220px;
     }
 

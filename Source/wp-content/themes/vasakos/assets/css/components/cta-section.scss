@@ -1,0 +1,79 @@
+.vasakos-cta {
+    position: relative;
+    padding: 60px 40px;
+    border-radius: 4px;
+    margin: 30px 0;
+    overflow: hidden;
+
+    @media #{$breakpoint-xs} { padding: 40px 24px; }
+
+    // Background variants
+    &--dark {
+        background: $dark;
+        .vasakos-cta__heading,
+        .vasakos-cta__text { color: #fff; }
+    }
+
+    &--light {
+        background: $bg-gray;
+        border: 1px solid rgba(0,0,0,.07);
+        .vasakos-cta__heading,
+        .vasakos-cta__text { color: $heading; }
+    }
+
+    &--image {
+        background-size: cover;
+        background-position: center;
+        .vasakos-cta__heading,
+        .vasakos-cta__text { color: #fff; }
+    }
+
+    // Overlay for image backgrounds
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,.55);
+    }
+
+    // Alignment
+    &--center .vasakos-cta__inner { text-align: center; align-items: center; }
+    &--left   .vasakos-cta__inner { text-align: left;   align-items: flex-start; }
+
+    &__inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    &__heading {
+        font-size: 30px;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.2;
+
+        @media #{$breakpoint-xs} { font-size: 22px; }
+    }
+
+    &__text {
+        font-size: 16px;
+        margin: 0;
+        opacity: .85;
+    }
+
+    &__btn {
+        align-self: inherit;
+        display: inline-block;
+        padding: 12px 32px;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: .3px;
+        border-radius: 2px;
+        transition: opacity .2s ease;
+
+        &:hover { opacity: .85; text-decoration: none; }
+    }
+}

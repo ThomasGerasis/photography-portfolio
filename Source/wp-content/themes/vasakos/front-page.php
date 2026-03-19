@@ -21,13 +21,15 @@ $settings = get_option('basic_settings');
                     <div class="position-absolute divider w-100 text-center" style="background: #E1E1E1;height: 220px;top:120px;"></div>
                 <?php } ?>
                 <div style="z-index: 2">
-                    <?php echo do_shortcode('[popular_categories]') ?>
+                    <?php echo do_shortcode('[photoshoots_categories]') ?>
                 </div>
             </div>
     </div>
 
     <div class="w-70 w-sm-100 d-block mx-auto text-dark text-center p-10p">
-        <?= get_post_meta($post->ID, 'homepage_mini_bio_more', true) ?? ''; ?>
+        <?php if (!empty(get_post_meta($post->ID, 'homepage_mini_bio_more', true))) : ?>
+            <?= do_shortcode(get_post_meta($post->ID, 'homepage_mini_bio_more', true)); ?>
+        <?php endif; ?>
     </div>
 
     <?php get_template_part('templates/testimonials'); ?>
@@ -59,5 +61,7 @@ $settings = get_option('basic_settings');
 <?php get_template_part('templates/contact-us'); ?>
 
 <?php get_template_part('templates/follow-instagram'); ?>
+
+<?php get_template_part('templates/content-faq'); ?>
 
 <?php get_footer(); ?>

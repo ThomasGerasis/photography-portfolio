@@ -1,24 +1,37 @@
 <?php
 
-function popular_categories_callback($atts, $content = null)
+function photoshoots_categories_callback($atts, $content = null)
 {
     $atts = shortcode_atts(
         array(
-            '' => '',
+            'limit'      => '4',
+            'orderby'    => 'count',
+            'categories' => '', // comma-separated slugs; empty = use limit/orderby
         ),
         $atts,
-        'popular_categories'
+        'photoshoots_categories'
     );
+
+    $orderby = in_array($atts['orderby'], ['count', 'name', 'slug']) ? $atts['orderby'] : 'count';
 
     ob_start();
 
-    $categories = get_categories([
-        'taxonomy'  => 'category',
-        'orderby'   => 'count',
-        'order'     => 'DESC',
+    $query_args = [
+        'taxonomy'   => 'photoshoots',
         'hide_empty' => true,
-        'number'    => 4
-    ]);
+    ];
+
+    $specific_slugs = array_filter(array_map('trim', explode(',', $atts['categories'])));
+
+    if (!empty($specific_slugs)) {
+        $query_args['slug'] = $specific_slugs;
+    } else {
+        $query_args['orderby'] = $orderby;
+        $query_args['order']   = 'DESC';
+        $query_args['number']  = (int) $atts['limit'];
+    }
+
+    $categories = get_categories($query_args);
 ?>
     <div class="top__categories d-flex flex-wrap justify-content-center <?= wp_is_mobile() ? 'mt-40p mb-20p' : 'mt-40p mb-40p' ?> ">
         <?php
@@ -32,7 +45,7 @@ function popular_categories_callback($atts, $content = null)
                     background-image: url('<?php echo $image; ?>');
                 }
             </style>
-            <a href="<?php echo get_term_link($category->slug, 'category'); ?>" class="mt-10p mb-10p single_gallery_item category_item b-30 wow fadeInUp" data-wow-delay="100ms">
+            <a href="<?php echo esc_url(get_term_link($category->slug, 'photoshoots')); ?>" class="mt-10p mb-10p single_gallery_item category_item b-30 wow fadeInUp" data-wow-delay="100ms">
                 <div class="single-portfolio-content lazy-background <?= $category->slug ?>">
                     <div class="image-overlay"></div>
                     <span class="font-weight-bold d-block category_name text-white text-35 text-center"><?php echo $category->name; ?>
@@ -46,4 +59,4 @@ function popular_categories_callback($atts, $content = null)
 
     return ob_get_clean();
 }
-add_shortcode('popular_categories', 'popular_categories_callback');
+add_shortcode('photoshoots_categories', 'photoshoots_categories_callback');
