@@ -30,6 +30,7 @@ get_header();
 
 <div class="container container_pages mt-20p mb-20p d-block mx-auto align-items-center">
     <?php get_template_part('templates/contact-us'); ?>
+    <?php get_template_part('templates/content-faq'); ?>
 </div>
 <?php
 get_footer();
