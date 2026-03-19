@@ -105,7 +105,7 @@ function pricing_packages_shortcode($atts)
                         <?php if ($atts['show_book_button'] === 'yes') { ?>
                             <div class="mt-auto mx-auto">
                                 <a href="#contactForm" class="package-btn alime-btn bg-secondary"
-                                    data-service="<?= esc_attr($package->post_title); ?>">
+                                    data-service="<?= esc_attr($id); ?>">
                                     Book This Package
                                 </a>
                             </div>

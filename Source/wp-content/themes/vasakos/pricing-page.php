@@ -68,7 +68,22 @@ Town of Edinburgh"]'); ?>
         <?= do_shortcode('[trustindex no-registration=airbnb]'); ?>
     </a>
 
-    <?php get_template_part('templates/contact-us', null, ['packages' => $packages, 'settings' => $settings]); ?>
+    <?php
+    $package_posts = get_posts([
+        'post_type'      => 'pricing_package',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'orderby'        => 'menu_order',
+        'order'          => 'ASC',
+    ]);
+
+    $packages = [];
+    foreach ($package_posts as $pkg) {
+        $packages[$pkg->ID] = ['title' => $pkg->post_title];
+    }
+
+    get_template_part('templates/contact-us', null, ['packages' => $packages, 'settings' => $settings]);
+    ?>
 </div>
 
 
