@@ -30,7 +30,7 @@
     </div>
 
 
-    <div class="container mt-20p mb-20p mx-auto">
+    <div class="container mt-20p mb-20p mx-auto text-dark">
         <?php get_template_part('templates/content-single', get_post_type()); ?>
     </div>
 

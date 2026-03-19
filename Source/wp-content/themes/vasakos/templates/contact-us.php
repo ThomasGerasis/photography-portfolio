@@ -9,7 +9,7 @@
      <?php } ?>
      <div class="wrapper img">
          <div class="row container__main m-auto position-relative">
-             <div class="col-12 col-md-6 p-md-5 p-4">
+             <div class="col-12 col-md-6 p-md-5 p-4 text-dark">
                  <p class="w-100 d-block heading_title">Contact</p>
                  <h3 class="mb-10p">Got Some Questions ? More than happy to help you !</h3>
                  <a class="mt-10p mb-10p" href=mailto:“<?= $settings['email'] ?? ''; ?>”><?= $settings['email'] ?? ''; ?></a>
