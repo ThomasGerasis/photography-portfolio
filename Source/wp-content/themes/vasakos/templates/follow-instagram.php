@@ -6,7 +6,7 @@ $settings = get_option('basic_settings');
         <div class="row">
             <div class="col-12">
                 <div class="section-heading text-center">
-                    <h4>Follow my work on Instagram</h4>
+                    <h4 class="text-dark">Follow my work on Instagram</h4>
                     <span class="heading_title">@vasakos_3vh</span>
                 </div>
             </div>
