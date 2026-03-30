@@ -34,7 +34,7 @@ $settings = get_option('basic_settings');
 <div class="container container_pages mt-20p mb-20p d-block mx-auto align-items-center">
     <section class="pricing-section mt-2 mb-5">
         <h1 class="section-title w-100 d-block text-dark text-center">Pricing - Packages in Edinburgh</h1>
-        <div class="pricing-cards mt-5 mb-5">
+        <div class="pricing-cards mt-3 mb-5">
             <?php echo do_shortcode('[pricing_packages show_book_button="yes" subtitle="Photoshooting couples, families, and solo travelers in the Old
 Town of Edinburgh"]'); ?>
         </div>
