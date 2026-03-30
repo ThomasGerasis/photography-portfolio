@@ -11,8 +11,11 @@
          <div class="row container__main m-auto position-relative">
              <div class="col-12 col-md-6 p-md-5 p-4 text-dark">
                  <p class="w-100 d-block heading_title">Contact</p>
-                 <h3 class="mb-10p">Got Some Questions ? More than happy to help you !</h3>
-                 <a class="mt-10p mb-10p" href=mailto:“<?= $settings['email'] ?? ''; ?>”><?= $settings['email'] ?? ''; ?></a>
+                 <h2 class="mb-10p">Get in Touch!</h2>
+                 <p class="mb-10p">If you’re looking for a professional photographer in Edinburgh and feel that my work
+                     resonates with you, I’d love to hear from you. Whether you have a clear plan or just
+                     the beginning of an idea, this is the place to start the conversation.</p>
+                 <a class="mt-10p mb-10p" href="mailto:<?= $settings['email'] ?? ''; ?>"><?= $settings['email'] ?? ''; ?></a>
                  <ul class="social mt-20p">
                      <li>
                          <a href="<?= $settings['facebook'] ?? ''; ?>" aria-label="Facebook" target="_blank" title="Facebook">

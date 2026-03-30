@@ -26,13 +26,11 @@ $settings = get_option('basic_settings');
             </div>
     </div>
 
-    <div class="w-70 w-sm-100 d-block mx-auto text-dark text-center p-10p">
+    <div class="w-70 w-sm-100 d-block mx-auto text-dark p-10p">
         <?php if (!empty(get_post_meta($post->ID, 'homepage_mini_bio_more', true))) : ?>
             <?= do_shortcode(get_post_meta($post->ID, 'homepage_mini_bio_more', true)); ?>
         <?php endif; ?>
     </div>
-
-    <?php get_template_part('templates/testimonials'); ?>
 
     <a href="<?= $settings['airbnb'] ?? ''; ?>" target="_blank" class="pr-10p pl-10p">
         <?= do_shortcode('[trustindex no-registration=airbnb]'); ?>
@@ -59,6 +57,8 @@ $settings = get_option('basic_settings');
 </div>
 
 <?php get_template_part('templates/contact-us'); ?>
+
+<?php get_template_part('templates/testimonials'); ?>
 
 <?php get_template_part('templates/follow-instagram'); ?>
 

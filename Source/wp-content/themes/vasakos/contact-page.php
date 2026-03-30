@@ -14,7 +14,7 @@ get_header();
         <div class="row h-100 align-items-center">
             <div class="col-12 d-flex align-items-center justify-content-center">
                 <div class="breadcrumb-content text-center">
-                    <h1 class="page-title">Contact</h1>
+                    <h1 class="page-title"><?= the_title() ?></h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a href="<?php echo home_url(); ?>"><i class="fas fa-home"></i> Home</a></li>
@@ -28,8 +28,9 @@ get_header();
 </section>
 <!-- Breadcrumb Area End -->
 
-<div class="container container_pages mt-20p mb-20p d-block mx-auto align-items-center">
+<div class="container container_pages mt-20p mb-20p d-block mx-auto align-items-center text-dark">
     <?php get_template_part('templates/contact-us'); ?>
+    <?php echo apply_filters('the_content', get_the_content()); ?>
     <?php get_template_part('templates/content-faq'); ?>
 </div>
 <?php

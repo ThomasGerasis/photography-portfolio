@@ -37,6 +37,7 @@ $storyTextMore = get_post_meta($post->ID, $prefix . 'story_more', true);
             <div class="w-100 pt-20p d-block">
                 <p class="w-100 d-block text-center heading_title" style="color: #D1862B;">Vasileios Vasakos</p>
                 <h1 class="w-100 d-block text-white text-center mb-4"><?= $mainHeading ?? ''; ?></h1>
+                <h2 class="w-100 d-block text-white text-center mb-4"><?php the_title() ?></h2>
                 <div class="about_top_img" style="background-image: url('<?php echo $mainImage;  ?>');"></div>
                 <div class="w-100 d-block text-white text-center p-10p"><?= $mainText ?? ''; ?></div>
             </div>
@@ -45,6 +46,7 @@ $storyTextMore = get_post_meta($post->ID, $prefix . 'story_more', true);
             <div class="w-50 d-block">
                 <p class="w-100 d-block text-center heading_title" style="color: #D1862B;">Vasileios Vasakos</p>
                 <h1 class="w-100 d-block text-white text-center"><?= $mainHeading ?? ''; ?></h1>
+                <h2 class="w-100 d-block text-white text-center"><?php the_title() ?></h2>
                 <div class="w-100 d-block text-white text-center p-10p"><?= $mainText ?? ''; ?></div>
             </div>
         <?php } ?>
@@ -80,14 +82,12 @@ $storyTextMore = get_post_meta($post->ID, $prefix . 'story_more', true);
 
 
 <div class="mt-5 mb-5 counter-section-about">
-    <?php
-    get_template_part('templates/counter');
-    ?>
+    <?php get_template_part('templates/counter'); ?>
 </div>
 
 <div class="w-100 d-flex container flex-wrap position-relative text-center mb-5 mt-5">
     <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/lensdivider.svg' ?>" alt="lens" width="150" height="70" class="d-block img-fluid m-auto" loading="lazy">
-    <h2 class="w-100 d-block text-center"><?= $storyHeading ?></h2>
+    <h2 class="w-100 d-block text-center text-dark"><?= $storyHeading ?></h2>
     <div class="w-100 d-block text-dark text-center p-10p">
         <?= $storyText ?>
     </div>
