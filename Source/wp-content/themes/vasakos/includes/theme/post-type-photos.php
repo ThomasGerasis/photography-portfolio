@@ -52,6 +52,7 @@ function register_photoshoot_taxonomy()
             'slug' => 'photoshoots',
             'with_front' => false
         ),
+        'show_in_rest' => true,
         'show_ui' => true,
         'show_admin_column' => true,
     ));

@@ -4,7 +4,7 @@ function photoshoots_categories_callback($atts, $content = null)
 {
     $atts = shortcode_atts(
         array(
-            'limit'      => '4',
+            'limit'      => '8',
             'orderby'    => 'count',
             'categories' => '', // comma-separated slugs; empty = use limit/orderby
         ),
