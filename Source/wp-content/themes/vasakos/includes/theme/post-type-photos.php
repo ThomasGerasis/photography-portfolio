@@ -48,6 +48,7 @@ function register_photoshoot_taxonomy()
             'singular_name' => 'Photoshoot',
         ),
         'hierarchical' => true,
+        'public' => true,
         'rewrite' => array(
             'slug' => 'photoshoots',
             'with_front' => false
