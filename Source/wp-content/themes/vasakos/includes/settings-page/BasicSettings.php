@@ -137,7 +137,62 @@ class BasicSettings
                 <input type="text" class="form-control col-9 form-control-sm main-text" name="basic_settings[email]" id="basic_settings[email]" value="<?= $option['email'] ?? ''; ?>" placeholder="<?= 'Email' ?>">
             </div>
 
+            <h2 class="col-12 mt-4">Local Business Info (SEO)</h2>
 
+            <div class="d-flex flex-wrap col-6 mt-4 p-0">
+                <label style="margin-top: auto;margin-bottom: auto;" class="col-2 p-0" for="basic_settings[phone]">Phone Number</label>
+                <input type="text" class="form-control col-9 form-control-sm main-text" name="basic_settings[phone]" id="basic_settings[phone]" value="<?= $option['phone'] ?? ''; ?>" placeholder="<?= '+44 ...' ?>">
+            </div>
+
+            <div class="d-flex flex-wrap col-6 mt-4 p-0">
+                <label style="margin-top: auto;margin-bottom: auto;" class="col-2 p-0" for="basic_settings[street_address]">Street Address</label>
+                <input type="text" class="form-control col-9 form-control-sm main-text" name="basic_settings[street_address]" id="basic_settings[street_address]" value="<?= $option['street_address'] ?? ''; ?>" placeholder="<?= 'Street Address' ?>">
+            </div>
+
+            <div class="d-flex flex-wrap col-6 mt-4 p-0">
+                <label style="margin-top: auto;margin-bottom: auto;" class="col-2 p-0" for="basic_settings[city]">City</label>
+                <input type="text" class="form-control col-9 form-control-sm main-text" name="basic_settings[city]" id="basic_settings[city]" value="<?= $option['city'] ?? 'Edinburgh'; ?>" placeholder="<?= 'Edinburgh' ?>">
+            </div>
+
+            <div class="d-flex flex-wrap col-6 mt-4 p-0">
+                <label style="margin-top: auto;margin-bottom: auto;" class="col-2 p-0" for="basic_settings[region]">Region/County</label>
+                <input type="text" class="form-control col-9 form-control-sm main-text" name="basic_settings[region]" id="basic_settings[region]" value="<?= $option['region'] ?? ''; ?>" placeholder="<?= 'Scotland' ?>">
+            </div>
+
+            <div class="d-flex flex-wrap col-6 mt-4 p-0">
+                <label style="margin-top: auto;margin-bottom: auto;" class="col-2 p-0" for="basic_settings[postal_code]">Postal Code</label>
+                <input type="text" class="form-control col-9 form-control-sm main-text" name="basic_settings[postal_code]" id="basic_settings[postal_code]" value="<?= $option['postal_code'] ?? ''; ?>" placeholder="<?= 'EH1 1AA' ?>">
+            </div>
+
+            <div class="d-flex flex-wrap col-6 mt-4 p-0">
+                <label style="margin-top: auto;margin-bottom: auto;" class="col-2 p-0" for="basic_settings[country]">Country</label>
+                <input type="text" class="form-control col-9 form-control-sm main-text" name="basic_settings[country]" id="basic_settings[country]" value="<?= $option['country'] ?? 'GB'; ?>" placeholder="<?= 'GB' ?>">
+            </div>
+
+            <div class="d-flex flex-wrap col-6 mt-4 p-0">
+                <label style="margin-top: auto;margin-bottom: auto;" class="col-2 p-0" for="basic_settings[latitude]">Latitude</label>
+                <input type="text" class="form-control col-9 form-control-sm main-text" name="basic_settings[latitude]" id="basic_settings[latitude]" value="<?= $option['latitude'] ?? ''; ?>" placeholder="<?= '55.9533' ?>">
+            </div>
+
+            <div class="d-flex flex-wrap col-6 mt-4 p-0">
+                <label style="margin-top: auto;margin-bottom: auto;" class="col-2 p-0" for="basic_settings[longitude]">Longitude</label>
+                <input type="text" class="form-control col-9 form-control-sm main-text" name="basic_settings[longitude]" id="basic_settings[longitude]" value="<?= $option['longitude'] ?? ''; ?>" placeholder="<?= '-3.1883' ?>">
+            </div>
+
+            <div class="d-flex flex-wrap col-6 mt-4 p-0">
+                <label style="margin-top: auto;margin-bottom: auto;" class="col-2 p-0" for="basic_settings[price_range]">Price Range</label>
+                <input type="text" class="form-control col-9 form-control-sm main-text" name="basic_settings[price_range]" id="basic_settings[price_range]" value="<?= $option['price_range'] ?? ''; ?>" placeholder="<?= '££ - £££' ?>">
+            </div>
+
+            <div class="d-flex flex-wrap col-6 mt-4 p-0">
+                <label style="margin-top: auto;margin-bottom: auto;" class="col-2 p-0" for="basic_settings[service_area]">Service Area (comma separated)</label>
+                <input type="text" class="form-control col-9 form-control-sm main-text" name="basic_settings[service_area]" id="basic_settings[service_area]" value="<?= $option['service_area'] ?? ''; ?>" placeholder="<?= 'Edinburgh, Lothians, Fife' ?>">
+            </div>
+
+            <div class="d-flex flex-wrap col-6 mt-4 p-0">
+                <label style="margin-top: auto;margin-bottom: auto;" class="col-2 p-0" for="basic_settings[opening_hours]">Opening Hours (one per line, e.g. Mo-Fr 09:00-18:00)</label>
+                <textarea class="form-control col-9 form-control-sm main-text" name="basic_settings[opening_hours]" id="basic_settings[opening_hours]" placeholder="Mo-Fr 09:00-18:00"><?= $option['opening_hours'] ?? ''; ?></textarea>
+            </div>
 
         </div>
 <?php

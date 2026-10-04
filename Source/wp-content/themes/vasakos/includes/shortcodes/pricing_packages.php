@@ -73,15 +73,18 @@ function pricing_packages_shortcode($atts)
                         </div>
                     <?php } ?>
                     <div class="card-body d-flex flex-column flex-grow-1">
-                        <h5 class="card-title">
-                            <?= esc_html($package->post_title); ?>
+                        <div class="d-flex align-items-center mb-2">
+                            <h5 class="card-title m-0">
+                                <?= esc_html($package->post_title); ?>
+                            </h5>
                             <?php if ($more_info) { ?>
                                 <span class="pkg-info-tooltip">
                                     <i class="fas fa-info-circle" aria-hidden="true"></i>
                                     <span class="pkg-info-tooltip__box" role="tooltip"><?= esc_html($more_info); ?></span>
                                 </span>
                             <?php } ?>
-                        </h5>
+                        </div>
+
                         <div class="meta mb-2">
                             <?php if ($price) { ?>
                                 <span><i class="fas fa-pound-sign"></i><?= esc_html($price); ?></span>

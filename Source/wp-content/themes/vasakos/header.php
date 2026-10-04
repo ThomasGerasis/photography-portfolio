@@ -42,6 +42,7 @@
     }
 
     echo personSchema();
+    echo localBusinessSchema();
     echo breadcrumbSchema();
     ?>
 </head>
