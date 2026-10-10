@@ -1,0 +1,162 @@
+// Pullquote, tip, location card, post meta and share bar
+
+.vasakos-pullquote {
+    margin: 40px 0;
+    padding: 8px 0 8px 28px;
+    border-left: 3px solid $secondary;
+
+    p {
+        font-size: 24px;
+        line-height: 1.5;
+        font-style: italic;
+        color: $text-dark;
+        margin-bottom: 12px;
+
+        @media #{$breakpoint-xs} { font-size: 19px; }
+    }
+
+    cite {
+        font-size: 14px;
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: $text-gray;
+    }
+}
+
+.vasakos-tip {
+    display: flex;
+    gap: 16px;
+    margin: 30px 0;
+    padding: 20px 24px;
+    background: rgba(209, 134, 43, 0.08);
+    border-radius: 8px;
+
+    &__icon { font-size: 26px; line-height: 1.2; }
+    &__title { display: block; margin-bottom: 4px; color: $text-dark; }
+    &__text p:last-child { margin-bottom: 0; }
+}
+
+.vasakos-location {
+    display: flex;
+    align-items: stretch;
+    margin: 30px 0;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+
+    @media #{$breakpoint-xs} { flex-direction: column; }
+
+    // .single-post .entry-content img would otherwise force height:auto
+    .vasakos-location__image,
+    .single-post .entry-content & .vasakos-location__image {
+        flex: 0 0 35%;
+        width: 35%;
+        min-height: 200px;
+        height: auto;
+        object-fit: cover;
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+
+        @media #{$breakpoint-xs} { width: 100%; flex-basis: auto; height: 200px; }
+    }
+
+    &__body {
+        flex: 1;
+        min-width: 0;
+        padding: 22px 26px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    &__name { margin: 0 0 8px; font-size: 22px; color: $text-dark; }
+    &__text { margin: 0 0 14px; font-size: 15px; line-height: 1.6; }
+
+    &__facts {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        margin: 0 0 16px;
+        padding: 0;
+
+        li {
+            margin: 0;
+            padding: 4px 12px;
+            font-size: 14px;
+            line-height: 1.4;
+            background: rgba(209, 134, 43, 0.1);
+            border-radius: 20px;
+        }
+
+        span {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: $text-gray;
+            margin-right: 4px;
+        }
+    }
+
+    .vasakos-location__map,
+    .single-post .entry-content & .vasakos-location__map {
+        margin-top: auto;
+        padding: 6px 16px;
+        font-size: 14px;
+        color: $secondary;
+        text-decoration: none;
+        border: 1px solid $secondary;
+        border-radius: 20px;
+
+        &:hover, &:focus { background: $secondary; color: #fff; }
+    }
+}
+
+.post-meta-row {
+    max-width: 760px;
+    margin: 0 auto 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 14px;
+    color: $text-gray;
+
+    &__info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 20px;
+
+        span { display: inline-flex; align-items: center; gap: 6px; }
+    }
+}
+
+.post-icon { width: 16px; height: 16px; flex-shrink: 0; }
+
+.post-share {
+    display: flex;
+    gap: 8px;
+
+    &__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        background: transparent;
+        color: $text-dark;
+        cursor: pointer;
+
+        &:hover, &:focus, &.is-copied { border-color: $secondary; color: $secondary; }
+    }
+}
+
+.post-share__btn[hidden] { display: none; }

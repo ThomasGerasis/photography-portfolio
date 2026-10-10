@@ -463,3 +463,128 @@
         }
     }
 }
+
+// Single post content (templates/content-single.php)
+.single-post .entry-content {
+    overflow: hidden;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 17px;
+    line-height: 1.8;
+
+    > p:first-child {
+        font-size: 20px;
+        line-height: 1.7;
+    }
+
+    > p:last-child {
+        margin-top: 40px;
+        padding: 24px 28px;
+        background: rgba(209, 134, 43, 0.08);
+        border-left: 3px solid $secondary;
+        border-radius: 8px;
+    }
+
+    h2 {
+        position: relative;
+        margin: 48px 0 24px;
+        padding-bottom: 14px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: $secondary;
+        }
+    }
+
+    // Only prose links; shortcode components (buttons, cards) keep their own styles
+    > p a,
+    > ul > li a,
+    > ol > li a {
+        color: $secondary;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        font-weight: inherit;
+
+        &:hover,
+        &:focus {
+            color: $hover;
+        }
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    figure,
+    .wp-caption {
+        max-width: 100%;
+        margin: 0 0 20px;
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        figcaption,
+        .wp-caption-text {
+            font-size: 14px;
+            font-style: italic;
+            color: $text-gray;
+            text-align: center;
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .alignleft,
+    .alignright {
+        max-width: 50%;
+        margin-bottom: 20px;
+    }
+
+    .alignleft {
+        float: left;
+        margin-right: 24px;
+    }
+
+    .alignright {
+        float: right;
+        margin-left: 24px;
+    }
+
+    .aligncenter {
+        display: block;
+        clear: both;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .alignwide,
+    .alignfull {
+        clear: both;
+        max-width: 100%;
+    }
+
+    @media (max-width: 767px) {
+        .alignleft,
+        .alignright {
+            float: none;
+            display: block;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}

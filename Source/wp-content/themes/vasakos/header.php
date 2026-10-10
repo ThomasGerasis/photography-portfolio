@@ -12,7 +12,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <?php wp_head(); ?>
     <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/bootstrap.min.css?v=3.5' ?>">
-    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/main.min.css?v=3.5' ?>">
+    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/main.min.css?v=3.6' ?>">
 
     <?php if (is_page_template('about.php')) { ?>
         <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/about.min.css?v=3.5' ?>">

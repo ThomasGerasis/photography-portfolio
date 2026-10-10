@@ -13,6 +13,8 @@ function cstm_css_and_js($hook)
     wp_add_inline_style('boot_css', '
         #vasakos-sc-modal .form-check { display: flex; align-items: center; gap: .5rem; padding-left: 0; }
         #vasakos-sc-modal .form-check-input { position: static; margin: 0; float: none; flex-shrink: 0; width: 1rem; height: 1rem; }
+        #vasakos-sc-modal .modal-body { max-height: 65vh; overflow-y: auto; }
+        #vasakos-sc-modal img[id$="-preview"] { max-height: 120px; width: auto; }
         #vasakos-sc-modal .form-check-label { display: inline; margin: 0; font-weight: normal; }
     ');
 }

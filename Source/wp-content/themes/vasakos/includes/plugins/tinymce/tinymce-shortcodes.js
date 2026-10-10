@@ -18,6 +18,9 @@
             { label: 'Timeline',            slug: 'timeline',           tag: 'timeline' },
             { label: 'CTA Section',         slug: 'cta-section',        tag: 'cta_section' },
             { label: 'Stats Bar',           slug: 'stats-bar',          tag: 'stats_bar' },
+            { label: 'Pullquote',           slug: 'pullquote',          tag: 'pullquote' },
+            { label: 'Tip',                 slug: 'tip',                tag: 'tip' },
+            { label: 'Location Card',       slug: 'location-card',      tag: 'location_card' },
         ];
 
         // Build a tag→sc lookup for the dblclick handler
@@ -49,7 +52,7 @@
             var offset = rng.startOffset;
 
             // Find every shortcode in this text node
-            var re = /\[([\w_]+)((?:\s+[\w_]+=(?:"[^"]*"|'[^']*'|[^\s\]]+))*)\s*\]/g;
+            var re = /\[([\w_]+)((?:\s+[\w_]+=(?:"[^"]*"|'[^']*'|[^\s\]]+))*)\s*\](?:([^\[]*?)\[\/\1\])?/g;
             var match;
 
             while ((match = re.exec(text)) !== null) {
@@ -63,6 +66,7 @@
                     if (!sc) return;
 
                     var existingAtts = parseShortcodeAtts(match[2]);
+                    if (match[3] !== undefined) existingAtts._content = match[3];
 
                     // Select the shortcode text so we can replace it on save
                     var selRng = editor.dom.createRng();
@@ -90,6 +94,11 @@
         // Populate modal fields from an existing atts object
         function populateFields($modal, atts) {
             if (!atts) return;
+
+            // Enclosed content (e.g. [tip]...[/tip])
+            if (atts._content !== undefined) {
+                $modal.find('[data-content]').val(atts._content);
+            }
 
             $modal.find('[data-att]').each(function() {
                 var $el  = jQuery(this);
@@ -213,6 +222,12 @@
                 });
 
                 shortcode += ']';
+
+                // Enclosing shortcodes: wrap the [data-content] field value
+                var $content = $modal.find('[data-content]');
+                if ($content.length) {
+                    shortcode += $content.val() + '[/' + tag + ']';
+                }
 
                 // isEdit: replace the selected text; otherwise insert at cursor
                 if (isEdit) {
