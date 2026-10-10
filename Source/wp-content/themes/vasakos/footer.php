@@ -204,7 +204,19 @@
             });
         };
 
-        setTimeout(loadRecaptcha, 3000);
+        // Load only when the form approaches the viewport.
+        var recaptchaEl = document.getElementById('recaptcha');
+        if ('IntersectionObserver' in window) {
+            var recaptchaObserver = new IntersectionObserver(function(entries) {
+                if (entries[0].isIntersecting) {
+                    recaptchaObserver.disconnect();
+                    loadRecaptcha();
+                }
+            }, {rootMargin: '300px'});
+            recaptchaObserver.observe(recaptchaEl);
+        } else {
+            setTimeout(loadRecaptcha, 3000);
+        }
     }
 </script>
 
