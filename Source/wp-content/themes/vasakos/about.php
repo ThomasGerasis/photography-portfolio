@@ -105,7 +105,7 @@ $storyTextMore = get_post_meta($post->ID, $prefix . 'story_more', true);
     <?php get_template_part('templates/testimonials'); ?>
 
 
-    <a href="<?= $settings['airbnb'] ?? ''; ?>" target="_blank" class="pr-10p pl-10p">
+    <a href="<?= $settings['airbnb'] ?? ''; ?>" target="_blank" rel="noopener" aria-label="Airbnb reviews" class="pr-10p pl-10p">
         <?= do_shortcode('[trustindex no-registration=airbnb]'); ?>
     </a>
 

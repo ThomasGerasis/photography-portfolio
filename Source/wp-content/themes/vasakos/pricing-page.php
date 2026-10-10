@@ -64,7 +64,7 @@ Town of Edinburgh"]'); ?>
 <div class="container container_pages mt-40p mb-20p d-block mx-auto align-items-center p-0">
     <?php get_template_part('templates/content-faq'); ?>
 
-    <a href="<?= $settings['airbnb'] ?? ''; ?>" target="_blank" class="pr-10p pl-10p">
+    <a href="<?= $settings['airbnb'] ?? ''; ?>" target="_blank" rel="noopener" aria-label="Airbnb reviews" class="pr-10p pl-10p">
         <?= do_shortcode('[trustindex no-registration=airbnb]'); ?>
     </a>
 

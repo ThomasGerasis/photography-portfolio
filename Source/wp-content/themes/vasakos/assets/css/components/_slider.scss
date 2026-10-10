@@ -77,6 +77,7 @@
   position: relative;
   margin: 0 auto;
   overflow: hidden;
+  contain: layout paint;
   z-index: 10;
 
   .slice-overlay {

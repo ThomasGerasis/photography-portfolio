@@ -32,7 +32,7 @@ $settings = get_option('basic_settings');
         <?php endif; ?>
     </div>
 
-    <a href="<?= $settings['airbnb'] ?? ''; ?>" target="_blank" class="pr-10p pl-10p">
+    <a href="<?= $settings['airbnb'] ?? ''; ?>" target="_blank" rel="noopener" aria-label="Airbnb reviews" class="pr-10p pl-10p">
         <?= do_shortcode('[trustindex no-registration=airbnb]'); ?>
     </a>
 </div>

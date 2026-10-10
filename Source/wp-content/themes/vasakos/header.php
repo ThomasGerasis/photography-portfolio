@@ -11,8 +11,11 @@
     <meta name="MSSmartTagsPreventParsing" content="true" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <?php wp_head(); ?>
+    <link rel="preload" href="/fonts/Muli.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://use.fontawesome.com/releases/v5.8.1/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://use.fontawesome.com" crossorigin>
     <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/bootstrap.min.css?v=3.5' ?>">
-    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/main.min.css?v=3.6' ?>">
+    <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/main.min.css?v=3.7' ?>">
 
     <?php if (is_page_template('about.php')) { ?>
         <link rel="stylesheet" href="<?= get_stylesheet_directory_uri() . '/dist/css/about.min.css?v=3.5' ?>">
